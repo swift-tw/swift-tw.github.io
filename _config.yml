@@ -8,8 +8,8 @@ relative_permalinks: true
 
 # Setup
 title:            Swift 台灣
-tagline:          'Swift 台灣社群站'
-description:      'Swift 程式語言台灣社群網站'
+tagline:          'Swift 程式語言 台灣社群站'
+description:      'Swift 程式語言 台灣社群站'
 url:              http://swift-tw.github.io
 baseurl:          /
 
