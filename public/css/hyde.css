@@ -56,7 +56,7 @@ html {
 .sidebar {
   text-align: center;
   padding: 2rem 1rem;
-  color: rgba(255,255,255,.5);
+  color: rgb(153,153,153);
   background-color: #202020;
 }
 @media (min-width: 48em) {
@@ -72,7 +72,7 @@ html {
 
 /* Sidebar links */
 .sidebar a {
-  color: #fff;
+  color: rgb(51,51,51);
 }
 
 /* About section */
@@ -247,4 +247,15 @@ a.sidebar-nav-item:focus {
 .theme-base-0f .content a,
 .theme-base-0f .related-posts li a:hover {
   color: #8f5536;
+}
+
+/* Swift.org */
+
+.theme-base-swift-org .sidebar {
+  background-color: rgb(250,250,250);
+}
+
+.theme-base-swift-org .content a,
+.theme-base-swift-org .related-posts li a:hover {
+  color: rgb(51,51,51);
 }
