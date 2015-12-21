@@ -56,7 +56,7 @@ html {
 .sidebar {
   text-align: center;
   padding: 2rem 1rem;
-  color: rgba(255,255,255,.5);
+  color: rgb(153,153,153);
   background-color: #202020;
 }
 @media (min-width: 48em) {
@@ -72,7 +72,7 @@ html {
 
 /* Sidebar links */
 .sidebar a {
-  color: #fff;
+  color: rgb(51,51,51);
 }
 
 /* About section */
@@ -80,7 +80,19 @@ html {
   color: #fff;
   margin-top: 0;
   font-family: "Abril Fatface", serif;
-  font-size: 3.25rem;
+  font-size: 2rem;
+  width: 100%;
+}
+
+.sidebar-about h1 a img {
+  width: 2.5rem;
+  float: left;
+  margin-right: 0.5rem;
+}
+
+.sidebar-about .lead {
+  font-size: 1rem;
+  margin-top: 2rem;
 }
 
 /* Sidebar nav */
@@ -109,7 +121,7 @@ a.sidebar-nav-item:focus {
   .sidebar-sticky {
     position: absolute;
     right:  1rem;
-    bottom: 1rem;
+    top: 1rem;
     left:   1rem;
   }
 }
@@ -247,4 +259,15 @@ a.sidebar-nav-item:focus {
 .theme-base-0f .content a,
 .theme-base-0f .related-posts li a:hover {
   color: #8f5536;
+}
+
+/* Swift.org */
+
+.theme-base-swift-org .sidebar {
+  background-color: rgb(250,250,250);
+}
+
+.theme-base-swift-org .content a,
+.theme-base-swift-org .related-posts li a:hover {
+  color: rgb(51,51,51);
 }
