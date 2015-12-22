@@ -134,8 +134,8 @@ a.sidebar-nav-item:focus {
  */
 
 .content {
-  padding-top:    4rem;
-  padding-bottom: 4rem;
+  padding-top:    45px;
+  padding-bottom: 0rem;
 }
 
 @media (min-width: 48em) {
