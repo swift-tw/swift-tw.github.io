@@ -1,0 +1,66 @@
+---
+layout: page
+title: 原始碼(英文)
+---
+
+  <p>The code for the Swift project is divided into several open-source repositories, all hosted on <a href="https://github.com/apple/">GitHub</a>.</p>
+
+<h2 id="compiler-and-standard-library">Compiler and Standard Library</h2>
+
+<dl>
+  <dt><a href="https://github.com/apple/swift">swift</a></dt>
+  <dd>The main Swift repository, which contains the source code for the Swift compiler, standard library, and SourceKit.</dd>
+  <dt><a href="https://github.com/apple/swift-evolution">swift-evolution</a></dt>
+  <dd>Documents related to the continued evolution of Swift, including goals for upcoming releases proposals for changes to and extensions of Swift.</dd>
+</dl>
+
+<p>Directions for building the Swift compiler and standard library, along
+with its prerequisites, are provided by the <a href="https://github.com/apple/swift/blob/master/README.md">main Swift repository’s
+README
+file</a>.</p>
+
+<h2 id="core-libraries">Core Libraries</h2>
+
+<dl>
+  <dt><a href="https://github.com/apple/swift-corelibs-foundation">swift-corelibs-foundation</a></dt>
+  <dd>The source code for Foundation, which provides common functionality for all applications.</dd>
+  <dt><a href="https://github.com/apple/swift-corelibs-libdispatch">swift-corelibs-libdispatch</a></dt>
+  <dd>The source code for libdispatch, which provides concurrency primitives for working on multicore hardware.</dd>
+  <dt><a href="https://github.com/apple/swift-corelibs-xctest">swift-corelibs-xctest</a></dt>
+  <dd>The source code for XCTest, which provides fundamental testing infrastructure for Swift apps and libraries.</dd>
+</dl>
+
+<h2 id="package-manager">Package Manager</h2>
+
+<dl>
+  <dt><a href="https://github.com/apple/swift-package-manager">swift-package-manager</a></dt>
+  <dd>The source code for the Swift package manager.</dd>
+  <dt><a href="https://github.com/apple/swift-llbuild">swift-llbuild</a></dt>
+  <dd>The source code for llbuild, a low-level build system used by the Swift package manager.</dd>
+</dl>
+
+<h2 id="cloned-repositories">Cloned Repositories</h2>
+
+<p>Swift builds upon several other open-source projects, most notably
+<a href="http://llvm.org">the LLVM Compiler Infrastructure</a>. Swift’s clones of
+the repositories of those open-source projects contain Swift-specific
+changes and are merged regularly from their upstream sources. For more information about the clones of LLVM repositories, see the section on <a href="/contributing/#llvm-and-swift">LLVM and Swift</a>.</p>
+
+<dl>
+  <dt><a href="https://github.com/apple/swift-llvm">swift-llvm</a></dt>
+  <dd>The source code for <a href="http://llvm.org">LLVM</a>, with a handful of Swift-specific additions. Merged regularly from the <a href="http://llvm.org/viewvc/llvm-project/llvm/trunk/">LLVM sources at llvm.org</a>.</dd>
+  <dt><a href="https://github.com/apple/swift-clang">swift-clang</a></dt>
+  <dd>The source code for <a href="http://clang.llvm.org">Clang</a>, with a handful of Swift-specific additions. Merged regularly from the <a href="http://llvm.org/viewvc/llvm-project/cfe/trunk/">Clang sources at llvm.org</a>.</dd>
+  <dt><a href="https://github.com/apple/swift-lldb">swift-lldb</a></dt>
+  <dd>The source code for the Swift-enabled version of <a href="http://lldb.llvm.org">LLDB</a>, for debugging Swift programs. Merged regularly from the <a href="http://llvm.org/viewvc/llvm-project/lldb/">LLDB sources at llvm.org</a>.</dd>
+  <dt><a href="https://github.com/apple/swift-cmark">swift-cmark</a></dt>
+  <dd>The source code for <a href="https://github.com/jgm/cmark">CommonMark</a>, which is used in the Swift compiler.</dd>
+</dl>
+
+<p>Directions
+for building LLDB for Swift are present in the <a href="https://github.com/apple/swift-lldb/blob/master/README.md" title="LLDB README">swift-lldb repository’s
+README file</a>.</p>
+
+<hr>
+
+

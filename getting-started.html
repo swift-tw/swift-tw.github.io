@@ -1,0 +1,507 @@
+---
+layout: page
+title: 新手指南（英文）
+---
+
+  <p>Here, you’ll find information about the how to use the Swift programming language.</p>
+
+<p>If you’re new to Swift, check out <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1">A Swift Tour</a> in
+<em>The Swift Programming Language</em>, for a quick introduction to the
+most important concepts and features of the language.</p>
+
+<h2 id="installing-swift">Installing Swift</h2>
+
+<p>The first step to using Swift is to download and install
+the compiler and other required components.
+Go to the <a href="/download">Download</a> page
+and follow the instructions for your target platform.</p>
+
+<p>In order to follow along with the examples below,
+make sure to add Swift to your <code class="highlighter-rouge">$PATH</code>.</p>
+
+<h3 id="on-os-x">On OS X</h3>
+
+<p>The default location for the downloadable toolchain on OS X is
+<code class="highlighter-rouge">/Library/Developer/Toolchains</code>.
+You can make the tools available for use from the terminal with the following command:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
+</code></pre>
+</div>
+
+<h3 id="on-linux">On Linux</h3>
+
+<p>First, install clang:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install clang
+</code></pre>
+</div>
+
+<p>If you installed the Swift toolchain on Linux
+to a directory other than the system root,
+you will need to run the following command,
+using the actual path of your Swift installation:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/path/to/Swift/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
+</code></pre>
+</div>
+
+<hr>
+
+<p>You can verify that you are running the expected version of Swift
+by entering the <code class="highlighter-rouge">swift</code> command and passing the <code class="highlighter-rouge">--version</code> flag:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>swift --version
+Apple Swift version 2.2-dev <span class="o">(</span>LLVM ..., Clang ..., Swift ...<span class="o">)</span>
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">-dev</code> suffix on the version number
+is used to indicate that it’s a <em>development</em> build,
+not a released version.</p>
+
+<h2 id="using-the-repl">Using the REPL</h2>
+
+<p>If you run the <code class="highlighter-rouge">swift</code> command without any other arguments,
+you’ll launch the REPL, an interactive shell
+that will read, evaluate, and print the results
+of any Swift code you enter.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>swift
+Welcome to Apple Swift version 2.2. Type :help <span class="k">for </span>assistance.
+  1&gt;
+</code></pre>
+</div>
+
+<p>Interacting with the REPL is a great way to experiment with Swift.
+For example, if you enter the expression <code class="highlighter-rouge">1 + 2</code>,
+the result of the expression, <code class="highlighter-rouge">3</code>, is printed on the next line:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>  1&gt; 1 + 2
+<span class="nv">$R0</span>: Int <span class="o">=</span> 3
+</code></pre>
+</div>
+
+<p>You can assign values to constants and variables,
+and use them in subsequent lines.
+For instance, the <code class="highlighter-rouge">String</code> value <code class="highlighter-rouge">Hello, world!</code>
+can be assigned to the constant <code class="highlighter-rouge">greeting</code>,
+and then passed as an argument to the <code class="highlighter-rouge">print(_:)</code> function:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>  2&gt; <span class="nb">let </span>greeting <span class="o">=</span> <span class="s2">"Hello!"</span>
+greeting: String <span class="o">=</span> <span class="s2">"Hello!"</span>
+  3&gt; print<span class="o">(</span>greeting<span class="o">)</span>
+Hello!
+</code></pre>
+</div>
+
+<p>If you enter an invalid expression,
+the REPL will print an error showing where the problem occurred:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="nb">let </span>answer <span class="o">=</span> <span class="s2">"forty"</span>-<span class="s2">"two"</span>
+error: binary operator <span class="s1">'-'</span> cannot be applied to two <span class="s1">'String'</span> operands
+<span class="nb">let </span>answer <span class="o">=</span> <span class="s2">"forty"</span>-<span class="s2">"two"</span>
+             ~~~~~~~^~~~~~
+</code></pre>
+</div>
+
+<p>You can use the up-arrow and down-arrow keys (<code class="highlighter-rouge">↑</code> and <code class="highlighter-rouge">↓</code>)
+to cycle through previous lines entered into the REPL.
+This allows you to make a slight change to a previous expression
+without retyping the entire line,
+and is especially convenient for fixing errors like the one in the previous example:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="nb">let </span>answer <span class="o">=</span> <span class="s2">"forty-two"</span>
+answer: String <span class="o">=</span> <span class="s2">"forty-two"</span>
+</code></pre>
+</div>
+
+<p>Another useful feature of the REPL
+is that it can automatically suggest functions and methods
+that can be used in a particular context.
+For example, if you enter <code class="highlighter-rouge">re</code>
+after a dot operator on a <code class="highlighter-rouge">String</code> value
+and then hit the tab key (<code class="highlighter-rouge">⇥</code>),
+the REPL will give a list of available completions
+like <code class="highlighter-rouge">removeAtIndex(_:)</code> and <code class="highlighter-rouge">replaceRange(_:with:)</code>:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">5&gt; </span><span class="s2">"Hi!"</span>.re⇥
+Available completions:
+	removeAll<span class="o">()</span> -&gt; Void
+	removeAll<span class="o">(</span>keepCapacity: Bool<span class="o">)</span> -&gt; Void
+	removeAtIndex<span class="o">(</span>i: Index<span class="o">)</span> -&gt; Character
+	removeRange<span class="o">(</span>subRange: Range&lt;Index&gt;<span class="o">)</span> -&gt; Void
+	replaceRange<span class="o">(</span>subRange: Range&lt;Index&gt;, with: C<span class="o">)</span> -&gt; Void
+	replaceRange<span class="o">(</span>subRange: Range&lt;Index&gt;, with: String<span class="o">)</span> -&gt; Void
+	reserveCapacity<span class="o">(</span>n: Int<span class="o">)</span> -&gt; Void
+</code></pre>
+</div>
+
+<p>If you start a block of code,
+such as when iterating over an array with a <code class="highlighter-rouge">for-in</code> loop,
+the REPL will automatically indent the next line,
+and change the prompt character from <code class="highlighter-rouge">&gt;</code> to <code class="highlighter-rouge">.</code>
+to indicate that code entered on that line
+will only be evaluated when the entire code block is evaluated.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>  6&gt; <span class="nb">let </span>numbers <span class="o">=</span> <span class="o">[</span>1,2,3]
+numbers: <span class="o">[</span>Int] <span class="o">=</span> 3 values <span class="o">{</span>
+  <span class="o">[</span>0] <span class="o">=</span> 1
+  <span class="o">[</span>1] <span class="o">=</span> 2
+  <span class="o">[</span>2] <span class="o">=</span> 3
+<span class="o">}</span>
+  7&gt; <span class="k">for </span>n <span class="k">in </span>numbers.reverse<span class="o">()</span> <span class="o">{</span>
+  8.     print<span class="o">(</span>n<span class="o">)</span>
+  9. <span class="o">}</span>
+3
+2
+1
+</code></pre>
+</div>
+
+<p>All of the functionality of Swift is available to you from the REPL,
+from writing control flow statements
+to declaring and instantiating structures and classes.</p>
+
+<p>You can also import any available system modules,
+such as <code class="highlighter-rouge">Darwin</code> on OS X and <code class="highlighter-rouge">Glibc</code> on Linux:</p>
+
+<h3 id="on-os-x-1">On OS X</h3>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="mi">1</span><span class="o">&gt;</span> <span class="kd">import</span> <span class="kt">Darwin</span>
+<span class="mi">2</span><span class="o">&gt;</span> <span class="nf">arc4random_uniform</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="err">$</span><span class="kt">R0</span><span class="p">:</span> <span class="kt">UInt32</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre>
+</div>
+
+<h3 id="on-linux-1">On Linux</h3>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="mi">1</span><span class="o">&gt;</span> <span class="kd">import</span> <span class="kt">Glibc</span>
+<span class="mi">2</span><span class="o">&gt;</span> <span class="nf">random</span><span class="p">()</span> <span class="o">%</span> <span class="mi">10</span>
+<span class="err">$</span><span class="kt">R0</span><span class="p">:</span> <span class="kt">Int32</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre>
+</div>
+
+<h2 id="using-the-build-system">Using the Build System</h2>
+
+<p>Swift’s build system provides a convention-based system for
+building libraries and executables, and sharing code across different projects.</p>
+
+<p>These examples assume you have made <code class="highlighter-rouge">swift</code> available in your path;
+see <a href="#installing-swift">Installing</a> for more information.
+Once available, you can invoke the build system using <code class="highlighter-rouge">swift build</code>:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>swift build --help
+OVERVIEW: Build sources into binary products
+...
+</code></pre>
+</div>
+
+<h3 id="creating-a-package">Creating a Package</h3>
+
+<p>To create a new Swift package, first create and navigate to a new directory named <code class="highlighter-rouge">Hello</code>:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>mkdir Hello
+<span class="gp">$ </span><span class="nb">cd </span>Hello
+</code></pre>
+</div>
+
+<p>Every package must have a manifest file called <code class="highlighter-rouge">Package.swift</code> in its root directory.
+If the manifest file is blank,
+the package manager will build the package using conventional defaults.
+Create an empty manifest using:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>touch Package.swift
+</code></pre>
+</div>
+
+<p>When using the defaults,
+the package manager expects all source code to be contained in a <code class="highlighter-rouge">Sources/</code> subdirectory.
+Create that with:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>mkdir Sources
+</code></pre>
+</div>
+
+<h3 id="building-an-executable">Building an Executable</h3>
+
+<p>By default, a directory that contains a file called <code class="highlighter-rouge">main.swift</code>
+will compile that file into a binary executable with the name of the package.</p>
+
+<p>In this example,
+the package will produce an executable named <code class="highlighter-rouge">Hello</code>
+that outputs “Hello, world!”.</p>
+
+<p>Create a file called <code class="highlighter-rouge">main.swift</code> in the <code class="highlighter-rouge">Sources/</code> directory
+and using your editor of choice,
+enter the following code:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Compile the package by running the <code class="highlighter-rouge">swift build</code> command:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>swift build
+</code></pre>
+</div>
+
+<p>After the command finishes,
+the built products will be available in the <code class="highlighter-rouge">.build</code> directory.
+Run the <code class="highlighter-rouge">Hello</code> program with the following command:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>.build/debug/Hello
+Hello, world!
+</code></pre>
+</div>
+
+<p>As a next step, let’s define a new <code class="highlighter-rouge">sayHello(_:)</code> function
+in a new source file, and have the executable call that
+instead of calling <code class="highlighter-rouge">print(_:)</code> directly.</p>
+
+<h3 id="working-with-multiple-source-files">Working with Multiple Source Files</h3>
+
+<p>Create a new file in the <code class="highlighter-rouge">Sources/</code> directory called <code class="highlighter-rouge">Greeter.swift</code>,
+and enter the following code:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">sayHello</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hello, </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">sayHello(_:)</code> function takes a single <code class="highlighter-rouge">String</code> argument
+and prints our “Hello” greeting before, substituting the word “World”
+with the function argument.</p>
+
+<p>Now, open <code class="highlighter-rouge">main.swift</code> again, and replace the existing contents with the following code:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">if</span> <span class="kt">Process</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">count</span> <span class="o">!=</span> <span class="mi">2</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Usage: hello NAME"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">name</span> <span class="o">=</span> <span class="kt">Process</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nf">sayHello</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Rather than using a hardcoded name as before,
+<code class="highlighter-rouge">main.swift</code> now reads from the command line arguments.
+And instead of invoking <code class="highlighter-rouge">print(_:)</code> directly,
+<code class="highlighter-rouge">main.swift</code> now calls the <code class="highlighter-rouge">sayHello(_:)</code> method.
+Because the method is part of the <code class="highlighter-rouge">Hello</code> module,
+no <code class="highlighter-rouge">import</code> statement is necessary.</p>
+
+<p>Run <code class="highlighter-rouge">swift build</code> and try out the new version of <code class="highlighter-rouge">Hello</code>:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>swift build
+<span class="gp">$ </span>.build/debug/Hello <span class="sb">`</span>whoami<span class="sb">`</span>
+</code></pre>
+</div>
+
+<hr>
+
+<blockquote>
+  <p>To learn about the Swift Package Manager,
+including how to build modules, import dependencies, and map system libraries,
+see the <a href="/package-manager">Swift Package Manager</a> section of the website.</p>
+</blockquote>
+
+<h2 id="using-the-lldb-debugger">Using the LLDB Debugger</h2>
+
+<p>You can use the LLDB debugger to
+run Swift programs step-by-step,
+set breakpoints,
+and inspect and modify program state.</p>
+
+<p>As an example,
+consider the following Swift code,
+which defines a <code class="highlighter-rouge">factorial(_:)</code> function,
+and prints the result of calling that function:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">factorial</span><span class="p">(</span><span class="nv">n</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="p">{</span> <span class="k">return</span> <span class="n">n</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">number</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">number</span><span class="se">)</span><span class="s">! is equal to </span><span class="se">\(</span><span class="nf">factorial</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Create a file named <code class="highlighter-rouge">Factorial.swift</code> with the code above,
+and run the <code class="highlighter-rouge">swiftc</code> command,
+passing the filename as a command line argument,
+along with the <code class="highlighter-rouge">-g</code> option to generate debug information.
+This will create an executable named <code class="highlighter-rouge">Factorial</code>
+in the current directory.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="gp">$ </span>swiftc -g Factorial.swift
+<span class="gp">$ </span>ls
+Factorial.dSYM
+Factorial.swift
+Factorial<span class="k">*</span>
+</code></pre>
+</div>
+
+<p>Instead of running the <code class="highlighter-rouge">Factorial</code> program directly,
+run it through the LLDB debugger
+by passing it as a command line argument to the <code class="highlighter-rouge">lldb</code> command.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>$ lldb Factorial
+(lldb) target create "Factorial"
+Current executable set to 'Factorial' (x86_64).
+</code></pre>
+</div>
+
+<p>This will start an interactive console
+that allows you to run LLDB commands.</p>
+
+<blockquote>
+  <p>For more information about LLDB commands,
+see the <a href="http://lldb.llvm.org/tutorial.html">LLDB Tutorial</a>.</p>
+</blockquote>
+
+<p>Set a breakpoint on line 2 of the <code class="highlighter-rouge">factorial(_:)</code> function
+with the <code class="highlighter-rouge">breakpoint set</code> (<code class="highlighter-rouge">b</code>) command,
+to have the process break each time the function is executed.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>(lldb) b 2
+Breakpoint 1: where = Factorial`Factorial.factorial (Swift.Int) -&gt; Swift.Int + 12 at Factorial.swift:2, address = 0x0000000100000e7c
+</code></pre>
+</div>
+
+<p>Run the process with the <code class="highlighter-rouge">run</code> (<code class="highlighter-rouge">r</code>) command.
+The process will stop at the call site of the <code class="highlighter-rouge">factorial(_:)</code> function.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>(lldb) r
+Process 40246 resuming
+Process 40246 stopped
+* thread #1: tid = 0x14dfdf, 0x0000000100000e7c Factorial`Factorial.factorial (n=4) -&gt; Swift.Int + 12 at Factorial.swift:2, queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+    frame #0: 0x0000000100000e7c Factorial`Factorial.factorial (n=4) -&gt; Swift.Int + 12 at Factorial.swift:2
+   1    func factorial(n: Int) -&gt; Int {
+-&gt; 2        if n &lt;= 1 { return n }
+   3        return n * factorial(n - 1)
+   4    }
+   5
+   6    let number = 4
+   7    print("\(number)! is equal to \(factorial(number))")
+</code></pre>
+</div>
+
+<p>Use the <code class="highlighter-rouge">print</code> (<code class="highlighter-rouge">p</code>) command
+to inspect the value of the <code class="highlighter-rouge">n</code> parameter.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>(lldb) p n
+(Int) $R0 = 4
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">print</code> command can evaluate Swift expressions as well.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>(lldb) p n * n
+(Int) $R1 = 16
+</code></pre>
+</div>
+
+<p>Use the <code class="highlighter-rouge">backtrace</code> (<code class="highlighter-rouge">bt</code>) command
+to show the frames leading to <code class="highlighter-rouge">factorial(_:)</code> being called.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>(lldb) bt
+* thread #1: tid = 0x14e393, 0x0000000100000e7c Factorial`Factorial.factorial (n=4) -&gt; Swift.Int + 12 at Factorial.swift:2, queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+  * frame #0: 0x0000000100000e7c Factorial`Factorial.factorial (n=4) -&gt; Swift.Int + 12 at Factorial.swift:2
+    frame #1: 0x0000000100000daf Factorial`main + 287 at Factorial.swift:7
+    frame #2: 0x00007fff890be5ad libdyld.dylib`start + 1
+    frame #3: 0x00007fff890be5ad libdyld.dylib`start + 1
+</code></pre>
+</div>
+
+<p>Use the <code class="highlighter-rouge">continue</code> (<code class="highlighter-rouge">c</code>) command
+to resume the process until the breakpoint is hit again.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>(lldb) c
+Process 40246 resuming
+Process 40246 stopped
+* thread #1: tid = 0x14e393, 0x0000000100000e7c Factorial`Factorial.factorial (n=3) -&gt; Swift.Int + 12 at Factorial.swift:2, queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+    frame #0: 0x0000000100000e7c Factorial`Factorial.factorial (n=3) -&gt; Swift.Int + 12 at Factorial.swift:2
+   1    func factorial(n: Int) -&gt; Int {
+-&gt; 2        if n &lt;= 1 { return n }
+   3        return n * factorial(n - 1)
+   4    }
+   5
+   6    let number = 4
+   7    print("\(number)! is equal to \(factorial(number))")
+</code></pre>
+</div>
+
+<p>Use the <code class="highlighter-rouge">print</code> (<code class="highlighter-rouge">p</code>) command again
+to inspect the value of the <code class="highlighter-rouge">n</code> parameter
+for the second call to <code class="highlighter-rouge">factorial(_:)</code>.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>(lldb) p n
+(Int) $R2 = 3
+</code></pre>
+</div>
+
+<p>Use the <code class="highlighter-rouge">breakpoint disable</code> (<code class="highlighter-rouge">br di</code>) command
+to disable all breakpoints
+and the <code class="highlighter-rouge">continue</code> (<code class="highlighter-rouge">c</code>) command
+to have the process run until it exits.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>(lldb) br di
+All breakpoints disabled. (1 breakpoints)
+(lldb) c
+Process 40246 resuming
+4! is equal to 24
+Process 40246 exited with status = 0 (0x00000000)
+</code></pre>
+</div>
+
+<hr>
+
+<p>Now that you’ve been introduced to the Swift REPL, build system, and debugger,
+here are a few suggestions for what to do next:</p>
+
+<ul>
+  <li>Check out the <a href="/package-manager">Package Manager project page</a>
+for a deep dive into the Swift build system and package manager.</li>
+  <li>Read <a href="/contributing">Contributing to Swift</a>
+to learn about the different ways you can participate in the Swift community.</li>
+  <li>Go to <a href="https://developer.apple.com/swift/resources/">developer.apple.com/swift</a>
+for additional Swift resources, including videos, sample code, and playgrounds.</li>
+</ul>
+
