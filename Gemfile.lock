@@ -140,6 +140,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  nokogiri
   reverse_markdown
 
 BUNDLED WITH
