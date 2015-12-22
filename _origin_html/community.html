@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - Community Guidelines</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/community/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="Swift.org" />
+  <meta name="twitter:description" content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:title" content="Swift.org" />
+  <meta property="og:url" content="https://swift.org" />
+  <meta property="og:description" content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." />
+  
+</head>
+
+<body>
+  <nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li class="active">
+    
+      <a href="/community/">Community</a>
+      
+      <ul>
+        <li><a href="/community/#communication">Communication</a></li>
+        <li><a href="/community/#community-structure">Community Structure</a></li>
+        <li><a href="/community/#license">License</a></li>
+        <li><a href="/community/#contributing">Contributing</a></li>
+        <li><a href="/community/#code-of-conduct">Code of Conduct</a></li>
+        <li><a href="/community/#mailing-lists">Mailing Lists</a></li>
+      </ul>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+  <main role="main">
+    <article class="page">
+  <header>
+    <h1>Community Guidelines</h1>
+  </header>
+
+  <p>The Swift.org community has the singular goal of making the world’s best general purpose programming language.  Collectively we will develop the language in the open, with contributions from anyone who wishes to participate.  This guideline document describes how the Swift community is organized so that we can work together to add amazing new capabilities to Swift, and make it available to even more developers across more platforms.</p>
+
+<h2 id="communication">Communication</h2>
+
+<p>The Swift language is developed in the open, and all technical or administrative topics about the language or community processes should be directed to the correct public mailing list. Public conversations are encouraged, and active developers of the Swift language should monitor the relevant mailing lists.</p>
+
+<ul>
+  <li>Directory of lists and subscribing instructions are in the <a href="#mailing-lists">mailing lists section</a></li>
+  <li>Source code for all Swift projects can be found on GitHub at <a href="https://github.com/apple" title="Apple's home page on GitHub">github.com/apple</a></li>
+  <li>The Swift.org bug tracking system is maintained at <a href="http://bugs.swift.org">bugs.swift.org</a></li>
+</ul>
+
+<h2 id="community-structure">Community Structure</h2>
+
+<p>Advancing the Swift programming language with a coherent, clear view of its evolution requires strong leadership.  The leadership is taken from the community, and works closely with the much broader group of contributors and users. Roles within the community include:</p>
+
+<ul>
+  <li><strong><a href="#project-lead">Project lead</a></strong> appoints technical leaders from the community.  Apple Inc. is the project lead, and interacts with the community through its representative.</li>
+  <li><strong><a href="#core-team">Core team</a></strong> is the small group of engineers responsible for strategic direction</li>
+  <li><strong><a href="#code-owners">Code owner</a></strong> is the individual responsible for a specific area of the Swift codebase</li>
+  <li><strong>Committer</strong> is anyone that has commit access to the Swift code base</li>
+  <li><strong>Contributor</strong> is anyone that contributes a patch or helps with code review</li>
+</ul>
+
+<p>There is also a <a href="#reporting">code of conduct working group</a> to help in matters of community, culture, and the <a href="#code-of-conduct">code of conduct</a>.  Most importantly, everyone that uses Swift is a valued member of our extended community.</p>
+
+<h4 id="project-lead">Project Lead</h4>
+
+<p>Apple Inc. is the project lead and serves as the arbiter for the project.  The project lead makes senior appointments to leadership roles, with those leaders coming from the worldwide Swift community of contributors.  The community leaders and code contributors work together to continually improve Swift, and the language will advance by the good works of everyone involved.</p>
+
+<p>Chris Lattner (<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#108;&#097;&#116;&#116;&#110;&#101;&#114;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#099;&#108;&#097;&#116;&#116;&#110;&#101;&#114;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a>) is the appointed representative from Apple, and acts as the voice of the project lead.</p>
+
+<h4 id="core-team">Core Team</h4>
+
+<p>The Core Team reviews and helps iterate on <a href="/contributing/#evolution-process">language evolution proposals</a> from the community at large, acting as the approver of these proposals. Team members help drive Swift forward in a coherent direction consistent with the goal of creating the best possible general purpose programming language.</p>
+
+<p>Members of the core team are appointed by the project lead based on their technical expertise and proven contribution to the community. The current core team members are:</p>
+
+<ul>
+  <li>Chris Lattner     (<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#108;&#097;&#116;&#116;&#110;&#101;&#114;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#099;&#108;&#097;&#116;&#116;&#110;&#101;&#114;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a>)</li>
+  <li>Doug Gregor       (<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#100;&#103;&#114;&#101;&#103;&#111;&#114;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#100;&#103;&#114;&#101;&#103;&#111;&#114;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a>)</li>
+  <li>Ted Kremenek      (<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#107;&#114;&#101;&#109;&#101;&#110;&#101;&#107;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#107;&#114;&#101;&#109;&#101;&#110;&#101;&#107;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a>)</li>
+  <li>Joe Pamer         (<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#106;&#112;&#097;&#109;&#101;&#114;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#106;&#112;&#097;&#109;&#101;&#114;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a>)</li>
+  <li>John McCall       (<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#114;&#106;&#109;&#099;&#099;&#097;&#108;&#108;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#114;&#106;&#109;&#099;&#099;&#097;&#108;&#108;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a>)</li>
+  <li>Joe Groff         (<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#106;&#103;&#114;&#111;&#102;&#102;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#106;&#103;&#114;&#111;&#102;&#102;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a>)</li>
+  <li>Dave Abrahams     (<a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#100;&#097;&#098;&#114;&#097;&#104;&#097;&#109;&#115;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;">&#100;&#097;&#098;&#114;&#097;&#104;&#097;&#109;&#115;&#064;&#097;&#112;&#112;&#108;&#101;&#046;&#099;&#111;&#109;</a>)</li>
+</ul>
+
+<p>At project launch, the team is composed of Apple employees due to Swift’s origin within Apple. Over time, exceptional community members from a much more diverse background will be appointed based on their record of community involvement and contributions.</p>
+
+<h4 id="code-owners">Code Owners</h4>
+
+<p>Code owners are individuals assigned to specific areas of the Swift project, with code quality their primary responsibility. The umbrella Swift project is composed of numerous sub-projects including the Swift standard library, extensions to the LLDB debugger, and the Swift package manager, to name a few. Each sub-project will be assigned a code owner.  The code owner then works to get all contributions reviewed, gather feedback from the community, and shepherd approved patches into the product.</p>
+
+<p>Anyone can review a piece of code, and we welcome code review from everyone that is interested. Code review procedures are not dictated by a central, global policy. Instead, the process is defined by each code owner.</p>
+
+<p>Any community member that is active and shows themselves to be valuable can offer to become a code owner via public email to the mailing list, or be nominated by another member.  If fellow contributors agree, the project lead will make the appointment and add the new owner’s name to the code owners file. The position is completely voluntary, and can be resigned at any time.</p>
+
+<p>The list of current code owners can be found in the file <code class="highlighter-rouge">CODE_OWNERS.txt</code> in the root of the parent Swift source tree. We also maintain a mailing group so you can <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#100;&#101;&#045;&#111;&#119;&#110;&#101;&#114;&#115;&#064;&#115;&#119;&#105;&#102;&#116;&#046;&#111;&#114;&#103;" title="Send email to the code owners">send an email</a> to all the code owners.</p>
+
+<p>There may be nothing more important to the success of Swift than strong, engaged code owners. We all owe them respect, gratitude, and whatever help we can offer.</p>
+
+<h2 id="license">License</h2>
+
+<p>The <a href="/LICENSE.txt">Swift license</a> is based on the <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0 license</a> with a <a href="#runtime-library-exception">Runtime Library Exception</a> that removes the attribution requirement when using Swift to build and distribute your own binaries. The Apache 2.0 license was chosen because it allows broad use of Swift, and is already well-understood by many potential contributors.</p>
+
+<p>Copyright is held by the authors of the contributions, or the company or organization to which the individual belongs.  A list of copyright holders is maintained in the <a href="/CONTRIBUTORS.txt">CONTRIBUTORS.txt</a> file on Swift.org and at the root of the repository.</p>
+
+<h3 id="runtime-library-exception">Runtime Library Exception</h3>
+
+<p>The Runtime Library Exception makes it clear that end users of the Swift compiler don’t have to attribute their use of Swift in their finished binary application, game, or service. End-users of the Swift language should feel unrestricted to create great software. The full text of this exception follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>As an exception, if you use this Software to compile your source code and
+portions of this Software are embedded into the binary product as a result,
+you may redistribute such product without providing attribution as would
+otherwise be required by Sections 4(a), 4(b) and 4(d) of the License.
+</code></pre>
+</div>
+
+<p>This exception can also be found at the bottom of the <a href="/LICENSE.txt">LICENSE.txt</a> file.</p>
+
+<h3 id="copyright-and-license-in-source-code">Copyright and License in Source Code</h3>
+
+<p>All source files hosted on Swift.org must contain a comment block at the top of the file declaring the license and copyright that applies.  This text may be part of a larger header, for instance as defined in the <a href="/contributing/#contributing-code" title="Contributing Code">Contributing Code</a> section. Regardless of the header format, the wording for the license and copyright portion must be copied as follows, with the appropriate years applied:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// This source file is part of the Swift.org open source project
+//
+// Copyright (c) 2014 - 2015 Apple Inc. and the Swift project authors
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See http://swift.org/LICENSE.txt for license information
+// See http://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+</code></pre>
+</div>
+
+<p>Each contributor is responsible for adding his or her name to the <code class="highlighter-rouge">CONTRIBUTORS.txt</code> file at the project’s root and maintaining the contact information. If you are contributing under the umbrella of your company, please add your company’s information, and do not also list yourself as an additional copyright holder.</p>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>The Swift.org site welcome everyone interested in the Swift programming language. Members of the community can greatly help the Swift project by filing and screening bugs, aiding in code review, participating in open conversations, and of course by contributing code.</p>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<p>It is highly recommended that you become familiar with using Swift in your own projects before contributing directly to the language itself. We put together handy <a href="/getting-started/" title="How to setup your own version of Swift">Getting Started</a> guides with step-by-step instructions to get you up and running.</p>
+
+<h3 id="contributing-code">Contributing Code</h3>
+
+<p>Swift.org exists primarily to welcome contributions from the community.  In the simplest cases, one-off patches are welcome from everyone. However, regular contributors are expected to adopt processes that help create a culture of quality within the project.</p>
+
+<p>We ask that contributors first read through the content in the <a href="/contributing/">Contributing</a> section of this site.  This content includes detailed instructions on the process to follow when contributing a patch, including creating a pull request to get your code into the main Swift code base.</p>
+
+<p>Bugs for the various Swift projects are managed in a public bug tracking system at <a href="http://bugs.swift.org">bugs.swift.org</a>.   Anyone can file bugs, or view them to find where they can help, or to see if a bug they found is already filed.</p>
+
+<h3 id="proposing-new-features">Proposing New Features</h3>
+
+<p>New features or directions for the Swift language can come from anyone with a good idea.  Open discussion and iteration over the ideas in a public forum is essential to reaching the best possible solutions. Each Swift version should be clearly defined, resulting in “One True Swift” that is source compatible for that release across all supported platforms.</p>
+
+<p>To support this process, Swift.org details the <a href="/contributing/#evolution-process">Swift Evolution Process</a>, with links to the high level goals for the current release.  Patches that aid in these goals will be given priority, and are more likely to get the immediate attention of code review.</p>
+
+<h2 id="code-of-conduct">Code of Conduct</h2>
+
+<p>To be a truly great community, Swift.org needs to welcome developers from all walks of life, with different backgrounds, and with a wide range of experience. A diverse and friendly community will have more great ideas, more unique perspectives, and produce more great code.  We will work diligently to make the Swift community welcoming to everyone.</p>
+
+<p>To give clarity of what is expected of our members, Swift.org has adopted the code of conduct defined by <a href="http://contributor-covenant.org">contributor-covenant.org</a>. This document is used across many open source communities, and we think it articulates our values well. The full text is copied below:</p>
+
+<h3 id="contributor-code-of-conduct-v13">Contributor Code of Conduct v1.3</h3>
+
+<p>As contributors and maintainers of this project, and in the interest of fostering an open and welcoming community, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities.</p>
+
+<p>We are committed to making participation in this project a harassment-free experience for everyone, regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, religion, or nationality.</p>
+
+<p>Examples of unacceptable behavior by participants include:</p>
+
+<ul>
+  <li>The use of sexualized language or imagery</li>
+  <li>Personal attacks</li>
+  <li>Trolling or insulting/derogatory comments</li>
+  <li>Public or private harassment</li>
+  <li>Publishing other’s private information, such as physical or electronic addresses, without explicit permission</li>
+  <li>Other unethical or unprofessional conduct</li>
+</ul>
+
+<p>Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.</p>
+
+<p>By adopting this Code of Conduct, project maintainers commit themselves to fairly and consistently applying these principles to every aspect of managing this project. Project maintainers who do not follow or enforce the Code of Conduct may be permanently removed from the project team.</p>
+
+<p>This code of conduct applies both within project spaces and in public spaces when an individual is representing the project or its community.</p>
+
+<p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting a project maintainer at <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#100;&#117;&#099;&#116;&#064;&#115;&#119;&#105;&#102;&#116;&#046;&#111;&#114;&#103;" title="Send email to the code of conduct working group">&#099;&#111;&#110;&#100;&#117;&#099;&#116;&#064;&#115;&#119;&#105;&#102;&#116;&#046;&#111;&#114;&#103;</a>. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. Maintainers are obligated to maintain confidentiality with regard to the reporter of an incident.</p>
+
+<p>This policy is adapted from the Contributor Code of Conduct <a href="http://contributor-covenant.org/version/1/3/0/">version 1.3.0</a>.</p>
+
+<h3 id="reporting">Reporting</h3>
+
+<p>A working group of community members is committed to promptly addressing any <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#100;&#117;&#099;&#116;&#064;&#115;&#119;&#105;&#102;&#116;&#046;&#111;&#114;&#103;" title="Send email to the code of conduct working group">reported issues</a>. Working group members are volunteers appointed by the project lead, with a preference for individuals with varied backgrounds and perspectives. Membership is expected to change regularly, and may grow or shrink.</p>
+
+<blockquote>
+  <p><em>Note: We will update this section with the names of our working group members in the coming days.</em></p>
+</blockquote>
+
+<p>We ask that you report concerns by sending an <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#100;&#117;&#099;&#116;&#064;&#115;&#119;&#105;&#102;&#116;&#046;&#111;&#114;&#103;" title="Send email to the code of conduct working group">email to the working group</a> rather than to any individual member. If you would like to volunteer to participate in the working group, please contact the <a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#099;&#111;&#110;&#100;&#117;&#099;&#116;&#064;&#115;&#119;&#105;&#102;&#116;&#046;&#111;&#114;&#103;" title="Send email to the code of conduct working group">working group</a>.</p>
+
+<h2 id="mailing-lists">Mailing Lists</h2>
+
+<p>The primary method of communicating among community members is through mailing lists.  As you can see below, we have a number of lists, each serving a specific purpose, and with different volumes of traffic.</p>
+
+<p>For newcomers or those primarily interested in using the Swift language, it is best to start by engaging with the <a href="#general-interest">General Interest</a> lists.  The majority of the other lists are focused on the day-to-day of updating the language itself.</p>
+
+<h3 id="general-interest">General Interest</h3>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-users">swift-users</a></strong> - For users to get help with or ask questions about Swift or its related tools. This list is not for discussion about work being done to the language itself.</p>
+
+<h3 id="swift-development">Swift Development</h3>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-dev">swift-dev</a></strong> - For developers to discuss the implementation of the Swift compiler, low-level runtime, standard library, and SourceKit.</p>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-corelibs-dev">swift-corelibs-dev</a></strong> - For developers to discuss the implementation of the Swift core libraries.</p>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-lldb-dev">swift-lldb-dev</a></strong> - For developers to discuss the implementation of the Swift REPL and Swift-specific aspects of LLDB.</p>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-build-dev">swift-build-dev</a></strong> - For developers to discuss the implementation of the Swift package manager and low level build system (llbuild).</p>
+
+<h3 id="swift-evolution">Swift Evolution</h3>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-evolution-announce">swift-evolution-announce</a></strong> - For announcements of Swift evolution proposal reviews and results. This is a low-volume read-only list; the actual discussion of evolution proposals occurs on the swift-evolution mailing list.</p>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-evolution">swift-evolution</a></strong> - For discussion of the evolution of Swift, including new language features, new standard library APIs, and so on. This is an open forum in which ideas are developed and reviewed; please see the <a href="https://github.com/apple/swift-evolution">Swift evolution repository</a> to learn about Swift’s evolution process and which proposals are actively being discussed.</p>
+
+<h3 id="notifications">Notifications</h3>
+
+<p>These notification lists contain auto-generated content. Actual
+discussions of commits should occur on <a href="https://github.com/apple" title="Apple's home page on GitHub">GitHub</a> or the
+corresponding development mailing lists.</p>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-commits">swift-commits</a></strong> - Contains all commit messages that are made when developers commit code changes to the Swift compiler, low-level runtime, standard library, or SourceKit, including Swift’s branches of LLVM and Clang. It is useful for those who want to stay on the bleeding edge of Swift language development. This list is very high volume.</p>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-lldb-commits">swift-lldb-commits</a></strong> - Contains all commit messages that are made when developers commit code changes to the Swift LLDB. It is useful for those who want to stay on the bleeding edge of Swift LLDB language development. This list is very high volume.</p>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-corelibs-commits">swift-corelibs-commits</a></strong> - Contains all commit messages that are made when developers commit code changes to the Swift core libraries.</p>
+
+<p><strong><a href="https://lists.swift.org/mailman/listinfo/swift-build-commits">swift-build-commits</a></strong> - Contains all commit messages that are made when developers commit code changes to the Swift package manager or the low level build system (llbuild).</p>
+
+
+</article>
+
+  </main>
+
+  <footer role="contentinfo">
+    <aside>
+      <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+      <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+    </aside>
+
+    <p class="copyright">Copyright © 2015 Apple Inc. All rights reserved.</p>
+    <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/assets/javascripts/application.js"></script>
+</body>
+
+</html>
