@@ -11,6 +11,8 @@ categories: [Swift blog, Swift, Xcode]
 
 Swift 1.2和Xcode6.3測試版一起發布了。這個測試版包括效能更強的Swift編譯器，還有Swift語言的新功能。完整的修改列表，請閱讀發行說明 。此文將專注在新特色上。
 
+<!--more-->
+
 ### 編譯器改善
 
 Swift 1.2編譯器變得更加穩定，並改善在各方面的性能。讓Swift 在 Xcode 中更加好用了。明顯的改進包括：
