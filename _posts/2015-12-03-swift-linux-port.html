@@ -1,0 +1,114 @@
+---
+layout: page
+title: 移植 Swift 到 Linux(英文)
+date: 2015-12-03 03:01:01 -0800
+comments: true
+paginate: true
+categories: [Swift blog, Swift, Linux]
+---
+
+  <p>With the launch of the open source Swift project, we are also releasing
+a port that works with the Linux operating system! You can build it from
+the Swift sources or <a href="/download/">download pre-built binaries for Ubuntu</a>. The port
+is still a work in progress but we’re happy to say that it is usable
+today for experimentation. Currently x86_64 is the only supported
+architecture on Linux.</p>
+
+<!--more-->
+
+<p>Here are a few highlights of what’s working in the port today:</p>
+
+<ul>
+  <li>
+    <p><strong>Swift without the Objective-C Runtime</strong>: Swift on Linux does not
+depend on the Objective-C runtime nor includes it. While Swift was
+designed to interoperate closely with Objective-C when it is present,
+it was also designed to work in environments where the Objective-C
+runtime does not exist.</p>
+  </li>
+  <li>
+    <p><strong>The core Swift Language and <a href="/compiler-stdlib/">Standard Library</a></strong> on Linux shares most of
+the same implementation and APIs as on Apple platforms. There are some
+slight differences of behavior because of the absence of the
+Objective-C runtime on Linux (noted below).</p>
+  </li>
+  <li>
+    <p><strong>The Glibc Module</strong>: Most of the Linux C standard library is available
+through this module similar to the Darwin module on Apple platforms.
+Some headers aren’t yet imported into the module, such as tgmath.h.</p>
+
+    <p>To try it out, just <code class="highlighter-rouge">import Glibc</code>.</p>
+  </li>
+  <li>
+    <p><strong>Swift Core Libraries</strong>: The <a href="/core-libraries/">Core Libraries</a> provide implementations
+of core APIs from Foundation and XCTest to be used on Linux without
+Objective-C . The intention is that these APIs are available in a
+cross-platform manner regardless of whether you are using Swift on
+Apple’s platforms or Swift on Linux.</p>
+  </li>
+  <li>
+    <p><strong>LLDB Swift debugging and the REPL</strong>: You can <a href="/getting-started/#using-the-lldb-debugger">debug your Swift
+binaries</a> and <a href="/getting-started/#using-the-repl">experiment in the REPL</a> just like you do on OS X.</p>
+  </li>
+  <li>
+    <p><strong>The Swift Package Manager</strong> is a first class citizen as it is on
+Apple’s platforms.</p>
+  </li>
+</ul>
+
+<p>Here are some things that aren’t quite working yet or are planned for
+the future:</p>
+
+<ul>
+  <li>
+    <p><strong>libdispatch</strong>: Part of the Core Libraries, updated Linux support is
+in progress. You can follow development on the <a href="https://github.com/apple/swift-corelibs-libdispatch">libdispatch project on
+GitHub</a>.</p>
+  </li>
+  <li>
+    <p><strong>Some C APIs</strong>: Although this is generally true for all of our
+supported platforms, a few constructs in C aren’t imported yet into
+Swift. This will cause some APIs to be unavailable, such as those that
+contain varargs / <code class="highlighter-rouge">va_list</code>. However, in recent months Swift’s
+interoperability with C has significantly advanced, gaining support
+for named and anonymous unions, anonymous structs, and bitfields.</p>
+  </li>
+  <li>
+    <p><strong>Some <code class="highlighter-rouge">String</code> APIs</strong>: The Standard Library’s <code class="highlighter-rouge">String</code> is missing implementations
+of several important APIs because they are currently tied to the
+implementation of <code class="highlighter-rouge">NSString</code> on Apple’s platforms.</p>
+  </li>
+  <li>
+    <p><strong>Runtime Introspection</strong>: When a Swift class on Apple’s platforms is
+marked <code class="highlighter-rouge">@objc</code> or subclasses <code class="highlighter-rouge">NSObject</code> you can use the Objective-C
+runtime to enumerate available methods on an object or call methods
+using selectors. Such capabilities are absent because they depend on
+the Objective-C runtime.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Array&lt;T&gt; as? Array&lt;S&gt;</code>: Some mechanisms, such as casting
+containers with different associated types, currently do not work as
+they relied on bridging mechanisms with Objective-C.</p>
+  </li>
+</ul>
+
+<p>We’re really excited to be able to release the open source project with
+a great head start for Linux support that you can try right now! There
+is still plenty of work to be done, so we hope to see you <a href="/contributing/">contribute to
+Swift</a> to make the Linux port even more complete.</p>
+
+
+
+  
+  <footer>
+    <nav>
+      
+      <a href="/blog/welcome/" rel="prev" title="Previous: The Swift.org Blog">The Swift.org Blog</a>
+      
+
+      
+      <a href="/blog/swift-3-api-design/" rel="next" title="Next: Swift 3 API Design Guidelines">Swift 3 API Design Guidelines</a>
+      
+    </nav>
+  </footer>
+  
