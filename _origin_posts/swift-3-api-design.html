@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - Swift 3 API Design Guidelines</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/blog/swift-3-api-design/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="Swift 3 API Design Guidelines" />
+  <meta name="twitter:description" content="The design of commonly-used libraries has a large impact on the
+overall feel of a programming language. Great libraries feel like an
+extension of the language itself, and consistency across libraries
+elevates the overall development experience. To aid in the
+construction of great Swift libraries, one of the major goals for
+Swift 3 is to define a set of API design guidelines
+and to apply those design guidelines consistently.
+
+" />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Swift 3 API Design Guidelines" />
+  <meta property="og:url" content="https://swift.org/blog/swift-3-api-design/" />
+  <meta property="og:description" content="The design of commonly-used libraries has a large impact on the
+overall feel of a programming language. Great libraries feel like an
+extension of the language itself, and consistency across libraries
+elevates the overall development experience. To aid in the
+construction of great Swift libraries, one of the major goals for
+Swift 3 is to define a set of API design guidelines
+and to apply those design guidelines consistently.
+
+" />
+  <meta property="article:published_time" content="2015-12-03T04:01:01-08:00" />
+  <meta property="article:modified_time" content="2015-12-23T18:24:04-08:00" />
+  
+</head>
+
+<body>
+  <nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+  <main role="main">
+    <article class="post">
+  <header>
+    <h1>Swift 3 API Design Guidelines</h1>
+    <time pubdate datetime="2015-12-03T04:01:01-08:00">December 3, 2015</time>
+  </header>
+
+  <p>The design of commonly-used libraries has a large impact on the
+overall feel of a programming language. Great libraries feel like an
+extension of the language itself, and consistency across libraries
+elevates the overall development experience. To aid in the
+construction of great Swift libraries, one of the major <a href="https://github.com/apple/swift-evolution/blob/master/README.md" title="Swift 3 goals">goals for
+Swift 3</a> is to define a set of API design guidelines
+and to apply those design guidelines consistently.</p>
+
+<p>The effort to define the Swift API Design Guidelines involves several
+ major pieces that, together, are intended to provide a more cohesive
+ feel to Swift development. Those major pieces are:</p>
+
+<ul>
+  <li>
+    <p><strong>Swift API Design Guidelines</strong>: The actual API design guidelines
+are under active development. The latest draft of <a href="/documentation/api-design-guidelines.html" title="Swift API Design Guidelines">Swift API
+Design Guidelines</a> is available.</p>
+  </li>
+  <li>
+    <p><strong>Swift Standard Library</strong>: The entire Swift standard library is
+being reviewed and updated to follow the Swift API design
+guidelines. The actual work is being performed on the
+<a href="https://github.com/apple/swift/tree/swift-3-api-guidelines" title="Swift 3 Standard Library updates">swift-3-api-guidelines branch</a> of the Swift
+repository.</p>
+  </li>
+  <li>
+    <p><strong>Imported Objective-C APIs</strong>: The translation of Objective-C APIs
+into Swift is being updated to make Objective-C APIs better match
+the Swift API design guidelines, using a variety of heuristics. The
+<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md" title="Better Translation of Objective-C APIs into Swift proposal">Better Translation of Objective-C APIs into Swift</a>
+proposal describes how this transformation
+is done. Because this approach naturally involves a number of
+heuristics, we track its effects on the Cocoa and Cocoa Touch
+frameworks, as well as Swift code using those frameworks. The <a href="https://github.com/apple/swift-3-api-guidelines-review" title="Swift 3 API Design Guidelines review repository">Swift
+3 API Design Guidelines Review</a>
+repository provides a way to see how
+this automatic translation affects Swift code that uses Cocoa and
+Cocoa Touch. Specific Objective-C APIs that translate poorly into
+Swift will then be annotated (for example, with <code class="highlighter-rouge">NS_SWIFT_NAME</code>) to improve
+the resulting Swift code. While this change primarily impacts Apple
+platforms (where Swift uses the Objective-C runtime), it also has a
+direct impact on the cross-platform <a href="/core-libraries" title="Swift core libraries">Swift core
+libraries</a> that provide the same APIs as Objective-C
+frameworks.</p>
+  </li>
+  <li>
+    <p><strong>Swift Guideline Checking</strong>: Existing Swift code has been written
+to follow a variety of different coding styles, including the <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CodingGuidelines/CodingGuidelines.html" title="Objective-C Coding Guidelines for Cocoa">Objective-C
+Coding Guidelines for Cocoa</a>. By leveraging
+the heuristics used to import Objective-C APIs, the Swift compiler
+can (optionally!) check for common API design patterns that don’t
+meet the Swift API Design Guidelines and suggest improvements.</p>
+  </li>
+  <li>
+    <p><strong>Swift 2 to Swift 3 Migrator</strong>: The updates to the Swift standard
+library and the imported Objective-C APIs are source-breaking
+changes. This effort will involve the creation of a migrator to
+update Swift 2 code to use the Swift 3 APIs.</p>
+  </li>
+</ul>
+
+<p>All of these major pieces are under active development. If you’re
+interested in following along, check out the <a href="/documentation/api-design-guidelines.html" title="Swift API Design Guidelines">Swift API design
+guidelines</a>, the <a href="https://github.com/apple/swift/tree/swift-3-api-guidelines" title="Swift 3 Standard Library updates">Swift standard library
+changes</a>, the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md" title="Better Translation of Objective-C APIs into Swift proposal">Objective-C API importer
+changes</a> proposal and corresponding <a href="https://github.com/apple/swift-3-api-guidelines-review" title="Swift 3 API Design Guidelines review repository">review
+repository</a>, then join the discussion on
+the <a href="/community/#swift-evolution">swift-evolution mailing
+list</a>.</p>
+
+
+
+  
+  <footer>
+    <nav>
+      
+      <a href="/blog/swift-linux-port/" rel="prev" title="Previous: The Swift Linux Port">The Swift Linux Port</a>
+      
+
+      
+    </nav>
+  </footer>
+  
+</article>
+
+  </main>
+
+  <footer role="contentinfo">
+    <aside>
+      <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+      <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+    </aside>
+
+    <p class="copyright">Copyright © 2015 Apple Inc. All rights reserved.</p>
+    <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/assets/javascripts/application.js"></script>
+</body>
+
+</html>

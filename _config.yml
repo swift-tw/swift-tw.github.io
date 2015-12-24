@@ -19,7 +19,8 @@ author:
   url:            https://twitter.com/johnlinvc
 
 paginate:         5
-paginate_path: "/blog/page:num/"
+paginate_path:    "/blog/page:num/"
+excerpt_separator: <!--more-->
 
 # Custom vars
 version:          15.12.23.0

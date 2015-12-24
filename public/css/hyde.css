@@ -102,10 +102,17 @@ html {
 .sidebar-nav {
   margin-bottom: 1rem;
 }
+
 .sidebar-nav-item {
   display: block;
   line-height: 1.75;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+  border-bottom-color: rgb(230,230,230);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }
+
 a.sidebar-nav-item:hover,
 a.sidebar-nav-item:focus {
   text-decoration: underline;

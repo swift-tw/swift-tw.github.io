@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - The Swift Linux Port</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/blog/swift-linux-port/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="The Swift Linux Port" />
+  <meta name="twitter:description" content="With the launch of the open source Swift project, we are also releasing
+a port that works with the Linux operating system! You can build it from
+the Swift sources or download pre-built binaries for Ubuntu. The port
+is still a work in progress but we’re happy to say that it is usable
+today for experimentation. Currently x86_64 is the only supported
+architecture on Linux.
+
+" />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Swift Linux Port" />
+  <meta property="og:url" content="https://swift.org/blog/swift-linux-port/" />
+  <meta property="og:description" content="With the launch of the open source Swift project, we are also releasing
+a port that works with the Linux operating system! You can build it from
+the Swift sources or download pre-built binaries for Ubuntu. The port
+is still a work in progress but we’re happy to say that it is usable
+today for experimentation. Currently x86_64 is the only supported
+architecture on Linux.
+
+" />
+  <meta property="article:published_time" content="2015-12-03T03:01:01-08:00" />
+  <meta property="article:modified_time" content="2015-12-23T18:39:10-08:00" />
+  
+</head>
+
+<body>
+  <nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+  <main role="main">
+    <article class="post">
+  <header>
+    <h1>The Swift Linux Port</h1>
+    <time pubdate datetime="2015-12-03T03:01:01-08:00">December 3, 2015</time>
+  </header>
+
+  <p>With the launch of the open source Swift project, we are also releasing
+a port that works with the Linux operating system! You can build it from
+the Swift sources or <a href="/download/">download pre-built binaries for Ubuntu</a>. The port
+is still a work in progress but we’re happy to say that it is usable
+today for experimentation. Currently x86_64 is the only supported
+architecture on Linux.</p>
+
+<p>Here are a few highlights of what’s working in the port today:</p>
+
+<ul>
+  <li>
+    <p><strong>Swift without the Objective-C Runtime</strong>: Swift on Linux does not
+depend on the Objective-C runtime nor includes it. While Swift was
+designed to interoperate closely with Objective-C when it is present,
+it was also designed to work in environments where the Objective-C
+runtime does not exist.</p>
+  </li>
+  <li>
+    <p><strong>The core Swift Language and <a href="/compiler-stdlib/">Standard Library</a></strong> on Linux shares most of
+the same implementation and APIs as on Apple platforms. There are some
+slight differences of behavior because of the absence of the
+Objective-C runtime on Linux (noted below).</p>
+  </li>
+  <li>
+    <p><strong>The Glibc Module</strong>: Most of the Linux C standard library is available
+through this module similar to the Darwin module on Apple platforms.
+Some headers aren’t yet imported into the module, such as tgmath.h.</p>
+
+    <p>To try it out, just <code class="highlighter-rouge">import Glibc</code>.</p>
+  </li>
+  <li>
+    <p><strong>Swift Core Libraries</strong>: The <a href="/core-libraries/">Core Libraries</a> provide implementations
+of core APIs from Foundation and XCTest to be used on Linux without
+Objective-C . The intention is that these APIs are available in a
+cross-platform manner regardless of whether you are using Swift on
+Apple’s platforms or Swift on Linux.</p>
+  </li>
+  <li>
+    <p><strong>LLDB Swift debugging and the REPL</strong>: You can <a href="/getting-started/#using-the-lldb-debugger">debug your Swift
+binaries</a> and <a href="/getting-started/#using-the-repl">experiment in the REPL</a> just like you do on OS X.</p>
+  </li>
+  <li>
+    <p><strong>The Swift Package Manager</strong> is a first class citizen as it is on
+Apple’s platforms.</p>
+  </li>
+</ul>
+
+<p>Here are some things that aren’t quite working yet or are planned for
+the future:</p>
+
+<ul>
+  <li>
+    <p><strong>libdispatch</strong>: Part of the Core Libraries, updated Linux support is
+in progress. You can follow development on the <a href="https://github.com/apple/swift-corelibs-libdispatch">libdispatch project on
+GitHub</a>.</p>
+  </li>
+  <li>
+    <p><strong>Some C APIs</strong>: Although this is generally true for all of our
+supported platforms, a few constructs in C aren’t imported yet into
+Swift. This will cause some APIs to be unavailable, such as those that
+contain varargs / <code class="highlighter-rouge">va_list</code>. However, in recent months Swift’s
+interoperability with C has significantly advanced, gaining support
+for named and anonymous unions, anonymous structs, and bitfields.</p>
+  </li>
+  <li>
+    <p><strong>Some <code class="highlighter-rouge">String</code> APIs</strong>: The Standard Library’s <code class="highlighter-rouge">String</code> is missing implementations
+of several important APIs because they are currently tied to the
+implementation of <code class="highlighter-rouge">NSString</code> on Apple’s platforms.</p>
+  </li>
+  <li>
+    <p><strong>Runtime Introspection</strong>: When a Swift class on Apple’s platforms is
+marked <code class="highlighter-rouge">@objc</code> or subclasses <code class="highlighter-rouge">NSObject</code> you can use the Objective-C
+runtime to enumerate available methods on an object or call methods
+using selectors. Such capabilities are absent because they depend on
+the Objective-C runtime.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">Array&lt;T&gt; as? Array&lt;S&gt;</code>: Some mechanisms, such as casting
+containers with different associated types, currently do not work as
+they relied on bridging mechanisms with Objective-C.</p>
+  </li>
+</ul>
+
+<p>We’re really excited to be able to release the open source project with
+a great head start for Linux support that you can try right now! There
+is still plenty of work to be done, so we hope to see you <a href="/contributing/">contribute to
+Swift</a> to make the Linux port even more complete.</p>
+
+
+
+  
+  <footer>
+    <nav>
+      
+      <a href="/blog/welcome/" rel="prev" title="Previous: The Swift.org Blog">The Swift.org Blog</a>
+      
+
+      
+      <a href="/blog/swift-3-api-design/" rel="next" title="Next: Swift 3 API Design Guidelines">Swift 3 API Design Guidelines</a>
+      
+    </nav>
+  </footer>
+  
+</article>
+
+  </main>
+
+  <footer role="contentinfo">
+    <aside>
+      <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+      <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+    </aside>
+
+    <p class="copyright">Copyright © 2015 Apple Inc. All rights reserved.</p>
+    <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/assets/javascripts/application.js"></script>
+</body>
+
+</html>
