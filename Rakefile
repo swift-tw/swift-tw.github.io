@@ -28,6 +28,7 @@ end
 def parse_article(filename)
   f = File.read(filename)
   doc = Nokogiri::Slop(f)
+  doc.css('footer').remove
   html = doc.css('article').children.to_html
   html
 end
