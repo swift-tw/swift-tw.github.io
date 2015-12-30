@@ -1,0 +1,126 @@
+---
+layout: page
+title: 編譯器和標準函式庫 (英文)
+project_page: true
+---
+
+  <p>The <a href="https://github.com/apple/swift" title="Swift repository">main Swift repository</a> contains the source code for
+the Swift compiler and standard library, as well as related components
+such as SourceKit (for IDE integration), the Swift regression test
+suite, and implementation-level documentation.</p>
+
+<h2 id="compiler-architecture">Compiler Architecture</h2>
+
+<p>As a whole, the Swift compiler in principally responsible for
+translating Swift source code into efficient, executable machine
+code. However, the Swift compiler front-end also supports a number of
+other tools, including IDE integration with syntax coloring, code
+completion, and other conveniences. This document provides a
+high-level description of the major components of the Swift compiler:</p>
+
+<ul>
+  <li>
+    <p><strong>Parsing</strong>: The parser is a simple, recursive-descent parser
+(implemented in
+<a href="https://github.com/apple/swift/tree/master/lib/Parse">lib/Parse</a>)
+with an integrated, hand-coded lexer. The parser is responsible for
+generating an Abstract Syntax Tree (AST) without any semantic or
+type information, and emit warnings or errors for grammatical problems
+with the input source.</p>
+  </li>
+  <li>
+    <p><strong>Semantic analysis</strong>: Semantic analysis (implemented in
+<a href="https://github.com/apple/swift/tree/master/lib/Sema">lib/Sema</a>) is
+responsible for taking the parsed AST and transforming it into a
+well-formed, fully-type-checked form of the AST, emitting warnings
+or errors for semantic problems in the source code. Semantic
+analysis includes type inference and, on success, indicates that it
+is safe to generate code from the resulting, type-checked AST.</p>
+  </li>
+  <li>
+    <p><strong>Clang importer</strong>: The Clang importer (implemented in
+<a href="https://github.com/apple/swift/tree/master/lib/ClangImporter">lib/ClangImporter</a>)
+imports <a href="http://clang.llvm.org/docs/Modules.html">Clang modules</a> and
+maps the C or Objective-C APIs they export into their corresponding
+Swift APIs. The resulting imported ASTs can be referred to by semantic analysis.</p>
+  </li>
+  <li>
+    <p><strong>SIL generation</strong>: The Swift Intermediate Language (SIL) is a
+high-level, Swift-specific intermediate language suitable for
+further analysis and optimization of Swift code. The SIL generation
+phase (implemented in
+<a href="https://github.com/apple/swift/tree/master/lib/SILGen">lib/SILGen</a>)
+lowers the type-checked AST into so-called “raw” SIL.  The design of
+SIL is described in
+<a href="https://github.com/apple/swift/blob/master/docs/SIL.rst">docs/SIL.rst</a>.</p>
+  </li>
+  <li>
+    <p><strong>SIL guaranteed transformations</strong>: The SIL guaranteed
+  transformations (implemented in
+  <a href="https://github.com/apple/swift/tree/master/lib/SILAnalysis">lib/SILAnalysis</a>
+  and
+  <a href="https://github.com/apple/swift/tree/master/lib/SILPasses">lib/SILPasses</a>)
+  perform additional dataflow diagnostics that
+  affect the correctness of a program (such as a use of
+  uninitialized variables). The end result of these transformations
+  is “canonical” SIL.</p>
+  </li>
+  <li>
+    <p><strong>SIL Optimizations</strong>: The SIL optimizations (implemented in
+  <a href="https://github.com/apple/swift/tree/master/lib/SILAnalysis">lib/SILAnalysis</a>
+  and
+  <a href="https://github.com/apple/swift/tree/master/lib/SILPasses">lib/SILPasses</a>)
+  perform additional high-level, Swift-specific optimizations to the
+  program, including (for example) Automatic Reference Counting
+  optimizations, devirtualization, and generic specialization.</p>
+  </li>
+  <li>
+    <p><strong>LLVM IR Generation</strong>: IR generation (implemented in
+  <a href="https://github.com/apple/swift/tree/master/lib/IRGen">lib/IRGen</a>)
+  lowers SIL to <a href="http://llvm.org/docs/LangRef.html">LLVM IR</a>, at
+  which point <a href="http://llvm.org">LLVM</a> can continue to optimize it
+  and generate machine code.</p>
+  </li>
+</ul>
+
+<h2 id="standard-library-design">Standard Library Design</h2>
+
+<p>The Swift standard library encompasses a number of data types,
+protocols and functions, including fundamental data types (e.g.,
+<code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">Double</code>), collections (e.g., <code class="highlighter-rouge">Array</code>, <code class="highlighter-rouge">Dictionary</code>) along with
+the protocols that describe them and algorithms that operate on them,
+characters and strings, and low-level primitives (e.g.,
+<code class="highlighter-rouge">UnsafeMutablePointer</code>). The implementation of the standard library
+resides in the <code class="highlighter-rouge">stdlib/public</code> subdirectory within the <a href="https://github.com/apple/swift" title="Swift repository">Swift
+repository</a>, which is further subdivided into:</p>
+
+<ul>
+  <li>
+    <p><strong>Standard library core</strong>: The core of the standard library (implemented in <a href="https://github.com/apple/swift/tree/master/stdlib/public/core">stdlib/public/core</a>), including the definitions of all of the data types, protocols, functions, etc.</p>
+  </li>
+  <li>
+    <p><strong>Runtime</strong>: The language support runtime (implemented in <a href="https://github.com/apple/swift/tree/master/stdlib/public/runtime">stdlib/public/runtime</a>), which is layered between the compiler and the core standard library. It is responsible for implementing many of the dynamic features of the language, such as casting (e.g., for the <code class="highlighter-rouge">as!</code> and <code class="highlighter-rouge">as?</code> operators), type metadata (to support generics and reflection), and memory management (object allocation, reference counting, etc.). Unlike higher-level libraries, the runtime is written mostly in C++ or (where needed for interoperability) Objective-C.</p>
+  </li>
+  <li>
+    <p><strong>SDK Overlays</strong>: Specific to Apple platforms, the SDK overlays (implemented in <a href="https://github.com/apple/swift/tree/master/stdlib/public/SDK">stdlib/public/SDK</a>) provide Swift-specific additions and modifications to existing Objective-C frameworks to improve their mapping into Swift. In particular, the <code class="highlighter-rouge">Foundation</code> overlay provides additional support for interoperability with Objective-C code.</p>
+  </li>
+</ul>
+
+<p>The Swift standard library is written in Swift, but because it is the lowest-level Swift code in the stack—responsible for implementing the core data types on which other Swift code is built—it is a bit different from normal Swift code. Some of the differences include:</p>
+
+<ul>
+  <li>
+    <p><strong>Access to compiler builtins</strong>: The <code class="highlighter-rouge">Builtin</code> module, which is only generally accessible to the standard library, provides compiler builtin functions (e.g., to directly create SIL instructions) and data types (e.g., “raw” pointers, primitive LLVM integer types) needed to implement the data types that are fundamental to programming in Swift.</p>
+  </li>
+  <li>
+    <p><strong>Visibility is often managed by convention</strong>: Standard library declarations often need to have greater visibility than one would generally like, due to the way in which the standard library is compiled and optimized. For example, <code class="highlighter-rouge">private</code> modifiers are never used. More importantly, it is common to need to make something <code class="highlighter-rouge">public</code> even when it is not intended as part of the public interface. In such cases, one should use a leading underscore to indicate that the public API is meant to be private. The policy for access control in the standard library is documented in <a href="https://github.com/apple/swift/blob/master/docs/AccessControlInStdlib.rst">docs/AccessControlInStdlib.rst</a>.</p>
+  </li>
+  <li>
+    <p><strong>Repetitive code uses gyb</strong>: <a href="https://github.com/apple/swift/blob/master/utils/gyb.py">gyb</a> is a simple tool for generating repetitive code from a template that is used often in the standard library. For example, it is used to create the definitions of the various sized integer types (<code class="highlighter-rouge">Int8</code>, <code class="highlighter-rouge">Int16</code>, <code class="highlighter-rouge">Int32</code>, <code class="highlighter-rouge">Int64</code>, etc.) from a single source.</p>
+  </li>
+  <li>
+    <p><strong>Testing is tightly coupled with the compiler</strong>: The standard library and the compiler evolve together and are tightly coupled. Changes in core data types (e.g., <code class="highlighter-rouge">Array</code> or <code class="highlighter-rouge">Int</code>) can require compiler-side changes, and vice-versa, so the standard library test suite is stored within the same directory structure as the compiler, in <a href="https://github.com/apple/swift/tree/master/test/1_stdlib">test/1_stdlib</a> and <a href="https://github.com/apple/swift/tree/master/validation-test/stdlib">validation-test/stdlib</a>.</p>
+  </li>
+</ul>
+
+
