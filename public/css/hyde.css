@@ -101,6 +101,19 @@ html {
 /* Sidebar nav */
 .sidebar-nav {
   margin-bottom: 1rem;
+  border-top-color: rgb(230,230,230);
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-bottom-color: rgb(230,230,230);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.sidebar h2{
+  color: rgb(153,153,153);
+  font-size: 0.675rem;
+  margin-bottom: 0.3285rem;
+  padding-bottom: 0.3285rem;
 }
 
 .sidebar-nav-item {
