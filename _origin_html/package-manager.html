@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - Package Manager</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/package-manager/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="Swift.org" />
+  <meta name="twitter:description" content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:title" content="Swift.org" />
+  <meta property="og:url" content="https://swift.org" />
+  <meta property="og:description" content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." />
+  
+</head>
+
+<body>
+  <nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li class="active">
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+        <ul>
+          <li><a href="/package-manager/#conceptual-overview">Conceptual Overview</a></li>
+          <li><a href="/package-manager/#example-usage">Example Usage</a></li>
+          <li><a href="/package-manager/#community-proposal">Community Proposal</a></li>
+        </ul>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+  <main role="main">
+    <article class="page">
+  <header>
+    <h1>Package Manager</h1>
+  </header>
+
+  <p>The Swift Package Manager is a tool for managing the distribution of Swift code.
+It’s integrated with the Swift build system
+to automate the process of downloading, compiling, and linking dependencies.</p>
+
+<h2 id="conceptual-overview">Conceptual Overview</h2>
+
+<p>This section describes the basic concepts that motivate
+the functionality of the Swift Package Manager.</p>
+
+<h3 id="modules">Modules</h3>
+
+<p>Swift organizes code into <em>modules</em>.
+Each module specifies a namespace
+and enforces access controls on which parts of that code
+can be used outside of the module.</p>
+
+<p>A program may have all of its code in a single module,
+or it may import other modules as <em>dependencies</em>.
+Aside from the handful of system-provided modules,
+such as Darwin on OS X
+or Glibc on Linux,
+most dependencies require code to be downloaded and built in order to be used.</p>
+
+<p>When you use a separate module for code that solves a particular problem,
+that code can be reused in other situations.
+For example, a module that provides functionality for making network requests
+can be shared between a photo sharing app and a weather app.
+Using modules lets you build on top of other developers’ code
+rather than reimplementing the same functionality yourself.</p>
+
+<h3 id="packages">Packages</h3>
+
+<p>A <em>package</em> consists of Swift source files and a manifest file.
+The manifest file, called <code class="highlighter-rouge">Package.swift</code>,
+defines the package’s name and its contents
+using the <code class="highlighter-rouge">PackageDescription</code> module.</p>
+
+<p>A package has one or more targets.
+Each target specifies a product
+and may declare one or more dependencies.</p>
+
+<h3 id="products">Products</h3>
+
+<p>A target may build either a library or an executable as its product.
+A <em>library</em> contains a module that can be imported by other Swift code.
+An <em>executable</em> is a program that can be run by the operating system.</p>
+
+<h3 id="dependencies">Dependencies</h3>
+
+<p>A target’s dependencies are modules that are required by code in the package.
+A dependency consists of a relative or absolute URL to the source of the package
+and a set of requirements for the version of the package that can be used.
+The role of the package manager is to reduce coordination costs
+by automating the process of downloading and building all of the dependencies for a project.
+This is a recursive process:
+A dependency can have its own dependencies,
+each of which can also have dependencies,
+forming a dependency graph.
+The package manager downloads and builds everything that is needed
+to satisfy the entire dependency graph.</p>
+
+<hr />
+
+<div class="info">
+  <p>The following section assumes a working knowledge of Swift.
+If you’re new to the language,
+you may want consult one of the introductory resources first.
+We recommend <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1">A Swift Tour</a> in
+<em>The Swift Programming Language</em>.</p>
+
+  <p>If you want to follow along with the code examples,
+you’ll need to have a working installation of Swift.
+You can find instructions for how to install Swift in
+<a href="/getting-started/#installing-swift">Getting Started</a>.</p>
+</div>
+
+<h2 id="example-usage">Example Usage</h2>
+
+<p>In <a href="/getting-started#package-manager">Getting Started</a>,
+a simple “Hello, world!” program is built with the Swift Package Manager.</p>
+
+<p>To provide a more complete look at what the Swift Package Manager can do,
+the following example consists of four interdependent packages:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/example-package-playingcard">PlayingCard</a> - Defines <code class="highlighter-rouge">PlayingCard</code>, <code class="highlighter-rouge">Suit</code>, and <code class="highlighter-rouge">Rank</code> types.</li>
+  <li><a href="https://github.com/apple/example-package-fisheryates">FisherYates</a> - Defines an extension that implements the <code class="highlighter-rouge">shuffle()</code> and <code class="highlighter-rouge">shuffleInPlace()</code> methods.</li>
+  <li><a href="https://github.com/apple/example-package-deckofplayingcards">DeckOfPlayingCards</a> - Defines a <code class="highlighter-rouge">Deck</code> type that shuffles and deals an array of <code class="highlighter-rouge">PlayingCard</code> values.</li>
+  <li><a href="https://github.com/apple/example-package-dealer">Dealer</a> - Defines an executable that creates a <code class="highlighter-rouge">DeckOfPlayingCards</code>, shuffles it, and deals the first 10 cards.</li>
+</ul>
+
+<blockquote>
+  <p>You can build and run the complete example
+by downloading the source code of the <a href="https://github.com/apple/example-package-dealer">Dealer project from GitHub</a>
+and running the following commands:</p>
+
+  <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>example-package-dealer
+<span class="gp">$ </span>swift build
+<span class="gp">$ </span>.build/debug/Dealer
+</code></pre>
+  </div>
+</blockquote>
+
+<h3 id="creating-a-library-package">Creating a Library Package</h3>
+
+<p>We’ll start by creating a module representing
+a playing card in a standard 52-card deck.
+The <code class="highlighter-rouge">PlayingCard</code> module defines the <code class="highlighter-rouge">PlayingCard</code> type,
+which consists of a <code class="highlighter-rouge">Suit</code> enumeration value (Clubs, Diamonds, Hearts, Spades)
+and a <code class="highlighter-rouge">Rank</code> enumeration value (Ace, Two, Three, …, Jack, Queen, King).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Rank</span> <span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">Ace</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">case</span> <span class="kt">Two</span><span class="p">,</span> <span class="kt">Three</span><span class="p">,</span> <span class="kt">Four</span><span class="p">,</span> <span class="kt">Five</span><span class="p">,</span> <span class="kt">Six</span><span class="p">,</span> <span class="kt">Seven</span><span class="p">,</span> <span class="kt">Eight</span><span class="p">,</span> <span class="kt">Nine</span><span class="p">,</span> <span class="kt">Ten</span>
+    <span class="k">case</span> <span class="kt">Jack</span><span class="p">,</span> <span class="kt">Queen</span><span class="p">,</span> <span class="kt">King</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Suit</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="kt">Spades</span><span class="p">,</span> <span class="kt">Hearts</span><span class="p">,</span> <span class="kt">Diamonds</span><span class="p">,</span> <span class="kt">Clubs</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">struct</span> <span class="kt">PlayingCard</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">rank</span><span class="p">:</span> <span class="kt">Rank</span>
+    <span class="k">let</span> <span class="nv">suit</span><span class="p">:</span> <span class="kt">Suit</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>By convention, a package includes any source files located in the <code class="highlighter-rouge">Sources/</code> directory.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>example-package-playingcard
+├── Sources
+│   ├── PlayingCard.swift
+│   ├── Rank.swift
+│   └── Suit.swift
+└── Package.swift
+</code></pre>
+</div>
+
+<p>Because the <code class="highlighter-rouge">PlayingCard</code> module does not produce an executable,
+it can be described as a <em>library</em>.
+A library is a package that builds a module which can be imported by other packages.
+By default, a library module exposes all of the <code class="highlighter-rouge">public</code> types and methods
+declared in source code located in the <code class="highlighter-rouge">Sources/</code> directory.</p>
+
+<p>Run <code class="highlighter-rouge">swift build</code> to start the Swift build process.
+If everything worked correctly,
+it produces the static library <code class="highlighter-rouge">PlayingCard.a</code>
+in the <code class="highlighter-rouge">.build/debug</code> directory.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>example-package-playingcard
+└── .build
+    └── debug
+        ├── PlayingCard.a
+        ├── PlayingCard.o
+        ├── PlayingCard.swiftdoc
+        └── PlayingCard.swiftmodule
+</code></pre>
+</div>
+
+<blockquote>
+  <p>The complete code for the <code class="highlighter-rouge">PlayingCard</code> package can be found at
+<a href="https://github.com/apple/example-package-playingcard">https://github.com/apple/example-package-playingcard</a>.</p>
+</blockquote>
+
+<h3 id="using-build-configuration-statements">Using Build Configuration Statements</h3>
+
+<p>The next module you’re going to build is <code class="highlighter-rouge">FisherYates</code>.
+Unlike <code class="highlighter-rouge">PlayingCard</code>, this module does not define any new types.
+Instead, it extends an existing type –
+specifically the <code class="highlighter-rouge">CollectionType</code> and <code class="highlighter-rouge">MutableCollectionType</code> protocols –
+to add the  <code class="highlighter-rouge">shuffle()</code> method
+and its mutating counterpart <code class="highlighter-rouge">shuffleInPlace()</code>.</p>
+
+<p>The implementation of <code class="highlighter-rouge">shuffleInPlace()</code> uses
+the <a href="https://en.wikipedia.org/wiki/Fisher–Yates_shuffle">Fisher-Yates</a> algorithm
+to randomly permute the elements in a collection.
+Because the Swift Standard Library does not provide a random number generator,
+this method must call a function imported from a system module.
+For this function to be compatible with both OS X and Linux,
+the code uses build configuration statements.</p>
+
+<p>In OS X, the system module is <code class="highlighter-rouge">Darwin</code>,
+which provides the <code class="highlighter-rouge">arc4random_uniform(_:)</code> function.
+In Linux, the system module is <code class="highlighter-rouge">Glibc</code>,
+which provides the <code class="highlighter-rouge">random()</code> function:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#if os(Linux)</span>
+<span class="kd">import</span> <span class="kt">Glibc</span>
+<span class="cp">#else</span>
+<span class="kd">import</span> <span class="kt">Darwin</span><span class="o">.</span><span class="kt">C</span>
+<span class="cp">#endif</span>
+
+<span class="kd">public</span> <span class="kd">extension</span> <span class="kt">MutableCollectionType</span> <span class="k">where</span> <span class="kt">Index</span> <span class="o">==</span> <span class="kt">Int</span> <span class="p">{</span>
+    <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">shuffleInPlace</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">..&lt;</span><span class="n">count</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">{</span>
+<span class="cp">#if os(Linux)</span>
+            <span class="k">let</span> <span class="nv">j</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="nf">random</span><span class="p">()</span> <span class="o">%</span> <span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="n">i</span><span class="p">))))</span> <span class="o">+</span> <span class="n">i</span>
+<span class="cp">#else</span>
+            <span class="k">let</span> <span class="nv">j</span> <span class="o">=</span> <span class="kt">Int</span><span class="p">(</span><span class="nf">arc4random_uniform</span><span class="p">(</span><span class="kt">UInt32</span><span class="p">(</span><span class="n">count</span> <span class="o">-</span> <span class="n">i</span><span class="p">)))</span> <span class="o">+</span> <span class="n">i</span>
+<span class="cp">#endif</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">j</span> <span class="p">{</span> <span class="k">continue</span> <span class="p">}</span>
+            <span class="nf">swap</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="o">&amp;</span><span class="k">self</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>The complete code for the <code class="highlighter-rouge">FisherYates</code> package can be found at
+<a href="https://github.com/apple/example-package-fisheryates">https://github.com/apple/example-package-fisheryates</a>.</p>
+</blockquote>
+
+<h3 id="importing-dependencies">Importing Dependencies</h3>
+
+<p>The <code class="highlighter-rouge">DeckOfPlayingCards</code> package brings the previous two packages together:
+It defines a <code class="highlighter-rouge">Deck</code> type
+that uses the <code class="highlighter-rouge">shuffle()</code> method from <code class="highlighter-rouge">FisherYates</code>
+on an array of <code class="highlighter-rouge">PlayingCard</code> values.</p>
+
+<p>To use the <code class="highlighter-rouge">FisherYates</code> and <code class="highlighter-rouge">PlayingCards</code> modules,
+the <code class="highlighter-rouge">DeckOfPlayingCards</code> package must declare their packages as dependencies
+in its <code class="highlighter-rouge">Package.swift</code> manifest file.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">PackageDescription</span>
+
+<span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
+    <span class="nv">name</span><span class="p">:</span> <span class="s">"DeckOfPlayingCards"</span><span class="p">,</span>
+    <span class="nv">targets</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/apple/example-package-fisheryates.git"</span><span class="p">,</span>
+                 <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/apple/example-package-playingcard.git"</span><span class="p">,</span>
+                 <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Each dependency specifies a source URL and version requirements.
+The source URL is a URL accessible to the current user that resolves to a Git repository.
+The version requirements,
+which follow <a href="http://semver.org">Semantic Versioning (SemVer)</a> conventions,
+are used to determine which Git tag to check out and use to build the dependency.
+For of both the <code class="highlighter-rouge">FisherYates</code> and <code class="highlighter-rouge">PlayingCard</code> dependencies,
+the most recent version with major version equal to <code class="highlighter-rouge">1</code> (for example, <code class="highlighter-rouge">1.0.0</code>) will be used.</p>
+
+<p>When the <code class="highlighter-rouge">swift build</code> command is run,
+the Package Manager downloads all of the dependencies,
+compiles them into static libraries,
+and links them to the package module.
+This allows <code class="highlighter-rouge">DeckOfPlayingCards</code>
+to access the public members of its dependent modules
+with <code class="highlighter-rouge">import</code> statements.</p>
+
+<p>You can see the downloaded sources in the <code class="highlighter-rouge">Packages</code> directory at the root of your project,
+and intermediate build products in the <code class="highlighter-rouge">.build</code> directory at the root of your project.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>example-package-deckofplayingcards
+├── .build
+│   └── debug
+│       ├── DeckOfPlayingCards.a
+│       ├── DeckOfPlayingCards.o
+│       ├── DeckOfPlayingCards.swiftdoc
+│       ├── DeckOfPlayingCards.swiftmodule
+│       ├── FisherYates.a
+│       ├── FisherYates.o
+│       ├── FisherYates.swiftdoc
+│       ├── FisherYates.swiftmodule
+│       ├── PlayingCard.a
+│       ├── PlayingCard.o
+│       ├── PlayingCard.swiftdoc
+│       └── PlayingCard.swiftmodule
+└── Packages
+    └── example-package-fisheryates-1.0.1
+    │   ├── Package.swift
+    │   ├── README.md
+    │   └── Sources
+    └── example-package-playingcard-1.0.0
+        ├── Package.swift
+        ├── README.md
+        └── Sources
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">Packages</code> directory contains the cloned repositories of a package’s dependencies.
+This allows you to make changes to source code
+and push those changes directly back to their origins
+without the need for separate top-level clones of each package.</p>
+
+<blockquote>
+  <p>The complete code for the <code class="highlighter-rouge">DeckOfPlayingCards</code> package can be found at
+<a href="https://github.com/apple/example-package-deckofplayingcards">https://github.com/apple/example-package-deckofplayingcards</a>.</p>
+</blockquote>
+
+<h3 id="resolving-subdependencies">Resolving Subdependencies</h3>
+
+<p>With everything else in place,
+now you can build the <code class="highlighter-rouge">Dealer</code> module.
+The <code class="highlighter-rouge">Dealer</code> module depends on the <code class="highlighter-rouge">DeckOfPlayingCards</code> package,
+which in turn depends on the <code class="highlighter-rouge">PlayingCard</code> and <code class="highlighter-rouge">FisherYates</code> packages.
+However, because the Swift Package Manager automatically resolves subdependencies,
+you only need to declare the <code class="highlighter-rouge">DeckOfPlayingCards</code> package as a dependency.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">PackageDescription</span>
+
+<span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
+    <span class="nv">name</span><span class="p">:</span> <span class="s">"Dealer"</span><span class="p">,</span>
+    <span class="nv">targets</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/apple/example-package-deckofplayingcards.git"</span><span class="p">,</span>
+                 <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Swift requires that a source file import the modules for any types
+that are referenced in code.
+For the <code class="highlighter-rouge">Dealer</code> module’s <code class="highlighter-rouge">main.swift</code> file,
+the <code class="highlighter-rouge">Deck</code> type from <code class="highlighter-rouge">DeckOfPlayingCards</code>
+and the <code class="highlighter-rouge">PlayingCard</code> type from <code class="highlighter-rouge">PlayingCard</code> are referenced.
+Although the <code class="highlighter-rouge">shuffle()</code> method on the <code class="highlighter-rouge">Deck</code> type
+uses the <code class="highlighter-rouge">FisherYates</code> module internally,
+that module does not need to be imported in <code class="highlighter-rouge">main.swift</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">PlayingCard</span>
+<span class="kd">import</span> <span class="kt">DeckOfPlayingCards</span>
+
+<span class="k">let</span> <span class="nv">numberOfCards</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">var</span> <span class="nv">deck</span> <span class="o">=</span> <span class="kt">Deck</span><span class="o">.</span><span class="nf">standard52CardDeck</span><span class="p">()</span>
+<span class="n">deck</span><span class="o">.</span><span class="nf">shuffle</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="n">numberOfCards</span> <span class="p">{</span>
+    <span class="k">guard</span> <span class="k">let</span> <span class="nv">card</span> <span class="o">=</span> <span class="n">deck</span><span class="o">.</span><span class="nf">deal</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"No More Cards!"</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="p">}</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>By convention, a package containing a file named <code class="highlighter-rouge">main.swift</code> in its root directory
+produces an executable.</p>
+
+<p>Running the <code class="highlighter-rouge">swift build</code> command
+starts the Swift build system
+to produce the <code class="highlighter-rouge">Dealer</code> executable,
+which can be run from the <code class="highlighter-rouge">.build/debug</code> directory.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>swift build
+<span class="gp">$ </span>./.build/debug/Dealer
+♠︎6
+♢K
+♢2
+♡8
+♠︎7
+♣︎10
+♣︎5
+♢A
+♡Q
+♡7
+</code></pre>
+</div>
+
+<blockquote>
+  <p>The complete code for the <code class="highlighter-rouge">Dealer</code> package can be found at
+<a href="https://github.com/apple/example-package-dealer">https://github.com/apple/example-package-dealer</a>.</p>
+</blockquote>
+
+<hr />
+
+<p>For more information about using the Swift Package Manager,
+see the documentation provided in the <a href="https://github.com/apple/swift-package-manager">Swift Package Manager project on GitHub</a>.</p>
+
+<h2 id="community-proposal">Community Proposal</h2>
+
+<p>The initial release of the Swift Package manager is just a starting point,
+and we invite you to get involved and help build the best tool possible.</p>
+
+<p>To help you get started with the project,
+we have prepared the following Community Proposal,
+which provides some context for decisions made in the current implementation,
+and offers direction for the development of future features.
+If you are interested in getting involved,
+this is the first document you should read.</p>
+
+<p><a href="https://github.com/apple/swift-package-manager/blob/master/Documentation/PackageManagerCommunityProposal.md">Read the Swift Package Manager “Community Proposal”</a></p>
+
+
+</article>
+
+  </main>
+
+  <footer role="contentinfo">
+    <aside>
+      <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+      <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+    </aside>
+
+    <p class="copyright">Copyright © 2015 Apple Inc. All rights reserved.</p>
+    <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/assets/javascripts/application.js"></script>
+</body>
+
+</html>
