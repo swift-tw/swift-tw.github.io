@@ -58,6 +58,7 @@ html {
   padding: 2rem 1rem;
   color: rgb(51,51,51);
   background-color: #202020;
+  overflow: auto;
 }
 @media (min-width: 48em) {
   .sidebar {
@@ -88,14 +89,15 @@ html {
 }
 
 .sidebar-about h1 a img {
-  width: 2.5rem;
+  width: 3rem;
   float: left;
+  margin-top: 1rem;
   margin-right: 0.5rem;
 }
 
 .sidebar-about .lead {
-  font-size: 1rem;
-  margin-top: 2rem;
+  font-size: 0.7rem;
+  margin-top: 1rem;
 }
 
 /* Sidebar nav */
@@ -119,7 +121,7 @@ html {
 .sidebar-nav-item {
   display: block;
   line-height: 1.75;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 0.2rem;
   border-bottom-color: rgb(230,230,230);
   border-bottom-width: 1px;
