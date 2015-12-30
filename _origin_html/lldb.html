@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - REPL and Debugger</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/lldb/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="Swift.org" />
+  <meta name="twitter:description" content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:title" content="Swift.org" />
+  <meta property="og:url" content="https://swift.org" />
+  <meta property="og:description" content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." />
+  
+</head>
+
+<body>
+  <nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li class="active">
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+        <ul>
+          <li><a href="/lldb/#why-combine-the-repl-and-debugger">Combined REPL + Debugger</a></li>
+        </ul>
+        
+      </li>
+  </ul>
+</nav>
+
+
+  <main role="main">
+    <article class="page">
+  <header>
+    <h1>REPL and Debugger</h1>
+  </header>
+
+  <p>The Swift.org community makes use of the
+<a href="https://github.com/apple/swift-lldb">LLDB debugger</a> to provide a
+rich REPL as well as the debugging environment for the Swift Language.
+Swift is tightly coupled to the version of the  Swift compiler embedded in the
+debugger.  Tight integration of compiler and debugger enables accurate
+inspection of Swift types as well as full-featured expression
+evaluation in the context of a rapidly evolving language.</p>
+
+<p>However, because of this tight integration, developers <em>must</em> use a
+matched pair of compiler and debugger built using the same sources.
+Debugging using any other version of LLDB can lead to unpredictable
+results.</p>
+
+<h3 id="why-combine-the-repl-and-debugger">Why Combine the REPL and Debugger?</h3>
+
+<p>Several motivating factors contributed to the decision to use the
+Swift debugger as a foundation for the Swift REPL.</p>
+
+<ul>
+  <li>
+    <p><strong>Integrated debugging.</strong> The most obvious benefit is that the Swift
+REPL is also a full-featured debugger. It’s trivial to declare a
+function, set a breakpoint in it, and then call it.  When execution
+stops at a breakpoint the full feature set of the debugger is
+immediately available.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  1&gt; func answer() -&gt; Int {
+  2.     return 42
+  3. }
+  4&gt; :b 2
+  4&gt; answer()
+Execution stopped at breakpoint.  Enter LLDB commands to investigate (type help for assistance.)
+   1   	  func answer() -&gt; Int {
+-&gt; 2   	      return 42
+   3   	  }
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Recovering from failure.</strong> Fatal errors in Swift normally result in
+immediate termination of a process, which makes sense for programmer
+errors in production code but are undesirable in an interactive
+context. The Swift REPL supports investigating failures with the full
+debugger or unwinding for immediate recovery.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  1&gt; ["One", "Two"][2]
+fatal error: Array index out of range
+Execution interrupted. Enter Swift code to recover and continue.
+Enter LLDB commands to investigate (type :help for assistance.)
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Robust expression evaluation.</strong> Supporting the full range of REPL
+scenarios in the debugger set a high bar for the expression
+evaluator.  As a result, expressions in the debugger have access to
+the full range of language features in Swift and can freely declare
+any valid langauge construct.</p>
+  </li>
+  <li>
+    <p><strong>Consistent result formatting.</strong> The strategy used for textually
+representing values in the REPL is shared by the debugger, ensuring
+consistent output even for user-defined types.</p>
+  </li>
+</ul>
+
+
+</article>
+
+  </main>
+
+  <footer role="contentinfo">
+    <aside>
+      <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+      <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+    </aside>
+
+    <p class="copyright">Copyright © 2015 Apple Inc. All rights reserved.</p>
+    <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/assets/javascripts/application.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+---
+layout: page
+title: REPL 與 偵錯器(英文)
+project_page: true
+---
+
+  <p>The Swift.org community makes use of the
+<a href="https://github.com/apple/swift-lldb">LLDB debugger</a> to provide a
+rich REPL as well as the debugging environment for the Swift Language.
+Swift is tightly coupled to the version of the  Swift compiler embedded in the
+debugger.  Tight integration of compiler and debugger enables accurate
+inspection of Swift types as well as full-featured expression
+evaluation in the context of a rapidly evolving language.</p>
+
+<p>However, because of this tight integration, developers <em>must</em> use a
+matched pair of compiler and debugger built using the same sources.
+Debugging using any other version of LLDB can lead to unpredictable
+results.</p>
+
+<h3 id="why-combine-the-repl-and-debugger">Why Combine the REPL and Debugger?</h3>
+
+<p>Several motivating factors contributed to the decision to use the
+Swift debugger as a foundation for the Swift REPL.</p>
+
+<ul>
+  <li>
+    <p><strong>Integrated debugging.</strong> The most obvious benefit is that the Swift
+REPL is also a full-featured debugger. It’s trivial to declare a
+function, set a breakpoint in it, and then call it.  When execution
+stops at a breakpoint the full feature set of the debugger is
+immediately available.</p>
+
+    <div class="highlighter-rouge">
+<pre class="highlight"><code>  1&gt; func answer() -&gt; Int {
+  2.     return 42
+  3. }
+  4&gt; :b 2
+  4&gt; answer()
+Execution stopped at breakpoint.  Enter LLDB commands to investigate (type help for assistance.)
+   1   	  func answer() -&gt; Int {
+-&gt; 2   	      return 42
+   3   	  }
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Recovering from failure.</strong> Fatal errors in Swift normally result in
+immediate termination of a process, which makes sense for programmer
+errors in production code but are undesirable in an interactive
+context. The Swift REPL supports investigating failures with the full
+debugger or unwinding for immediate recovery.</p>
+
+    <div class="highlighter-rouge">
+<pre class="highlight"><code>  1&gt; ["One", "Two"][2]
+fatal error: Array index out of range
+Execution interrupted. Enter Swift code to recover and continue.
+Enter LLDB commands to investigate (type :help for assistance.)
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Robust expression evaluation.</strong> Supporting the full range of REPL
+scenarios in the debugger set a high bar for the expression
+evaluator.  As a result, expressions in the debugger have access to
+the full range of language features in Swift and can freely declare
+any valid langauge construct.</p>
+  </li>
+  <li>
+    <p><strong>Consistent result formatting.</strong> The strategy used for textually
+representing values in the REPL is shared by the debugger, ensuring
+consistent output even for user-defined types.</p>
+  </li>
+</ul>
+
+
