@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - Swift Core Libraries</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/core-libraries/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="Swift.org" />
+  <meta name="twitter:description" content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:title" content="Swift.org" />
+  <meta property="og:url" content="https://swift.org" />
+  <meta property="og:description" content="Swift is a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." />
+  
+</head>
+
+<body>
+  <nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li class="active">
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+        <ul>
+          <li><a href="/core-libraries/#foundation">Foundation</a></li>
+          <li><a href="/core-libraries/#libdispatch">libdispatch</a></li>
+          <li><a href="/core-libraries/#xctest">xctest</a></li>
+        </ul>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+  <main role="main">
+    <article class="page">
+  <header>
+    <h1>Swift Core Libraries</h1>
+  </header>
+
+  <p>The Swift Core Libraries project provides higher-level functionality than the
+Swift standard library. These libraries provide powerful tools that developers
+can depend upon across all the platforms that Swift supports. The Core Libraries
+have a goal of providing stable and useful features in the following key areas:</p>
+
+<ul>
+  <li>Commonly needed types, including data, URLs, character sets, and specialized collections</li>
+  <li>Unit testing</li>
+  <li>Networking primitives</li>
+  <li>Scheduling and execution of work, including threads, queues, and notifications</li>
+  <li>Persistence, including property lists, archives, JSON parsing, and XML parsing</li>
+  <li>Support for dates, times, and calendrical calculations</li>
+  <li>Abstraction of OS-specific behavior</li>
+  <li>Interaction with the file system</li>
+  <li>Internationalization, including date and number formatting and language-specific resources</li>
+  <li>User preferences</li>
+</ul>
+
+<h3 id="project-status">Project Status</h3>
+
+<p>These libraries are part of the work towards the future Swift 3 release. They are not yet ready for production use, and in fact are still in the earliest stages of development. We choose to make them part of the initial open source release so that we can work on them together with the community from the beginning. The mailing list page has details on how to join the conversation.</p>
+
+<p>Writing code that provides all of this functionality from scratch would be an enormous undertaking. Therefore, we’ve decided to bootstrap this project by taking advantage of great work that has already been done in these areas. Specifically, we will reuse the API and as much implementation as is possible from three existing libraries: <code class="highlighter-rouge">Foundation</code>, <code class="highlighter-rouge">libdispatch</code>, and <code class="highlighter-rouge">XCTest</code>.</p>
+
+<hr />
+
+<h2 id="foundation">Foundation</h2>
+
+<p>The Foundation framework defines a base layer of functionality that is required for almost all applications. It provides primitive classes and introduces several paradigms that define functionality not provided by the language or runtime. It is designed with these goals in mind:</p>
+
+<ul>
+  <li>Provide a small set of basic utility classes.</li>
+  <li>Make software development easier by introducing consistent conventions.</li>
+  <li>Support internationalization and localization, to make software accessible to users around the world.</li>
+  <li>Provide a level of OS independence, to enhance portability.</li>
+</ul>
+
+<p>More information about the Foundation framework in general is available
+<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/ObjC_classic/">from Apple’s documentation</a>.  The Swift.org version of Foundation makes use of many
+of the same underlying libraries (e.g. ICU and CoreFoundation) as Apple’s
+implementation, but has been built to be completely independent of the
+Objective-C runtime.  Because of this, it is a substantial reimplementation of
+the same API, using pure Swift code layered on top of these common underlying
+libraries.  Much more information about this work is available on our
+<a href="http://www.github.com/apple/swift-corelibs-foundation">GitHub project page</a>.</p>
+
+<h2 id="libdispatch">libdispatch</h2>
+
+<p>Grand Central Dispatch (GCD or libdispatch) provides comprehensive support for concurrent code execution on multicore hardware.</p>
+
+<p>libdispatch is currently available on all Darwin platforms. This project aims to make a modern version of libdispatch available on all other Swift platforms. To do this, we will implement as much of the portable subset of the API as possible, using the existing open source C implementation.</p>
+
+<p>More information about libdispatch for Linux is available on our <a href="http://www.github.com/apple/swift-corelibs-libdispatch">GitHub project page</a>.</p>
+
+<h2 id="xctest">XCTest</h2>
+
+<p>The XCTest library is designed to provide a common framework for writing unit tests in Swift, for Swift packages and applications.</p>
+
+<p>This version of XCTest uses the same API as the XCTest you are familiar with from Xcode. Our goal is to enable your project’s tests to run on all Swift platforms without having to rewrite them.</p>
+
+<p>More information about XCTest on Linux is available on our <a href="http://www.github.com/apple/swift-corelibs-xctest">GitHub project page</a>.</p>
+
+<hr />
+
+<p>As stated above, this project is in its early days. We look forward to working together with the community to create a great set of libraries that enable Swift to produce powerful software across platforms.</p>
+
+</article>
+
+  </main>
+
+  <footer role="contentinfo">
+    <aside>
+      <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+      <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+    </aside>
+
+    <p class="copyright">Copyright © 2015 Apple Inc. All rights reserved.</p>
+    <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/assets/javascripts/application.js"></script>
+</body>
+
+</html>
