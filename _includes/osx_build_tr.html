@@ -1,0 +1,14 @@
+<tr>
+    <td class="download">
+        <span class="release">
+          <a href="{{include.param.release.href}}" title="Download" download="">Xcode Swift 2.2 Snapshot</a>
+        </span>
+        <span class="debug">
+          <a href="{{include.param.debug.href}}" download="">Debugging Symbols</a>
+        </span>
+    </td>
+    <td class="date">
+      {% assign tt = include.param.time %}
+      {% include update_time_tag.html param=tt %}
+    </td>
+</tr>

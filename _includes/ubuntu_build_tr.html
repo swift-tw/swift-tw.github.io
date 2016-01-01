@@ -1,0 +1,12 @@
+<tr>
+    <td class="download">
+        <span class="release">
+          <a href="{{include.param.release.href}}" title="Download" download="">{{include.param.release.content}}</a>
+            <a href="{{include.param.pgp.href}}" title="PGP Signature">Signature</a>
+        </span>
+    </td>
+    <td class="date">
+      {% assign tt = include.param.time %}
+      {% include update_time_tag.html param=tt %}
+    </td>
+</tr>

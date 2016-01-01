@@ -1,0 +1,46 @@
+---
+- release:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-22-a/swift-2.2-SNAPSHOT-2015-12-22-a-ubuntu14.04.tar.gz
+    content: Ubuntu 14.04 Swift 2.2 Snapshot
+  pgp:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-22-a/swift-2.2-SNAPSHOT-2015-12-22-a-ubuntu14.04.tar.gz.sig
+  time:
+    datetime: '2015-12-22T17:26:50-08:00'
+    title: December 22, 2015  5:26 PM (PST)
+    content: December 22, 2015
+- release:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-21-a/swift-2.2-SNAPSHOT-2015-12-21-a-ubuntu14.04.tar.gz
+    content: Ubuntu 14.04 Swift 2.2 Snapshot
+  pgp:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-21-a/swift-2.2-SNAPSHOT-2015-12-21-a-ubuntu14.04.tar.gz.sig
+  time:
+    datetime: '2015-12-21T12:27:45-08:00'
+    title: December 21, 2015 12:27 PM (PST)
+    content: December 21, 2015
+- release:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-18-a/swift-2.2-SNAPSHOT-2015-12-18-a-ubuntu14.04.tar.gz
+    content: Ubuntu 14.04 Swift 2.2 Snapshot
+  pgp:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-18-a/swift-2.2-SNAPSHOT-2015-12-18-a-ubuntu14.04.tar.gz.sig
+  time:
+    datetime: '2015-12-18T17:38:46-08:00'
+    title: December 18, 2015  5:38 PM (PST)
+    content: December 18, 2015
+- release:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-10-a/swift-2.2-SNAPSHOT-2015-12-10-a-ubuntu14.04.tar.gz
+    content: Ubuntu 14.04 Swift 2.2 Snapshot
+  pgp:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-10-a/swift-2.2-SNAPSHOT-2015-12-10-a-ubuntu14.04.tar.gz.sig
+  time:
+    datetime: '2015-12-10T15:00:00-08:00'
+    title: December 10, 2015  3:00 PM (PST)
+    content: December 10, 2015
+- release:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-01-b/swift-2.2-SNAPSHOT-2015-12-01-b-ubuntu14.04.tar.gz
+    content: Ubuntu 14.04 Swift 2.2 Snapshot
+  pgp:
+    href: http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-01-b/swift-2.2-SNAPSHOT-2015-12-01-b-ubuntu14.04.tar.gz.sig
+  time:
+    datetime: '2015-12-01T15:00:00-08:00'
+    title: December 1, 2015  3:00 PM (PST)
+    content: December 1, 2015
