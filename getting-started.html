@@ -1,48 +1,39 @@
----
+﻿---
 layout: page
-title: 新手指南（英文）
+title: 新手指南
 ---
 
-  <p>Here, you’ll find information about the how to use the Swift programming language.</p>
+  <p>本文將會教你如何開始使用 Swift 程式語言。</p>
 
-<p>If you’re new to Swift, check out <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1">A Swift Tour</a> in
-<em>The Swift Programming Language</em>, for a quick introduction to the
-most important concepts and features of the language.</p>
+<p>如果你從沒用過  Swift ，請參考<em>Swift 程式語言</em> 中的 <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/GuidedTour.html#//apple_ref/doc/uid/TP40014097-CH2-ID1">A Swift Tour（英文）</a> ，來快速了解 Swift 最重要的概念和功能。</p>
 
-<h2 id="installing-swift">Installing Swift</h2>
+<h2 id="installing-swift">安裝 Swift </h2>
 
-<p>The first step to using Swift is to download and install
-the compiler and other required components.
-Go to the <a href="/download">Download</a> page
-and follow the instructions for your target platform.</p>
+<p>第一步是下載並安裝 Swift 編譯器和其它必要的元件。請至<a href="/download">下載</a>頁面，參考你的作業系統平台的說明。</p>
 
-<p>In order to follow along with the examples below,
-make sure to add Swift to your <code class="highlighter-rouge">$PATH</code>.</p>
+<p>為了讓下面的範例能正常運作，請將 Swift 加進你的<code class="highlighter-rouge">$PATH</code></p>
 
-<h3 id="on-os-x">On OS X</h3>
+<h3 id="on-os-x">在OS X上</h3>
 
-<p>The default location for the downloadable toolchain on OS X is
-<code class="highlighter-rouge">/Library/Developer/Toolchains</code>.
-You can make the tools available for use from the terminal with the following command:</p>
+<p>在OS X上，工具鏈的預設位置是<code class="highlighter-rouge">/Library/Developer/Toolchains</code> 。你可以使用以下指令讓 Swift 能在終端機中使用：
+</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
 </code></pre>
 </div>
 
-<h3 id="on-linux">On Linux</h3>
+<h3 id="on-linux">在Linux上</h3>
 
-<p>First, install clang:</p>
+<p>首先，安裝Clang：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install clang
 </code></pre>
 </div>
 
-<p>If you installed the Swift toolchain on Linux
-to a directory other than the system root,
-you will need to run the following command,
-using the actual path of your Swift installation:</p>
+<p>如果 Swift 工具鏈不是安裝在Linux的系統根目錄時，
+則需要執行下面的指令，將其中的 /path/to/Swift/ 改為你實際的 Swift 安裝路徑：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/path/to/Swift/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
@@ -51,8 +42,7 @@ using the actual path of your Swift installation:</p>
 
 <hr>
 
-<p>You can verify that you are running the expected version of Swift
-by entering the <code class="highlighter-rouge">swift</code> command and passing the <code class="highlighter-rouge">--version</code> flag:</p>
+<p>你可以透過 <code class="highlighter-rouge">swift</code> <code class="highlighter-rouge">--version</code> 來確認你執行的  Swift 版本</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>swift --version
@@ -60,16 +50,11 @@ Apple Swift version 2.2-dev <span class="o">(</span>LLVM ..., Clang ..., Swift .
 </code></pre>
 </div>
 
-<p>The <code class="highlighter-rouge">-dev</code> suffix on the version number
-is used to indicate that it’s a <em>development</em> build,
-not a released version.</p>
+<p>版本號上的<code class="highlighter-rouge">-dev</code>代表它<em>開發版</em> ，而不是正式發行版。</p>
 
-<h2 id="using-the-repl">Using the REPL</h2>
+<h2 id="using-the-repl">使用REPL</h2>
 
-<p>If you run the <code class="highlighter-rouge">swift</code> command without any other arguments,
-you’ll launch the REPL, an interactive shell
-that will read, evaluate, and print the results
-of any Swift code you enter.</p>
+<p>如果你不帶參數地執行<code class="highlighter-rouge">swift</code> ，REPL就會啟動，它是一個互動式的shell，可以執行你輸入的 Swift 程式。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>swift
@@ -78,9 +63,9 @@ Welcome to Apple Swift version 2.2. Type :help <span class="k">for </span>assist
 </code></pre>
 </div>
 
-<p>Interacting with the REPL is a great way to experiment with Swift.
-For example, if you enter the expression <code class="highlighter-rouge">1 + 2</code>,
-the result of the expression, <code class="highlighter-rouge">3</code>, is printed on the next line:</p>
+<p>使用 REPL 是體驗 Swift 的好方法。
+舉例來說，如果你輸入 <code class="highlighter-rouge">1 + 2</code>,
+就會在下一行顯示運算結果 <code class="highlighter-rouge">3</code> :</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>  1&gt; 1 + 2
@@ -88,11 +73,7 @@ the result of the expression, <code class="highlighter-rouge">3</code>, is print
 </code></pre>
 </div>
 
-<p>You can assign values to constants and variables,
-and use them in subsequent lines.
-For instance, the <code class="highlighter-rouge">String</code> value <code class="highlighter-rouge">Hello, world!</code>
-can be assigned to the constant <code class="highlighter-rouge">greeting</code>,
-and then passed as an argument to the <code class="highlighter-rouge">print(_:)</code> function:</p>
+<p>你可以定義常數和變數，然後使用它們。例如，可以定義<code class="highlighter-rouge">String</code> <code class="highlighter-rouge">Hello, world!</code>為常數<code class="highlighter-rouge">greeting</code> ，然後當作參數傳給<code class="highlighter-rouge">print(_:)</code> 函式：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>  2&gt; <span class="nb">let </span>greeting <span class="o">=</span> <span class="s2">"Hello!"</span>
@@ -102,8 +83,7 @@ Hello!
 </code></pre>
 </div>
 
-<p>If you enter an invalid expression,
-the REPL will print an error showing where the problem occurred:</p>
+<p>如果輸入一個無效的運算式，REPL會標示出有錯誤的地方：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="nb">let </span>answer <span class="o">=</span> <span class="s2">"forty"</span>-<span class="s2">"two"</span>
@@ -113,11 +93,7 @@ error: binary operator <span class="s1">'-'</span> cannot be applied to two <spa
 </code></pre>
 </div>
 
-<p>You can use the up-arrow and down-arrow keys (<code class="highlighter-rouge">↑</code> and <code class="highlighter-rouge">↓</code>)
-to cycle through previous lines entered into the REPL.
-This allows you to make a slight change to a previous expression
-without retyping the entire line,
-and is especially convenient for fixing errors like the one in the previous example:</p>
+<p>你可以使用上下方向鍵<code class="highlighter-rouge">↑</code>和<code class="highlighter-rouge">↓</code>來使用之前輸入過的程式碼。讓你可以對之前輸入的程式碼做小修改，用來修改像上一個例子中的錯誤時特別方便:</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="nb">let </span>answer <span class="o">=</span> <span class="s2">"forty-two"</span>
@@ -125,14 +101,7 @@ answer: String <span class="o">=</span> <span class="s2">"forty-two"</span>
 </code></pre>
 </div>
 
-<p>Another useful feature of the REPL
-is that it can automatically suggest functions and methods
-that can be used in a particular context.
-For example, if you enter <code class="highlighter-rouge">re</code>
-after a dot operator on a <code class="highlighter-rouge">String</code> value
-and then hit the tab key (<code class="highlighter-rouge">⇥</code>),
-the REPL will give a list of available completions
-like <code class="highlighter-rouge">removeAtIndex(_:)</code> and <code class="highlighter-rouge">replaceRange(_:with:)</code>:</p>
+<p>REPL 的另一個好用的功能是自動完成。例如在一個<code class="highlighter-rouge">String</code>執後面輸入<code class="highlighter-rouge">.re</code>，然後按下tab<code class="highlighter-rouge">(⇥)</code>鍵，REPL會列出可能的選項，像是<code class="highlighter-rouge">removeAtIndex(_:)</code>和<code class="highlighter-rouge">replaceRange(_:with:)</code></p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">5&gt; </span><span class="s2">"Hi!"</span>.re⇥
@@ -147,12 +116,7 @@ Available completions:
 </code></pre>
 </div>
 
-<p>If you start a block of code,
-such as when iterating over an array with a <code class="highlighter-rouge">for-in</code> loop,
-the REPL will automatically indent the next line,
-and change the prompt character from <code class="highlighter-rouge">&gt;</code> to <code class="highlighter-rouge">.</code>
-to indicate that code entered on that line
-will only be evaluated when the entire code block is evaluated.</p>
+<p>如果你開始了一個程式區塊, 比方說<code class="highlighter-rouge">for-in</code>，REPL會自動縮排下一行，並把提示字元從<code class="highlighter-rouge">&gt;</code>改成<code class="highlighter-rouge">.</code>來提示這段程式只有在整個程式區塊完成後才會被執行。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>  6&gt; <span class="nb">let </span>numbers <span class="o">=</span> <span class="o">[</span>1,2,3]
@@ -170,14 +134,11 @@ numbers: <span class="o">[</span>Int] <span class="o">=</span> 3 values <span cl
 </code></pre>
 </div>
 
-<p>All of the functionality of Swift is available to you from the REPL,
-from writing control flow statements
-to declaring and instantiating structures and classes.</p>
+<p>REPL 包含完整的 Swift 功能，從控制流程到定義 Struct 和 Class。</p>
 
-<p>You can also import any available system modules,
-such as <code class="highlighter-rouge">Darwin</code> on OS X and <code class="highlighter-rouge">Glibc</code> on Linux:</p>
+<p>你還可以import任何可用的系統 module，如OS X上的<code class="highlighter-rouge">Darwin</code>和Linux上的<code class="highlighter-rouge">Glibc</code> ：</p>
 
-<h3 id="on-os-x-1">On OS X</h3>
+<h3 id="on-os-x-1">OS X上</h3>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="mi">1</span><span class="o">&gt;</span> <span class="kd">import</span> <span class="kt">Darwin</span>
@@ -186,7 +147,7 @@ such as <code class="highlighter-rouge">Darwin</code> on OS X and <code class="h
 </code></pre>
 </div>
 
-<h3 id="on-linux-1">On Linux</h3>
+<h3 id="on-linux-1">Linux上</h3>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="mi">1</span><span class="o">&gt;</span> <span class="kd">import</span> <span class="kt">Glibc</span>
@@ -195,14 +156,11 @@ such as <code class="highlighter-rouge">Darwin</code> on OS X and <code class="h
 </code></pre>
 </div>
 
-<h2 id="using-the-build-system">Using the Build System</h2>
+<h2 id="using-the-build-system">使用Build System</h2>
 
-<p>Swift’s build system provides a convention-based system for
-building libraries and executables, and sharing code across different projects.</p>
+<p>Swift 的 build system 讓大家可以 build 函式庫和執行檔，還有在各 Project 間共用程式碼．</p>
 
-<p>These examples assume you have made <code class="highlighter-rouge">swift</code> available in your path;
-see <a href="#installing-swift">Installing</a> for more information.
-Once available, you can invoke the build system using <code class="highlighter-rouge">swift build</code>:</p>
+<p>這些範例需要你將<code class="highlighter-rouge">swift</code>加到你的 path 中;方法請看<a href="#installing-swift">安裝</a>。設定好後，你就可以使用<code class="highlighter-rouge">swift build</code> 來執行 build system：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>swift build --help
@@ -211,9 +169,9 @@ OVERVIEW: Build sources into binary products
 </code></pre>
 </div>
 
-<h3 id="creating-a-package">Creating a Package</h3>
+<h3 id="creating-a-package">建立一個 Package</h3>
 
-<p>To create a new Swift package, first create and navigate to a new directory named <code class="highlighter-rouge">Hello</code>:</p>
+<p>要建立一個新 Swift  Package，首先要建立一個<code class="highlighter-rouge">Hello</code> 資料夾並進入它：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>mkdir Hello
@@ -221,53 +179,41 @@ OVERVIEW: Build sources into binary products
 </code></pre>
 </div>
 
-<p>Every package must have a manifest file called <code class="highlighter-rouge">Package.swift</code> in its root directory.
-If the manifest file is blank,
-the package manager will build the package using conventional defaults.
-Create an empty manifest using:</p>
+<p>每個 Package 都必須在它的根目錄有一個名為<code class="highlighter-rouge">Package.swift</code>的資訊清單檔。如果資訊清單檔是空白的，Package Manager會使用慣例的預設值來build Package。建立空的Package.swift ：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>touch Package.swift
 </code></pre>
 </div>
 
-<p>When using the defaults,
-the package manager expects all source code to be contained in a <code class="highlighter-rouge">Sources/</code> subdirectory.
-Create that with:</p>
+<p>當使用預設值時，Package Manager 預期所有程式碼都在<code class="highlighter-rouge">Sources/</code>目錄中。建立 Sources 資料夾：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>mkdir Sources
 </code></pre>
 </div>
 
-<h3 id="building-an-executable">Building an Executable</h3>
+<h3 id="building-an-executable">Build 一個執行檔</h3>
 
-<p>By default, a directory that contains a file called <code class="highlighter-rouge">main.swift</code>
-will compile that file into a binary executable with the name of the package.</p>
+<p>預設情況下，會將程式碼資料夾內的<code class="highlighter-rouge">main.swift</code>編譯成執行檔，檔名就是 Package 名稱。</p>
 
-<p>In this example,
-the package will produce an executable named <code class="highlighter-rouge">Hello</code>
-that outputs “Hello, world!”.</p>
+<p>在這個例子中，編譯來出的<code class="highlighter-rouge">Hello</code>執行檔會輸出"Hello, world!" 。</p>
 
-<p>Create a file called <code class="highlighter-rouge">main.swift</code> in the <code class="highlighter-rouge">Sources/</code> directory
-and using your editor of choice,
-enter the following code:</p>
+<p>在<code class="highlighter-rouge">Sources/</code>目錄下建立一個名為<code class="highlighter-rouge">main.swift</code>的檔案，並使用你喜歡的編輯器輸入以下程式碼：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="s">"Hello, world!"</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<p>Compile the package by running the <code class="highlighter-rouge">swift build</code> command:</p>
+<p>使用<code class="highlighter-rouge">swift build</code>指令來編譯 Package：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>swift build
 </code></pre>
 </div>
 
-<p>After the command finishes,
-the built products will be available in the <code class="highlighter-rouge">.build</code> directory.
-Run the <code class="highlighter-rouge">Hello</code> program with the following command:</p>
+<p>指令完成後，編譯的成品會放在<code class="highlighter-rouge">.build</code>目錄。使用下面的指令來執行<code class="highlighter-rouge">Hello</code>程式：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>.build/debug/Hello
@@ -275,14 +221,11 @@ Hello, world!
 </code></pre>
 </div>
 
-<p>As a next step, let’s define a new <code class="highlighter-rouge">sayHello(_:)</code> function
-in a new source file, and have the executable call that
-instead of calling <code class="highlighter-rouge">print(_:)</code> directly.</p>
+<p>再來，讓我們在另一個檔案定義一個<code class="highlighter-rouge">sayHello(_:)</code>函式，再讓執行檔呼叫他，而不是直接呼叫<code class="highlighter-rouge">print(_:)</code>。</p>
 
-<h3 id="working-with-multiple-source-files">Working with Multiple Source Files</h3>
+<h3 id="working-with-multiple-source-files">使用多個程式檔</h3>
 
-<p>Create a new file in the <code class="highlighter-rouge">Sources/</code> directory called <code class="highlighter-rouge">Greeter.swift</code>,
-and enter the following code:</p>
+<p>在<code class="highlighter-rouge">Sources/</code>目錄下建立一個新的<code class="highlighter-rouge">Greeter.swift</code>檔案並輸入以下程式碼：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="kd">func</span> <span class="nf">sayHello</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
@@ -291,11 +234,9 @@ and enter the following code:</p>
 </code></pre>
 </div>
 
-<p>The <code class="highlighter-rouge">sayHello(_:)</code> function takes a single <code class="highlighter-rouge">String</code> argument
-and prints our “Hello” greeting before, substituting the word “World”
-with the function argument.</p>
+<p><code class="highlighter-rouge">sayHello(_:)</code>函式只有一個<code class="highlighter-rouge">String</code>參數，會輸出 Hello 加上傳入的參數。</p>
 
-<p>Now, open <code class="highlighter-rouge">main.swift</code> again, and replace the existing contents with the following code:</p>
+<p>現在打開<code class="highlighter-rouge">main.swift</code>，並把之前的內容更換成下面程式碼：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="k">if</span> <span class="kt">Process</span><span class="o">.</span><span class="n">arguments</span><span class="o">.</span><span class="n">count</span> <span class="o">!=</span> <span class="mi">2</span> <span class="p">{</span>
@@ -307,14 +248,9 @@ with the function argument.</p>
 </code></pre>
 </div>
 
-<p>Rather than using a hardcoded name as before,
-<code class="highlighter-rouge">main.swift</code> now reads from the command line arguments.
-And instead of invoking <code class="highlighter-rouge">print(_:)</code> directly,
-<code class="highlighter-rouge">main.swift</code> now calls the <code class="highlighter-rouge">sayHello(_:)</code> method.
-Because the method is part of the <code class="highlighter-rouge">Hello</code> module,
-no <code class="highlighter-rouge">import</code> statement is necessary.</p>
+<p><code class="highlighter-rouge">main.swift</code>現在會讀取command line參數而不是像以前那樣使用寫死的名字。而且<code class="highlighter-rouge">main.swift</code>現在不會直接呼叫<code class="highlighter-rouge">print(_:)</code>而是呼叫<code class="highlighter-rouge">sayHello(_:)</code>函式。因為這個函式是<code class="highlighter-rouge">Hello</code> module 的一部分，我們不需要<code class="highlighter-rouge">import</code>它。</p>
 
-<p>Run <code class="highlighter-rouge">swift build</code> and try out the new version of <code class="highlighter-rouge">Hello</code>:</p>
+<p>執行<code class="highlighter-rouge">swift build</code>與試試新的<code class="highlighter-rouge">Hello</code>程式</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>swift build
@@ -325,22 +261,14 @@ no <code class="highlighter-rouge">import</code> statement is necessary.</p>
 <hr>
 
 <blockquote>
-  <p>To learn about the Swift Package Manager,
-including how to build modules, import dependencies, and map system libraries,
-see the <a href="http://swift.org/package-manager">Swift Package Manager</a> section of the website.</p>
+  <p>要了解更多有關 Swift Package Manager，包括如何build module，import dependencies，以及使用系統函式庫，請參考<a href="/package-manager">Swift Package Manager</a>。</p>
 </blockquote>
 
-<h2 id="using-the-lldb-debugger">Using the LLDB Debugger</h2>
+<h2 id="using-the-lldb-debugger">使用LLDB Debugger</h2>
 
-<p>You can use the LLDB debugger to
-run Swift programs step-by-step,
-set breakpoints,
-and inspect and modify program state.</p>
+<p>你可以使用LLDB debugger 來一步一步地執行 Swift 程式，設置中斷點，檢查和修改程式狀態。</p>
 
-<p>As an example,
-consider the following Swift code,
-which defines a <code class="highlighter-rouge">factorial(_:)</code> function,
-and prints the result of calling that function:</p>
+<p>下面的 Swift 例子會定義一個<code class="highlighter-rouge">factorial(_:)</code>函式，並輸出呼叫該函式的結果：</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="kd">func</span> <span class="nf">factorial</span><span class="p">(</span><span class="nv">n</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int</span> <span class="p">{</span>
@@ -353,12 +281,7 @@ and prints the result of calling that function:</p>
 </code></pre>
 </div>
 
-<p>Create a file named <code class="highlighter-rouge">Factorial.swift</code> with the code above,
-and run the <code class="highlighter-rouge">swiftc</code> command,
-passing the filename as a command line argument,
-along with the <code class="highlighter-rouge">-g</code> option to generate debug information.
-This will create an executable named <code class="highlighter-rouge">Factorial</code>
-in the current directory.</p>
+<p>將上面的程式碼存成一個名為 <code class="highlighter-rouge">Factorial.swift</code> 檔案，並執行<code class="highlighter-rouge">swiftc</code>，將檔案名當​​作參數，同時使用<code class="highlighter-rouge">-g</code>選項產生除錯資訊。這樣會在現在的目錄下產生一個<code class="highlighter-rouge">Factorial</code>執行檔。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code><span class="gp">$ </span>swiftc -g Factorial.swift
@@ -369,9 +292,7 @@ Factorial<span class="k">*</span>
 </code></pre>
 </div>
 
-<p>Instead of running the <code class="highlighter-rouge">Factorial</code> program directly,
-run it through the LLDB debugger
-by passing it as a command line argument to the <code class="highlighter-rouge">lldb</code> command.</p>
+<p>不要直接執行<code class="highlighter-rouge">Factorial</code>，改為把它當成參數來透過<code class="highlighter-rouge">lldb</code>執行它。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>$ lldb Factorial
@@ -380,17 +301,13 @@ Current executable set to 'Factorial' (x86_64).
 </code></pre>
 </div>
 
-<p>This will start an interactive console
-that allows you to run LLDB commands.</p>
+<p>這會啟動一個互動式 console，可以執行LLDB指令。</p>
 
 <blockquote>
-  <p>For more information about LLDB commands,
-see the <a href="http://lldb.llvm.org/tutorial.html">LLDB Tutorial</a>.</p>
+  <p>有關LLDB指令的詳細資訊，請參閱<a href="http://lldb.llvm.org/tutorial.html">LLDB教學(英文)</a> 。</p>
 </blockquote>
 
-<p>Set a breakpoint on line 2 of the <code class="highlighter-rouge">factorial(_:)</code> function
-with the <code class="highlighter-rouge">breakpoint set</code> (<code class="highlighter-rouge">b</code>) command,
-to have the process break each time the function is executed.</p>
+<p>使用<code class="highlighter-rouge">breakpoint set</code> <code class="highlighter-rouge">(b)</code>指令來在<code class="highlighter-rouge">factorial(_:)</code>函數第二行設定中斷點，這樣每次執行這個函式的時候就會暫停。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>(lldb) b 2
@@ -398,8 +315,7 @@ Breakpoint 1: where = Factorial`Factorial.factorial (Swift.Int) -&gt; Swift.Int 
 </code></pre>
 </div>
 
-<p>Run the process with the <code class="highlighter-rouge">run</code> (<code class="highlighter-rouge">r</code>) command.
-The process will stop at the call site of the <code class="highlighter-rouge">factorial(_:)</code> function.</p>
+<p>使用<code class="highlighter-rouge">run</code> <code class="highlighter-rouge">(r)</code>來執行程式。程式會在<code class="highlighter-rouge">factorial(_:)</code>函式處暫停。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>(lldb) r
@@ -417,8 +333,7 @@ Process 40246 stopped
 </code></pre>
 </div>
 
-<p>Use the <code class="highlighter-rouge">print</code> (<code class="highlighter-rouge">p</code>) command
-to inspect the value of the <code class="highlighter-rouge">n</code> parameter.</p>
+<p>使用<code class="highlighter-rouge">print</code> <code class="highlighter-rouge">(p)</code>來檢查參數<code class="highlighter-rouge">n</code>的值。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>(lldb) p n
@@ -426,7 +341,7 @@ to inspect the value of the <code class="highlighter-rouge">n</code> parameter.<
 </code></pre>
 </div>
 
-<p>The <code class="highlighter-rouge">print</code> command can evaluate Swift expressions as well.</p>
+<p><code class="highlighter-rouge">print</code>也可以用來直接執行 Swift 程式碼。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>(lldb) p n * n
@@ -434,8 +349,7 @@ to inspect the value of the <code class="highlighter-rouge">n</code> parameter.<
 </code></pre>
 </div>
 
-<p>Use the <code class="highlighter-rouge">backtrace</code> (<code class="highlighter-rouge">bt</code>) command
-to show the frames leading to <code class="highlighter-rouge">factorial(_:)</code> being called.</p>
+<p><code class="highlighter-rouge">backtrace</code> <code class="highlighter-rouge">(bt)</code>可以顯示<code class="highlighter-rouge">factorial(_:)</code>被呼叫的 frame。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>(lldb) bt
@@ -447,8 +361,7 @@ to show the frames leading to <code class="highlighter-rouge">factorial(_:)</cod
 </code></pre>
 </div>
 
-<p>Use the <code class="highlighter-rouge">continue</code> (<code class="highlighter-rouge">c</code>) command
-to resume the process until the breakpoint is hit again.</p>
+<p>使用<code class="highlighter-rouge">continue</code> <code class="highlighter-rouge">(c)</code>來繼續執行直到下一個中斷點。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>(lldb) c
@@ -466,9 +379,7 @@ Process 40246 stopped
 </code></pre>
 </div>
 
-<p>Use the <code class="highlighter-rouge">print</code> (<code class="highlighter-rouge">p</code>) command again
-to inspect the value of the <code class="highlighter-rouge">n</code> parameter
-for the second call to <code class="highlighter-rouge">factorial(_:)</code>.</p>
+<p>再使用一次<code class="highlighter-rouge">print</code> <code class="highlighter-rouge">(p)</code>來檢查第二次呼叫<code class="highlighter-rouge">factorial(_:)</code>時參數<code class="highlighter-rouge">n</code>的值。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>(lldb) p n
@@ -476,10 +387,7 @@ for the second call to <code class="highlighter-rouge">factorial(_:)</code>.</p>
 </code></pre>
 </div>
 
-<p>Use the <code class="highlighter-rouge">breakpoint disable</code> (<code class="highlighter-rouge">br di</code>) command
-to disable all breakpoints
-and the <code class="highlighter-rouge">continue</code> (<code class="highlighter-rouge">c</code>) command
-to have the process run until it exits.</p>
+<p><code class="highlighter-rouge">breakpoint disable</code> <code class="highlighter-rouge">(br di)</code>可以關閉所有中斷點，再用<code class="highlighter-rouge">continue</code> <code class="highlighter-rouge">(c)</code>讓程式執行到結束。</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight"><code>(lldb) br di
@@ -493,15 +401,11 @@ Process 40246 exited with status = 0 (0x00000000)
 
 <hr>
 
-<p>Now that you’ve been introduced to the Swift REPL, build system, and debugger,
-here are a few suggestions for what to do next:</p>
+<p>現在你應該稍微了解 Swift REPL，build system 和 debugger了，再來你可以參考下面的頁面：</p>
 
 <ul>
-  <li>Check out the <a href="http://swift.org/package-manager">Package Manager project page</a>
-for a deep dive into the Swift build system and package manager.</li>
-  <li>Read <a href="/contributing">Contributing to Swift</a>
-to learn about the different ways you can participate in the Swift community.</li>
-  <li>Go to <a href="https://developer.apple.com/swift/resources/">developer.apple.com/swift</a>
-for additional Swift resources, including videos, sample code, and playgrounds.</li>
+  <li><a href="/package-manager">Package Manager</a>更詳細的介紹了 Swift build system 和 package manager。</li>
+  <li>閱讀<a href="/contributing">參與開發</a> 來了解參加Swift 開發社群的各種方法。</li>
+  <li><a href="https://developer.apple.com/swift/resources/">developer.apple.com/swift</a>
+有各種 Swift 相關的影片，範例程式和 playground。</li>
 </ul>
-
