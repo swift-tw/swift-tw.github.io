@@ -72,4 +72,6 @@ task :update_download_page do
   doc = Nokogiri::HTML(html)
   latest_builds = doc.css("#latest-builds .download a").map{|n| "http://swift.org#{n['href']}"}
   File.write("_data/latest_build_urls.yml", latest_builds.to_yaml)
+  latest_build_times = doc.css("#latest-builds .date time").map{|n| n.to_h.merge({"content" => n.content})}
+  File.write("_data/latest_build_times.yml", latest_build_times.to_yaml)
 end
