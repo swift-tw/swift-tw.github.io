@@ -3,11 +3,11 @@ require "pry-byebug"
 require 'nokogiri'
 require 'uri'
 
-def header(layout: "page")
+def header(layout: "page", title:"")
   <<-HEADER
 ---
 layout: #{layout}
-title: 
+title: #{title}
 ---
 HEADER
 end
@@ -53,4 +53,23 @@ task :download_post do
   t = DateTime.parse(ts)
   outputname = "_posts/"+ t.strftime("%Y-%m-%d") + "-#{filename}.html"
   File.write(outputname, post_header(t)+html)
+end
+
+def replace_at_css(old_doc, new_doc, css)
+    latest_builds = new_doc.css(css)
+    current_latest_builds = old_doc.css(css)[0]
+    current_latest_builds.replace(latest_builds)
+end
+
+task :update_download_page do
+  url = "https://swift.org/download/"
+  `aria2c -s 16 -x 16 -j 16 #{url}`
+  uri = URI(url)
+  filename = File.basename(uri.path)
+  origin_post_filename = "_origin_html/#{filename}.html"
+  `mv index.html.1 #{origin_post_filename}`
+  html = parse_article(origin_post_filename)
+  doc = Nokogiri::HTML(html)
+  latest_builds = doc.css("#latest-builds .download a").map{|n| "http://swift.org#{n['href']}"}
+  File.write("_data/latest_build_urls.yml", latest_builds.to_yaml)
 end
