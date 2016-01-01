@@ -189,47 +189,9 @@ so that we can investigate the problem.</p>
         </tr>
     </thead>
     <tbody>
-        
-            <tr>
-    
-    <td class="download">
-        <span class="release">
-          <a href="http://swift.org/builds/xcode/swift-2.2-SNAPSHOT-2015-12-10-a/swift-2.2-SNAPSHOT-2015-12-10-a-osx.pkg" title="Download" download="">Xcode Swift 2.2 Snapshot</a>
-          
-        </span>
-        
-        <span class="debug">
-          <a href="http://swift.org/builds/xcode/swift-2.2-SNAPSHOT-2015-12-10-a/swift-2.2-SNAPSHOT-2015-12-10-a-osx-symbols.pkg" download="">Debugging Symbols</a>
-          
-        </span>
-        
-    </td>
-    <td class="date">
-        <time datetime="2015-12-10T15:03:50-08:00" title="December 10, 2015  3:03 PM (PST)">December 10, 2015</time>
-    </td>
-</tr>
-
-        
-            <tr>
-    
-    <td class="download">
-        <span class="release">
-          <a href="http://swift.org/builds/xcode/swift-2.2-SNAPSHOT-2015-12-01-a/swift-2.2-SNAPSHOT-2015-12-01-a-osx.pkg" title="Download" download="">Xcode Swift 2.2 Snapshot</a>
-          
-        </span>
-        
-        <span class="debug">
-          <a href="http://swift.org/builds/xcode/swift-2.2-SNAPSHOT-2015-12-01-a/swift-2.2-SNAPSHOT-2015-12-01-a-osx-symbols.pkg" download="">Debugging Symbols</a>
-          
-        </span>
-        
-    </td>
-    <td class="date">
-        <time datetime="2015-12-01T15:03:50-08:00" title="December 1, 2015  3:03 PM (PST)">December 1, 2015</time>
-    </td>
-</tr>
-
-        
+      {% for build in site.data.osx_builds %}
+        {% include osx_build_tr.html param=build %}
+      {% endfor %}
     </tbody>
 </table>
 

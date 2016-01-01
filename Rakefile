@@ -61,6 +61,18 @@ def replace_at_css(old_doc, new_doc, css)
     current_latest_builds.replace(latest_builds)
 end
 
+def extract_time_node(timenode)
+ timenode.to_h.merge({"content" => timenode.content})
+end
+
+def extract_osx_build_node(n)
+  {
+    "release" => {"href" => "http://swift.org" + n.css(".download .release a")[0]['href'] },
+    "debug" => {"href" => "http://swift.org" + n.css(".download .debug a")[0]['href'] },
+    "time" => extract_time_node(n.css(".date time")[0])
+  }
+end
+
 task :update_download_page do
   url = "https://swift.org/download/"
   `aria2c -s 16 -x 16 -j 16 #{url}`
@@ -72,6 +84,9 @@ task :update_download_page do
   doc = Nokogiri::HTML(html)
   latest_builds = doc.css("#latest-builds .download a").map{|n| "http://swift.org#{n['href']}"}
   File.write("_data/latest_build_urls.yml", latest_builds.to_yaml)
-  latest_build_times = doc.css("#latest-builds .date time").map{|n| n.to_h.merge({"content" => n.content})}
+  latest_build_times = doc.css("#latest-builds .date time").map{|n| extract_time_node(n)}
   File.write("_data/latest_build_times.yml", latest_build_times.to_yaml)
+  osx_build_nodes = doc.css("#osx-builds > tbody > tr")
+  osx_build_infos = osx_build_nodes.map{|n| extract_osx_build_node(n)}
+  File.write("_data/osx_builds.yml", osx_build_infos.to_yaml)
 end
