@@ -226,41 +226,10 @@ You can install them anywhere as long as the extracted tools are in your <code c
         </tr>
     </thead>
     <tbody>
-        
-            <tr>
-    
-    <td class="download">
-        <span class="release">
-          <a href="http://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-10-a/swift-2.2-SNAPSHOT-2015-12-10-a-ubuntu15.10.tar.gz" title="Download" download="">Ubuntu 15.10 Swift 2.2 Snapshot</a>
-          
-            <a href="http://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-10-a/swift-2.2-SNAPSHOT-2015-12-10-a-ubuntu15.10.tar.gz.sig" title="PGP Signature">Signature</a>
-          
-        </span>
-        
-    </td>
-    <td class="date">
-        <time datetime="2015-12-10T15:00:00-08:00" title="December 10, 2015  3:00 PM (PST)">December 10, 2015</time>
-    </td>
-</tr>
 
-        
-            <tr>
-    
-    <td class="download">
-        <span class="release">
-          <a href="http://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-01-b/swift-2.2-SNAPSHOT-2015-12-01-b-ubuntu15.10.tar.gz" title="Download" download="">Ubuntu 15.10 Swift 2.2 Snapshot</a>
-          
-            <a href="http://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-01-b/swift-2.2-SNAPSHOT-2015-12-01-b-ubuntu15.10.tar.gz.sig" title="PGP Signature">Signature</a>
-          
-        </span>
-        
-    </td>
-    <td class="date">
-        <time datetime="2015-12-01T15:00:00-08:00" title="December 1, 2015  3:00 PM (PST)">December 1, 2015</time>
-    </td>
-</tr>
-
-        
+      {% for build in site.data.ubuntu_15_builds %}
+        {% include ubuntu_build_tr.html param=build %}
+      {% endfor %}
     </tbody>
 </table>
 
@@ -272,41 +241,9 @@ You can install them anywhere as long as the extracted tools are in your <code c
         </tr>
     </thead>
     <tbody>
-        
-            <tr>
-    
-    <td class="download">
-        <span class="release">
-          <a href="http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-10-a/swift-2.2-SNAPSHOT-2015-12-10-a-ubuntu14.04.tar.gz" title="Download" download="">Ubuntu 14.04 Swift 2.2 Snapshot</a>
-          
-            <a href="http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-10-a/swift-2.2-SNAPSHOT-2015-12-10-a-ubuntu14.04.tar.gz.sig" title="PGP Signature">Signature</a>
-          
-        </span>
-        
-    </td>
-    <td class="date">
-        <time datetime="2015-12-10T15:00:00-08:00" title="December 10, 2015  3:00 PM (PST)">December 10, 2015</time>
-    </td>
-</tr>
-
-        
-            <tr>
-    
-    <td class="download">
-        <span class="release">
-          <a href="http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-01-b/swift-2.2-SNAPSHOT-2015-12-01-b-ubuntu14.04.tar.gz" title="Download" download="">Ubuntu 14.04 Swift 2.2 Snapshot</a>
-          
-            <a href="http://swift.org/builds/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-01-b/swift-2.2-SNAPSHOT-2015-12-01-b-ubuntu14.04.tar.gz.sig" title="PGP Signature">Signature</a>
-          
-        </span>
-        
-    </td>
-    <td class="date">
-        <time datetime="2015-12-01T15:00:00-08:00" title="December 1, 2015  3:00 PM (PST)">December 1, 2015</time>
-    </td>
-</tr>
-
-        
+      {% for build in site.data.ubuntu_14_builds %}
+        {% include ubuntu_build_tr.html param=build %}
+      {% endfor %}
     </tbody>
 </table>
 

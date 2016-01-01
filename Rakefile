@@ -73,6 +73,15 @@ def extract_osx_build_node(n)
   }
 end
 
+def extract_ubuntu_build_node(n)
+  {
+    "release" => {"href" => "http://swift.org" + n.css(".download .release a")[0]['href'],
+                  "content" => n.css(".download .release a")[0].content },
+    "pgp" => {"href" => "http://swift.org" + n.css(".download .release a")[1]['href']},
+    "time" => extract_time_node(n.css(".date time")[0])
+  }
+end
+
 task :update_download_page do
   url = "https://swift.org/download/"
   `aria2c -s 16 -x 16 -j 16 #{url}`
@@ -89,4 +98,10 @@ task :update_download_page do
   osx_build_nodes = doc.css("#osx-builds > tbody > tr")
   osx_build_infos = osx_build_nodes.map{|n| extract_osx_build_node(n)}
   File.write("_data/osx_builds.yml", osx_build_infos.to_yaml)
+  ubuntu_15_builds_nodes = doc.css("#linux-builds")[0].css("tbody tr")
+  ubuntu_15_builds = ubuntu_15_builds_nodes.map{|n| extract_ubuntu_build_node(n)}
+  File.write("_data/ubuntu_15_builds.yml", ubuntu_15_builds.to_yaml)
+  ubuntu_14_builds_nodes = doc.css("#linux-builds")[1].css("tbody tr")
+  ubuntu_14_builds = ubuntu_14_builds_nodes.map{|n| extract_ubuntu_build_node(n)}
+  File.write("_data/ubuntu_14_builds.yml", ubuntu_14_builds.to_yaml)
 end
