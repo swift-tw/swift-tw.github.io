@@ -167,11 +167,11 @@ title: 下載 Swift
       <th>日期</th>
     </tr>
   </thead>
-  <tbody><td>
-      {% for build in site.data.osx_builds %}
-      {% include osx_build_tr.html param=build %}
-      {% endfor %}
-    </td></tbody>
+  <tbody>
+    {% for build in site.data.osx_builds %}
+    {% include osx_build_tr.html param=build %}
+    {% endfor %}
+  </tbody>
 </table>
 
 <h2 id="linux">Linux</h2>
@@ -203,12 +203,11 @@ title: 下載 Swift
       <th>日期</th>
     </tr>
   </thead>
-  <tbody><td>
-
-      {% for build in site.data.ubuntu_15_builds %}
-      {% include ubuntu_build_tr.html param=build %}
-      {% endfor %}
-    </td></tbody>
+  <tbody>
+    {% for build in site.data.ubuntu_15_builds %}
+    {% include ubuntu_build_tr.html param=build %}
+    {% endfor %}
+  </tbody>
 </table>
 
 <table id="linux-builds" class="downloads">
@@ -218,11 +217,11 @@ title: 下載 Swift
       <th>日期</th>
     </tr>
   </thead>
-  <tbody><td>
-      {% for build in site.data.ubuntu_14_builds %}
-      {% include ubuntu_build_tr.html param=build %}
-      {% endfor %}
-    </td></tbody>
+  <tbody>
+    {% for build in site.data.ubuntu_14_builds %}
+    {% include ubuntu_build_tr.html param=build %}
+    {% endfor %}
+  </tbody>
 </table>
 
 <h3 id="installation-1">安裝</h3>
