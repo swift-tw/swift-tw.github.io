@@ -1,0 +1,184 @@
+---
+layout: post
+title: Swift 2.2 Release Process(英文)
+date: 2016-01-05T10:00:00-08:00
+comments: true
+paginate: true
+categories: [Swift blog, Swift, Swift 2.2]
+---
+
+  <p>This post describes the goals, release process, and estimated schedule
+for Swift 2.2.</p>
+
+<p>Swift 2.2 is the first offical release of Swift after Swift was
+released as open source.  It will be a mostly source-compatible
+release with Swift 2.1, containing a large number of core improvements
+(e.g., bug fixes, enhancements to diagnostics, faster generated code)
+without many significant visible changes to the language itself.  It
+is intended to be an intermediate point between Swift 2 and Swift 3,
+with Swift 3 containing more disruptive changes to both the language
+and Standard Library.</p>
+
+<!--more-->
+
+<p>Swift on Linux will be included in this release.  However it is still
+relatively new and has known caveats.  Swift 2.2 will not include the
+<a href="/core-libraries/">Swift Core Libraries</a> but will include LLDB and the REPL.</p>
+
+<p>The <a href="/package-manager/">Swift Package Manager</a> is still early in development and
+will not be included in this release.</p>
+
+<p>In addition to its Swift.org release, Swift 2.2 will ship in a future version
+of Xcode.</p>
+
+<h2 id="logistics">Logistics</h2>
+
+<h3 id="impacted-repositories">Impacted Repositories</h3>
+
+<p>The following repositories will have a <code class="highlighter-rouge">swift-2.2-branch</code> to track sources as part of
+Swift 2.2 release:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift">swift</a></li>
+  <li><a href="https://github.com/apple/swift-llvm">swift-llvm</a></li>
+  <li><a href="https://github.com/apple/swift-clang">swift-clang</a></li>
+  <li><a href="https://github.com/apple/swift-lldb">swift-lldb</a></li>
+  <li><a href="https://github.com/apple/swift-cmark">swift-cmark</a></li>
+</ul>
+
+<h3 id="schedule">Schedule</h3>
+
+<ul>
+  <li>
+    <p>Swift 2.2 will branch from <code class="highlighter-rouge">master</code> on <strong>January 13, 2016</strong>.  After
+January 13 the <code class="highlighter-rouge">master</code> branch will primarily track Swift 3
+development.  This specifically applies to the <a href="https://github.com/apple/swift">swift</a>, <a href="https://github.com/apple/swift-lldb">swift-lldb</a>,
+and <a href="https://github.com/apple/swift-cmark">swift-cmark</a> repositories.</p>
+  </li>
+  <li>
+    <p>The <code class="highlighter-rouge">swift-2.2-branch</code> branches for the <a href="https://github.com/apple/swift-llvm">swift-llvm</a> and
+<a href="https://github.com/apple/swift-clang">swift-clang</a> repositories were created earlier, from roughly LLVM revision
+252576, to provide a longer period of time to stabilize the underlying
+LLVM platform. Those repositories will not be re-merging from
+<code class="highlighter-rouge">master</code>.</p>
+  </li>
+  <li>
+    <p>The final release date for Swift 2.2 is TBD.  The intent is for
+Swift 2.2 to undergo a convergence period and will likely be
+released sometime in March to May of 2016.</p>
+  </li>
+  <li>
+    <p><a href="/download/">Binary builds</a> of the Swift 2.2 release branch will be
+made available alongside snapshots of Swift’s <code class="highlighter-rouge">master</code> development branch.</p>
+  </li>
+  <li>
+    <p>Swift 3 will follow a similar branching process as Swift 2.2 and
+will be announced a future date.</p>
+  </li>
+</ul>
+
+<h3 id="getting-changes-into-swift-22">Getting Changes into Swift 2.2</h3>
+
+<ul>
+  <li>
+    <p>Before January 13 all changes going into Swift’s <code class="highlighter-rouge">master</code> branch by
+definition will be a part of Swift 2.2.</p>
+  </li>
+  <li>
+    <p>Afterwards, the only language/API changes that will be considered
+for Swift 2.2 after the branch will be ones that make it more source
+compatible with Swift 2.1 or migration warnings for code that will
+be a build error in Swift 3.  New features/extensions will not be
+accepted unless there is a really good reason to take them.</p>
+  </li>
+  <li>
+    <p>Criteria (as set by the release manager) for accepting changes will
+becoming increasingly restrictive over time as the release
+converges.</p>
+  </li>
+  <li>
+    <p>Contributions to the <code class="highlighter-rouge">swift-2.2-branch</code> for those without direct
+commit access can be initiated via a <a href="#pull-requests">pull request</a>.
+Pull requests should usually be used to pull in changes that are
+already in <code class="highlighter-rouge">master</code> unless those changes are specific to Swift 2.2
+and will not be included in Swift 3.  For example, a bug fix should
+first land in <code class="highlighter-rouge">master</code> and then pulled into <code class="highlighter-rouge">swift-2.2-branch</code>.</p>
+  </li>
+  <li>
+    <p>Core contributors with direct commit access will be able to directly
+cherry-pick or otherwise apply changes to <code class="highlighter-rouge">swift-2.2-branch</code> under
+the guidance of the respective code owner or release manager until a
+point in the schedule where the branch is under strict change
+control.  An announcement will be made to the relevant component
+development mailing list (e.g., <a href="https://lists.swift.org/mailman/listinfo/swift-dev">swift-dev</a>) once the
+<code class="highlighter-rouge">swift-2.2-branch</code> is under stricter change management. At that
+point all changes must go through a nomination process via a
+<a href="#pull-requests">pull request</a>.</p>
+  </li>
+</ul>
+
+<h3 id="release-management">Release Management</h3>
+
+<p>The overall management of the release will be overseen by the following
+individuals, who will announce when stricter control of change
+goes into effect for the Swift 2.2 release as the release converges:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/tkremenek">Ted Kremenek</a> is the overall release
+manager for Swift 2.2.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/bob-wilson">Bob Wilson</a> is the release manager
+for the LLVM and Clang components of Swift 2.2.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/k8stone">Kate Stone</a> is the
+release manager for the LLDB component of Swift 2.2.</p>
+  </li>
+</ul>
+
+<p>Please feel free to email <a href="https://lists.swift.org/mailman/listinfo/swift-dev">swift-dev</a> or Ted directly concerning any
+questions about the release management process.</p>
+
+<h3 id="pull-requests">Pull Requests</h3>
+
+<p>All pull requests nominating changes for inclusion in the
+<code class="highlighter-rouge">swift-2.2-branch</code> should include the following information:</p>
+
+<ul>
+  <li>
+    <p><strong>Explanation</strong>: A description of the issue being fixed or
+enhancement being made.  This can be brief, but it should be
+clear.</p>
+  </li>
+  <li>
+    <p><strong>Scope</strong>: An assessement of the impact/importance of the change.
+For example, is the change a source-breaking language change, etc.</p>
+  </li>
+  <li>
+    <p><strong>SR Issue</strong>: The SR if the change fixes/implements an
+issue/enhancement on <a href="https://bugs.swift.org">bugs.swift.org</a>.</p>
+  </li>
+  <li>
+    <p><strong>Risk</strong>: What is the (specific) risk to the release for taking this
+change?</p>
+  </li>
+  <li>
+    <p><strong>Testing</strong>: What specific testing has been done or needs to be done
+to further validate any impact of this change?</p>
+  </li>
+</ul>
+
+<p>One or more <a href="/community/#code-owners">code owners</a> for the impacted
+components should review the change. Technical review can be delegated
+by a code owner or otherwise requested as deemed appropriate or
+useful.</p>
+
+<p>Prior to the <code class="highlighter-rouge">swift-2.2-branch</code> going into restrictive change
+control (as announced by the release manager) a code owner is allowed
+to directly accept a pull request after it has gone through the
+aforementioned technical review.  Once restrictive change control is
+in place, only the release manager is allowed to accept a pull request
+into <code class="highlighter-rouge">swift-2.2-branch</code>.</p>
+
