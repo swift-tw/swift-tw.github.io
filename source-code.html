@@ -1,66 +1,57 @@
 ---
 layout: page
-title: 原始碼(英文)
+title: 原始碼
 ---
 
-  <p>The code for the Swift project is divided into several open-source repositories, all hosted on <a href="https://github.com/apple/">GitHub</a>.</p>
+<p>Swift project 的原始碼被分為幾個open-source repository，全都在<a href="https://github.com/apple/">GitHub</a>上 。</p>
 
-<h2 id="compiler-and-standard-library">Compiler and Standard Library</h2>
+<h2 id="compiler-and-standard-library">編譯器和標準函式庫</h2>
 
 <dl>
   <dt><a href="https://github.com/apple/swift">swift</a></dt>
-  <dd>The main Swift repository, which contains the source code for the Swift compiler, standard library, and SourceKit.</dd>
+  <dd>主要 Swift repository，包含 Swift 編譯器，標準函式庫和SourceKit的原始碼。</dd>
   <dt><a href="https://github.com/apple/swift-evolution">swift-evolution</a></dt>
-  <dd>Documents related to the continued evolution of Swift, including goals for upcoming releases proposals for changes to and extensions of Swift.</dd>
+  <dd>Swift 演進過程的文件，包括未來版本的目標，Swift 修改和擴展的提案。</dd>
 </dl>
 
-<p>Directions for building the Swift compiler and standard library, along
-with its prerequisites, are provided by the <a href="https://github.com/apple/swift/blob/master/README.md">main Swift repository’s
-README
-file</a>.</p>
+<p>Build Swift 編譯器和標準函式庫的方法與需求，都在<a href="https://github.com/apple/swift/blob/master/README.md">Swift repository 的README文件中</a> 。</p>
 
-<h2 id="core-libraries">Core Libraries</h2>
+<h2 id="core-libraries">核心函式庫</h2>
 
 <dl>
   <dt><a href="https://github.com/apple/swift-corelibs-foundation">swift-corelibs-foundation</a></dt>
-  <dd>The source code for Foundation, which provides common functionality for all applications.</dd>
+  <dd>Foundation 函式庫的原始碼，為所有程式提供常用的功能。</dd>
   <dt><a href="https://github.com/apple/swift-corelibs-libdispatch">swift-corelibs-libdispatch</a></dt>
-  <dd>The source code for libdispatch, which provides concurrency primitives for working on multicore hardware.</dd>
+  <dd>libdispatch 的原始碼，為多核心硬體提供並行運算基礎。</dd>
   <dt><a href="https://github.com/apple/swift-corelibs-xctest">swift-corelibs-xctest</a></dt>
-  <dd>The source code for XCTest, which provides fundamental testing infrastructure for Swift apps and libraries.</dd>
+  <dd>XCTest 的原始碼，它提供Swift 程式和函式庫基本的測試工具。</dd>
 </dl>
 
 <h2 id="package-manager">Package Manager</h2>
 
 <dl>
   <dt><a href="https://github.com/apple/swift-package-manager">swift-package-manager</a></dt>
-  <dd>The source code for the Swift package manager.</dd>
+  <dd>Swift package manager 的原始碼。</dd>
   <dt><a href="https://github.com/apple/swift-llbuild">swift-llbuild</a></dt>
-  <dd>The source code for llbuild, a low-level build system used by the Swift package manager.</dd>
+  <dd>llbuild 的原始碼，Swift package manager 所使用的一個低階 build 系統。</dd>
 </dl>
 
 <h2 id="cloned-repositories">Cloned Repositories</h2>
 
-<p>Swift builds upon several other open-source projects, most notably
-<a href="http://llvm.org">the LLVM Compiler Infrastructure</a>. Swift’s clones of
-the repositories of those open-source projects contain Swift-specific
-changes and are merged regularly from their upstream sources. For more information about the clones of LLVM repositories, see the section on <a href="/contributing/#llvm-and-swift">LLVM and Swift</a>.</p>
+<p>Swift 是建立在其他幾個開源 project 上的，其中最重要的是<a href="http://llvm.org">LLVM編譯器工具</a> 。Swift 對這些開源 project 的 clone repository 包含專為 Swift 所做的更動，且會常常和upstream merge。有關LLVM clone 的更多資料，請參閱<a href="/contributing/#llvm-and-swift">LLVM和Swift</a> 。</p>
 
 <dl>
   <dt><a href="https://github.com/apple/swift-llvm">swift-llvm</a></dt>
-  <dd>The source code for <a href="http://llvm.org">LLVM</a>, with a handful of Swift-specific additions. Merged regularly from the <a href="http://llvm.org/viewvc/llvm-project/llvm/trunk/">LLVM sources at llvm.org</a>.</dd>
+  <dd><a href="http://llvm.org">LLVM</a>的原始碼，有少數Swift 專用的修改內容。定期和<a href="http://llvm.org/viewvc/llvm-project/llvm/trunk/">llvm.org的LLVM </a> merge。</dd>
   <dt><a href="https://github.com/apple/swift-clang">swift-clang</a></dt>
-  <dd>The source code for <a href="http://clang.llvm.org">Clang</a>, with a handful of Swift-specific additions. Merged regularly from the <a href="http://llvm.org/viewvc/llvm-project/cfe/trunk/">Clang sources at llvm.org</a>.</dd>
+  <dd><a href="http://clang.llvm.org">Clang</a>的原始碼，有少數Swift 專用的修改內容。定期和<a href="http://llvm.org/viewvc/llvm-project/cfe/trunk/">llvm.org的Clang </a> merge。</dd>
   <dt><a href="https://github.com/apple/swift-lldb">swift-lldb</a></dt>
-  <dd>The source code for the Swift-enabled version of <a href="http://lldb.llvm.org">LLDB</a>, for debugging Swift programs. Merged regularly from the <a href="http://llvm.org/viewvc/llvm-project/lldb/">LLDB sources at llvm.org</a>.</dd>
+  <dd>Swift 版<a href="http://lldb.llvm.org">LLDB</a>的原始碼，用來debug Swift 程式。定期和<a href="http://llvm.org/viewvc/llvm-project/lldb/">llvm.org的LLDB </a> merge。</dd>
   <dt><a href="https://github.com/apple/swift-cmark">swift-cmark</a></dt>
-  <dd>The source code for <a href="https://github.com/jgm/cmark">CommonMark</a>, which is used in the Swift compiler.</dd>
+  <dd><a href="https://github.com/jgm/cmark">CommonMark</a>的原始碼，Swift 編譯器中有使用到。</dd>
 </dl>
 
-<p>Directions
-for building LLDB for Swift are present in the <a href="https://github.com/apple/swift-lldb/blob/master/README.md" title="LLDB README">swift-lldb repository’s
-README file</a>.</p>
+<p>Build Swift版LLDB的方法在<a title="LLDB README" href="https://github.com/apple/swift-lldb/blob/master/README.md">LLDB的README文件</a>中 。</p>
 
 <hr>
-
 
