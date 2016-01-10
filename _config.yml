@@ -23,7 +23,7 @@ paginate_path:    "/blog/page:num/"
 excerpt_separator: <!--more-->
 
 # Custom vars
-version:          16.1.10.0
+version:          16.1.10.1
 
 github:
         repo:           'https://github.com/swift-tw/swift-tw.github.io'
