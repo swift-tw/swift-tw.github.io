@@ -1,5 +1,14 @@
 ---
 - release:
+    href: http://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-ubuntu15.10.tar.gz
+    content: Ubuntu 15.10 Swift 2.2 Snapshot
+  pgp:
+    href: http://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-ubuntu15.10.tar.gz.sig
+  time:
+    datetime: '2015-12-31T15:31:37-08:00'
+    title: December 31, 2015  3:31 PM (PST)
+    content: December 31, 2015
+- release:
     href: http://swift.org/builds/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-22-a/swift-2.2-SNAPSHOT-2015-12-22-a-ubuntu15.10.tar.gz
     content: Ubuntu 15.10 Swift 2.2 Snapshot
   pgp:
