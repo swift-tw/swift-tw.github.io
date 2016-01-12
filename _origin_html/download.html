@@ -265,7 +265,7 @@ by downloading one of the packages above.</p>
 
 <ul>
   <li>OS X 10.11 (El Capitan)</li>
-  <li><a href="https://developer.apple.com/xcode/">Xcode 7.2</a> (including prerelease versions)</li>
+  <li><a href="https://developer.apple.com/xcode/">Xcode 7.2</a> or later</li>
 </ul>
 
 <h4 id="supported-target-platforms">Supported Target Platforms</h4>
@@ -293,26 +293,51 @@ which will install an Xcode toolchain into
     <p>An Xcode toolchain (<code class="highlighter-rouge">.xctoolchain</code>) includes a copy of the compiler, lldb, and other related tools needed to provide a cohesive development experience for working in a specific version of Swift.</p>
   </li>
   <li>
-    <p>Quit Xcode if it is already running.</p>
+    <p>For <strong>Xcode 7.3</strong>:</p>
+
+    <ol>
+      <li>
+        <p>Open Xcode’s <code class="highlighter-rouge">Preferences</code>, navigate to <code class="highlighter-rouge">Components &gt; Toolchains</code>, and select the installed <code class="highlighter-rouge">Xcode Swift 2.2 Snapshot</code> toolchain.</p>
+      </li>
+      <li>
+        <p>Xcode uses the selected toolchain for building Swift code, debugging, and even code completion and syntax coloring.  You’ll see a new toolchain indicator in Xcode’s toolbar when Xcode is using a Swift toolchain.  Select the <code class="highlighter-rouge">Xcode 7.3 Default</code> toolchain to go back to Xcode’s built-in tools.</p>
+      </li>
+      <li>
+        <p>Selecting a Swift toolchain affects the Xcode IDE only.  To use the Swift toolchain with command-line tools, use <code class="highlighter-rouge">xcrun --toolchain swift</code> and <code class="highlighter-rouge">xcodebuild TOOLCHAINS=swift</code>, or add the Swift toolchain to your path as follows:</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
+</code></pre>
+        </div>
+      </li>
+    </ol>
   </li>
   <li>
-    <p>Start Xcode with the custom toolchain you downloaded to enable the
+    <p>For <strong>Xcode 7.2</strong>:</p>
+
+    <ol>
+      <li>
+        <p>Quit Xcode if it is already running.</p>
+      </li>
+      <li>
+        <p>Start Xcode with the custom toolchain you downloaded to enable the
 open source version of Swift:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>xcrun launch-with-toolchain /Library/Developer/Toolchains/swift-latest.xctoolchain
+        <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>xcrun launch-with-toolchain /Library/Developer/Toolchains/swift-latest.xctoolchain
 </code></pre>
-    </div>
+        </div>
 
-    <p><code class="highlighter-rouge">swift-latest.xctoolchain</code> is a symlink to your most recently installed toolchain, such as <code class="highlighter-rouge">swift-2.2-SNAPSHOT-2015-12-01-a.xctoolchain</code>.  The name of each toolchain indicates the date the toolchain was built from the open source <code class="highlighter-rouge">master</code> branch (which tracks bleeding-edge development on Swift).</p>
+        <p><code class="highlighter-rouge">swift-latest.xctoolchain</code> is a symlink to your most recently installed toolchain, such as <code class="highlighter-rouge">swift-2.2-SNAPSHOT-2015-12-01-a.xctoolchain</code>.  The name of each toolchain indicates the date the toolchain was built from the open source <code class="highlighter-rouge">master</code> branch (which tracks bleeding-edge development on Swift).</p>
 
-    <p>Within a running instance of Xcode launched with <code class="highlighter-rouge">launch-with-toolchain</code>, Xcode uses the downloaded toolchain for building Swift code, debugging, and even code completion and syntax coloring.  If you quit Xcode, you must relaunch it with <code class="highlighter-rouge">launch-with-toolchain</code> to continue using the downloaded toolchain; otherwise, Xcode uses its default toolchain the next time you launch it.</p>
-  </li>
-  <li>
-    <p>To use the Swift tools directly from the command line, add the Swift toolchain to your path as follows:</p>
+        <p>Within a running instance of Xcode launched with <code class="highlighter-rouge">launch-with-toolchain</code>, Xcode uses the downloaded toolchain for building Swift code, debugging, and even code completion and syntax coloring.  If you quit Xcode, you must relaunch it with <code class="highlighter-rouge">launch-with-toolchain</code> to continue using the downloaded toolchain; otherwise, Xcode uses its default toolchain the next time you launch it.</p>
+      </li>
+      <li>
+        <p>To use the Swift tools directly from the command line, add the Swift toolchain to your path as follows:</p>
 
-    <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
+        <div class="highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
 </code></pre>
-    </div>
+        </div>
+      </li>
+    </ol>
   </li>
 </ol>
 
