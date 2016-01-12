@@ -21,7 +21,7 @@ title: 下載 Swift
 
       <td class="download">
         <span class="release">
-          <a title="下載" href="{{ site.data.latest_build_urls[0] }}" download="">Xcode Swift 2.2 Snapshot</a>
+          <a href="{{ site.data.latest_build_urls[0] }}" title="下載" download="">Xcode Swift 2.2 Snapshot</a>
 
         </span>
 
@@ -43,9 +43,9 @@ title: 下載 Swift
 
       <td class="download">
         <span class="release">
-          <a title="下載" href="{{ site.data.latest_build_urls[2] }}" download="">Ubuntu 15.10 Swift 2.2 Snapshot</a>
+          <a href="{{ site.data.latest_build_urls[2] }}" title="下載" download="">Ubuntu 15.10 Swift 2.2 Snapshot</a>
 
-          <a title="PGP簽章" href="{{ site.data.latest_build_urls[3] }}">Signature</a>
+          <a href="{{ site.data.latest_build_urls[3] }}" title="PGP簽章">Signature</a>
 
         </span>
 
@@ -62,9 +62,9 @@ title: 下載 Swift
 
       <td class="download">
         <span class="release">
-          <a title="下載" href="{{ site.data.latest_build_urls[4] }}" download="">Ubuntu 14.04 Swift 2.2 Snapshot</a>
+          <a href="{{ site.data.latest_build_urls[4] }}" title="下載" download="">Ubuntu 14.04 Swift 2.2 Snapshot</a>
 
-          <a title="PGP簽章" href="{{ site.data.latest_build_urls[5] }}">Signature</a>
+          <a href="{{ site.data.latest_build_urls[5] }}" title="PGP簽章">Signature</a>
 
         </span>
 
@@ -80,9 +80,9 @@ title: 下載 Swift
 
 <p>Swift 使用 Swift 許可證 <a href="/LICENSE.txt">swift.org/LICENSE.txt</a> </p>
 
-<h2 id="apple-platforms">Apple 平台</h2>
+<h2 id="apple-platforms">Appl平台</h2>
 
-<p>Xcode 包括 Apple 官方版本的 Swift。你可以下載上面的package 來嘗試目前開發中的版本。</p>
+<p>Xcode 包括 Apple官方版本的 Swift。你可以下載上面的package 來嘗試目前開發中的版本。</p>
 
 <div class="warning">
   <p>開發版 Swift 目前不支援 Playground。</p>
@@ -97,7 +97,7 @@ title: 下載 Swift
 <ul>
   <li>OS X 10.11 (El Capitan)</li>
   <li>
-    <a href="https://developer.apple.com/xcode/">Xcode 7.2</a>（包括 prerelease 版）</li>
+    <a href="https://developer.apple.com/xcode/">Xcode 7.2</a>或更高版本</li>
 </ul>
 
 <h4 id="supported-target-platforms">支援的平台</h4>
@@ -123,27 +123,53 @@ title: 下載 Swift
     <p>Xcode 工具鏈(<code class="highlighter-rouge">.xctoolchain</code>)包括特定版本的 Swift 編譯器，LLDB，還有相關開發工具。</p>
   </li>
   <li>
-    <p>如果Xcode正在執行中，關閉它。</p>
+    <p>使用<strong>Xcode 7.3：</strong></p>
+
+    <ol>
+      <li>
+        <p>打開Xcode的<code class="highlighter-rouge">Preferences</code> ，開啟<code class="highlighter-rouge">Components &gt; Toolchains</code> ，選擇已安裝的<code class="highlighter-rouge">Xcode Swift 2.2 Snapshot</code>工具鏈。</p>
+      </li>
+      <li>
+        <p>Xcode會使用你選擇的工具鏈來build ，debug，還有進行自動完成和語法著色。Xcode使用  Swift 工具鏈時，你會在Xcode工具欄看到工具鏈標誌，。可以在選擇<code class="highlighter-rouge">Xcode 7.3 Default</code>工具鏈來回到Xcode的預設工具鏈。</p>
+      </li>
+      <li>
+        <p>選擇 Swift 工具鏈只會影響Xcode IDE。要讓 command-line tools 使用 Swift 工具鏈的話，使用<code class="highlighter-rouge">xcrun --toolchain swift</code>和<code class="highlighter-rouge">xcodebuild TOOLCHAINS=swift</code> ，或把 Swift 工具鏈加進到你的PATH，如下所示：</p>
+
+        <div class="highlighter-rouge">
+          <pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
+          </code></pre>
+        </div>
+      </li>
+    </ol>
   </li>
   <li>
-    <p>使用你下載的開源版工具鏈來啟動Xcode：</p>
+    <p>使用<strong>Xcode 7.2：</strong></p>
 
-    <div class="highlighter-rouge">
-      <pre class="highlight"><code><span class="gp">$ </span>xcrun launch-with-toolchain /Library/Developer/Toolchains/swift-latest.xctoolchain
-      </code></pre>
-    </div>
+    <ol>
+      <li>
+        <p>如果Xcode正在執行中，關閉它。</p>
+      </li>
+      <li>
+        <p>使用你下載的開源版工具鏈來啟動Xcode：</p>
 
-    <p><code class="highlighter-rouge">swift-latest.xctoolchain</code>是你最近安裝的工具鏈的 symbolic link，如<code class="highlighter-rouge">swift-2.2-SNAPSHOT-2015-12-01-a.xctoolchain</code>。工具鏈的名稱是它從<code class="highlighter-rouge">master</code> branch （最新開發進度） build 出來的日期。</p>
+        <div class="highlighter-rouge">
+          <pre class="highlight"><code><span class="gp">$ </span>xcrun launch-with-toolchain /Library/Developer/Toolchains/swift-latest.xctoolchain
+          </code></pre>
+        </div>
 
-    <p>當使用 <code class="highlighter-rouge">launch-with-toolchain</code> 來啟動Xcode時 ，Xcode會使用你下載的工具鏈來build ，debug，還有進行自動完成和語法著色。關閉 Xcode 後，重新啟動 Xcode 時需要再一次使用<code class="highlighter-rouge">launch-with-toolchain</code>來使用下載的工具鏈。否則 Xcode 會使用預設工具鏈來啟動。</p>
-  </li>
-  <li>
-    <p>要直接在 command line 中使用 Swift 的話，需要將 Swift 工具鏈加進到你的 path，如下所示：</p>
+        <p><code class="highlighter-rouge">swift-latest.xctoolchain</code>是你最近安裝的工具鏈的 symbolic link，如<code class="highlighter-rouge">swift-2.2-SNAPSHOT-2015-12-01-a.xctoolchain</code>。工具鏈的名稱是它從<code class="highlighter-rouge">master</code> branch （最新開發進度） build 出來的日期。</p>
 
-    <div class="highlighter-rouge">
-      <pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
-      </code></pre>
-    </div>
+        <p>當使用 <code class="highlighter-rouge">launch-with-toolchain</code> 來啟動Xcode時 ，Xcode會使用你下載的工具鏈來build ，debug，還有進行自動完成和語法著色。關閉 Xcode 後，重新啟動 Xcode 時需要再一次使用<code class="highlighter-rouge">launch-with-toolchain</code>來使用下載的工具鏈。否則 Xcode 會使用預設工具鏈來啟動。</p>
+      </li>
+      <li>
+        <p>要直接在 command line 中使用 Swift 的話，需要將 Swift 工具鏈加進到你的 path，如下所示：</p>
+
+        <div class="highlighter-rouge">
+          <pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:<span class="s2">"</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
+          </code></pre>
+        </div>
+      </li>
+    </ol>
   </li>
 </ol>
 
@@ -167,11 +193,11 @@ title: 下載 Swift
       <th>日期</th>
     </tr>
   </thead>
-  <tbody>
-    {% for build in site.data.osx_builds %}
-    {% include osx_build_tr.html param=build %}
-    {% endfor %}
-  </tbody>
+  <tbody><td>
+      {% for build in site.data.osx_builds %}
+      {% include osx_build_tr.html param=build %}
+      {% endfor %}
+    </td></tbody>
 </table>
 
 <h2 id="linux">Linux</h2>
@@ -203,11 +229,12 @@ title: 下載 Swift
       <th>日期</th>
     </tr>
   </thead>
-  <tbody>
-    {% for build in site.data.ubuntu_15_builds %}
-    {% include ubuntu_build_tr.html param=build %}
-    {% endfor %}
-  </tbody>
+  <tbody><td>
+
+      {% for build in site.data.ubuntu_15_builds %}
+      {% include ubuntu_build_tr.html param=build %}
+      {% endfor %}
+    </td></tbody>
 </table>
 
 <table id="linux-builds" class="downloads">
@@ -217,11 +244,11 @@ title: 下載 Swift
       <th>日期</th>
     </tr>
   </thead>
-  <tbody>
-    {% for build in site.data.ubuntu_14_builds %}
-    {% include ubuntu_build_tr.html param=build %}
-    {% endfor %}
-  </tbody>
+  <tbody><td>
+      {% for build in site.data.ubuntu_14_builds %}
+      {% include ubuntu_build_tr.html param=build %}
+      {% endfor %}
+    </td></tbody>
 </table>
 
 <h3 id="installation-1">安裝</h3>
