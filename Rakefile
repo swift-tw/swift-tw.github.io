@@ -40,6 +40,17 @@ task :parse_file do
   File.write(outputname,header + parsed_html)
 end
 
+task :download_page do
+  url = ENV['url']
+  `aria2c -s 16 -x 16 -j 16 #{url}`
+  uri = URI(url)
+  filename = File.basename(uri.path)
+  origin_post_filename = "_origin_html/#{filename}.html"
+  `mv index.html.1 #{origin_post_filename}`
+  html = parse_article(origin_post_filename)
+  File.write("#{filename}.html",header + html)
+end
+
 task :download_post do
   url = ENV['url']
   `aria2c -s 16 -x 16 -j 16 #{url}`
