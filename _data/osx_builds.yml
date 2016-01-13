@@ -1,5 +1,13 @@
 ---
 - release:
+    href: http://swift.org/builds/xcode/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-osx.pkg
+  debug:
+    href: http://swift.org/builds/xcode/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-osx-symbols.pkg
+  time:
+    datetime: '2016-01-06T05:18:21-08:00'
+    title: January 6, 2016  5:18 AM (PST)
+    content: January 6, 2016
+- release:
     href: http://swift.org/builds/xcode/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-osx.pkg
   debug:
     href: http://swift.org/builds/xcode/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-osx-symbols.pkg
