@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - It&#39;s Coming: the Great Swift API Transformation</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/blog/swift-api-transformation/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="It&#39;s Coming: the Great Swift API Transformation" />
+  <meta name="twitter:description" content="Cocoa, the Swift standard library, maybe even your own types and
+methods—it’s all about to change, and you can help determine how.
+
+" />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="It's Coming: the Great Swift API Transformation" />
+  <meta property="og:url" content="https://swift.org/blog/swift-api-transformation/" />
+  <meta property="og:description" content="Cocoa, the Swift standard library, maybe even your own types and
+methods—it’s all about to change, and you can help determine how.
+
+" />
+  <meta property="article:published_time" content="2016-01-29T00:00:00-08:00" />
+  <meta property="article:modified_time" content="2016-01-30T18:24:05-08:00" />
+  
+</head>
+
+<body>
+  <nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+  <main role="main">
+    <article class="post">
+  <div class="meta">
+    
+    
+    <img src="https://s.gravatar.com/avatar/5b45540ae377ec54a071f313b7193a27?s=40">
+    
+    
+    <span class="author">
+      
+      <a href="https://github.com/dabrahams/">
+      Dave Abrahams</a>
+      
+    </span>
+    
+  </div>
+  <header>
+    <h1>It's Coming: the Great Swift API Transformation</h1>
+    <time pubdate datetime="2016-01-29T00:00:00-08:00">January 29, 2016</time>
+  </header>
+
+  <p>Cocoa, the Swift standard library, maybe even your own types and
+methods—it’s all about to change, and you can help determine how.</p>
+
+<p>Ever since before Swift was released, there’s been a style gap between
+Cocoa interfaces and APIs in the Swift standard library; lots of
+things just look <em>different</em>, often needlessly so. This is no mere
+aesthetic concern; non-uniformity and lack of predictability make
+everything harder, from coding to debugging to maintenance.
+Fortunately Swift developers created tons of great code in spite of
+that gap, and along the way, there evolved a sense of what 
+“Swifty” code looks and feels like.</p>
+
+<p>Informed by that experience, when looking at our APIs, it’s easy to
+see there’s room for improvement, both in the way the compiler imports
+Objective-C APIs—where the results just don’t seem quite comfortable
+in Swift—and in the Swift standard library, which lacks a level of
+regularity and coherence that Cocoa users have come to expect. So we
+at Apple decided to do something about it.</p>
+
+<p>In order to converge Cocoa and the standard library, we needed a
+target to shoot for: a unified, written approach to API design that
+everyone could follow.  We started by going back and questioning all
+our old assumptions.  Existing guidelines were fantastic, but much of
+the material was geared to Objective-C, didn’t cover Swift-specific
+features such as default arguments, and more importantly, were not
+informed by the emergent sense of “Swiftiness” that we felt was so
+important to capture.</p>
+
+<p>As we developed these guidelines we applied them to the standard
+library, all of Cocoa, and a couple of sample projects. We evaluated
+the results, refined, and repeated.  Before Swift went open source,
+we’d have done this all behind closed doors, and presented you with
+the results in the next release, but a new era has dawned on Swift:
+it’s time to show the world what we’ve been up to.  Here’s a tiny
+example of how code looks before transformation:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">UIBezierPath</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCopying</span><span class="p">,</span> <span class="kt">NSCoding</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="o">...</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLineToPoint</span><span class="p">(</span><span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">fillWithBlendMode</span><span class="p">(</span><span class="n">kCGBlendModeMultiply</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>and after:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">UIBezierPath</span> <span class="p">:</span> <span class="kt">Object</span><span class="p">,</span> <span class="kt">Copying</span><span class="p">,</span> <span class="kt">Coding</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span>
+<span class="o">...</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">addLineTo</span><span class="p">(</span><span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">path</span><span class="o">.</span><span class="nf">fillWith</span><span class="p">(</span><span class="n">kCGBlendModeMultiply</span><span class="p">,</span> <span class="nv">alpha</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>We’ve put three parts of this proposed transformation up for public
+review in <a href="https://swift.org/community/#mailing-lists">Swift’s evolution group</a>:
+<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md">changes to how Cocoa is imported</a>,
+<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0006-apply-api-guidelines-to-the-standard-library.md">changes to the surface of the standard library</a>,
+and the
+<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0023-api-guidelines.md">API guidelines</a>
+that tie this all together. Suggestions for improvement have already
+started coming in
+from participants, and we’re able to see how they
+<a href="https://github.com/apple/swift-3-api-guidelines-review/pull/5/files">affect APIs</a>.</p>
+
+<p>For example,
+<a href="http://news.gmane.org/find-root.php?message_id=3C5040B3%2dA205%2d46FA%2d98D3%2d5696D678EB39%40gmail.com">one suggestion</a>
+we’ve
+<a href="http://news.gmane.org/find-root.php?message_id=18A8335F%2d65F3%2d46A1%2dA494%2dAA89AC10836B%40apple.com">explored</a>
+changes this call:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">path</span><span class="o">.</span><span class="nf">addArcWithCenter</span><span class="p">(</span>
+  <span class="n">origin</span><span class="p">,</span> <span class="nv">radius</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">,</span> 
+  <span class="nv">startAngle</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">endAngle</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">M_PI</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">,</span> <span class="nv">clockwise</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>into this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">path</span><span class="o">.</span><span class="nf">addArc</span><span class="p">(</span>
+  <span class="nv">center</span><span class="p">:</span> <span class="n">origin</span><span class="p">,</span> <span class="nv">radius</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">,</span> 
+  <span class="nv">startAngle</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nv">endAngle</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">M_PI</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span><span class="p">,</span> <span class="nv">clockwise</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Will we make this change? The jury is out, but this is the time to
+make your voice heard.  The review period has been extended through
+<strong>Friday, February 5th</strong>.  If you’d like to help shape the future of your
+language and frameworks,
+<a href="/contributing/#participating-in-the-swift-evolution-process">join the discussion</a>.
+The proposals and associated review threads are here:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0023-api-guidelines.md">API Design Guidelines</a> — <a href="http://news.gmane.org/find-root.php?message_id=ABB71FFD%2d1AE8%2d43D3%2dB3F5%2d58225A2BAD66%40apple.com">discussion</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md">Better Translation of Objective-C APIs Into Swift</a> — <a href="http://news.gmane.org/find-root.php?message_id=CC036592%2d085D%2d4095%2d8D73%2d1DA9FC90A07B%40apple.com">discussion</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0006-apply-api-guidelines-to-the-standard-library.md">Apply API Guidelines to the Standard Library</a> — <a href="http://news.gmane.org/find-root.php?message_id=73E699B0%2dFAD2%2d46DA%2dB74E%2d849445A2F38A%40apple.com">discussion</a></li>
+</ul>
+
+
+
+  
+  <footer>
+    <nav>
+      
+      <a href="/blog/swift-2-2-release-process/" rel="prev" title="Previous: Swift 2.2 Release Process">Swift 2.2 Release Process</a>
+      
+
+      
+    </nav>
+  </footer>
+  
+</article>
+
+  </main>
+
+  <footer role="contentinfo">
+    <aside>
+      <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+      <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+    </aside>
+
+    <p class="copyright">Copyright © 2016 Apple Inc. All rights reserved.</p>
+    <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/assets/javascripts/application.js"></script>
+</body>
+
+</html>
