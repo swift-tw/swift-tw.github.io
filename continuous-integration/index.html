@@ -1,0 +1,97 @@
+---
+layout: page
+title: 連續整合(英文)
+---
+
+  <p>The Swift project follows an <a href="../contributing/#contributing_code">incremental development model</a>, and utilizes continuous integration (CI) testing of changes in pull requests before merging as a core tool for maintaining project stability.  The system produces the snapshot builds posted on swift.org, and runs tests against active branches.  It is also used as part of the review process to run tests against pull requests before committing them.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Our <a href="https://ci.swift.org">continuous integration system</a> is powered by <a href="https://jenkins-ci.org">Jenkins</a> and currently supports building and testing on Mac OS X, Ubuntu 14.04, and Ubuntu 15.10.  Testing on the iOS simulator is also supported.</p>
+
+<p>Currently, there are 15 OS X nodes, running Mac OS X 10.11.1 (15B42), and building with Xcode 7.2 GM.  There are also 2 Linux nodes, running Ubuntu 14.04, and Ubuntu 15.10.</p>
+
+<h3 id="job-organization">Job organization</h3>
+
+<p>Continuous integration jobs are organized within the <a href="https://ci.swift.org">CI system</a> in the following categories:</p>
+
+<ul>
+  <li>Development - All jobs that are configured to build with master branch</li>
+  <li>swift-2.2-branch - All jobs that are configured to build with swift-2.2-branch</li>
+  <li>Packages - Jobs which create toolchains for the master and swift-2.2-branch branches</li>
+  <li>Pull Request - Jobs which verify pull requests from GitHub before merging into master.</li>
+</ul>
+
+<h3 id="job-configuration">Job Configuration</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Job</th>
+      <th>OS</th>
+      <th>Build Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Swift Incremental</td>
+      <td>OS X <br> Ubuntu 14.04 <br> Ubuntu 15.10</td>
+      <td>Incremental</td>
+    </tr>
+    <tr>
+      <td>LLDB Incremental</td>
+      <td>OS X <br> Ubuntu 14.04 <br> Ubuntu 15.10</td>
+      <td>Incremental</td>
+    </tr>
+    <tr>
+      <td>Swift (Tools Opts+Assert, Stdlib DebugInfo+Assert, Test Simulator)</td>
+      <td>OSX</td>
+      <td>Clean</td>
+    </tr>
+    <tr>
+      <td>Swift (Tools Opts+Assert, Stdlib Opt+DebugInfo+Assert, Test Simulator)</td>
+      <td>OSX</td>
+      <td>Clean</td>
+    </tr>
+    <tr>
+      <td>Swift (Tools Opts+Assert, Stdlib Opt+DebugInfo, Test Simulator)</td>
+      <td>OSX</td>
+      <td>Clean</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The build script command is listed in the description for each job. Most build script commands use a build system preset in the command which contains further build and test settings.  Documentation of the presets is contained in the <a href="https://github.com/apple/swift/blob/master/utils/build-script">build script source</a>.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>There are several ways in which you can interact with the swift.org CI system:</p>
+
+<ul>
+  <li>Integration job status - you can view the build and test status of all integration jobs at  <a href="https://ci.swift.org">https://ci.swift.org</a>.</li>
+  <li>Email notifications - if you have committed a change that breaks the build or fails tests, you will automatically be notified via email.</li>
+  <li>Tests on pull requests - when making a change via pull request, your changes will be tested before being integrated, and results will be posted back inline to the pull request.</li>
+</ul>
+
+<h3 id="pull-request-testing">Pull Request Testing</h3>
+
+<p>When a change is reviewed on a pull request, a member of the Swift team will trigger testing by the CI system.  Tests can be triggered to run on Mac OS X, Linux, or both platforms.</p>
+
+<p><img src="../continuous-integration/images/ci_pull_command.png" alt="pull request CI trigger"></p>
+
+<p>Testing status is then posted inline with the pull request, showing that a test is in progress.  You can click the “details” link to go directly to the status page for the test in progress.
+<img src="../continuous-integration/images/ci_pending.png" alt="CI Progress"></p>
+
+<p>When tests complete, that result is also updated in the pull request
+<img src="../continuous-integration/images/ci_pass.png" alt="CI Pass"></p>
+
+<p>If there are issues found during testing, you will get a link to the details of the failure.
+<img src="../continuous-integration/images/ci_failure.png" alt="CI Pass"></p>
+
+<p>It is expected that changes meet the <a href="../contributing/#quality">quality standards</a> for the Swift project before they are committed to the development branch, and you are responsible for fixing problems found by your changes.  If your changes break builds or tests on the development or release branches, you will receive email notification.</p>
+
+<h2 id="community-involvement">Community Involvement</h2>
+
+<p>The Swift project welcomes proposals from the community for adding support for other configurations.</p>
+
+

@@ -1,0 +1,42 @@
+---
+layout: post
+title: 連續整合(CI)已開放使用(英文)
+date: 2016-02-01T10:00:00-08:00
+comments: true
+paginate: true
+categories: [Swift blog, Swift, CI]
+---
+
+  <div class="meta">
+    <span class="author">
+      <a href="https://github.com/najacque/">
+      Nicole Jacque</a>
+    </span>
+  </div>
+
+  <p>We are excited to announce that we have rolled out <a href="/continuous-integration">continuous integration</a> (aka, CI) for the Swift project!</p>
+
+<!--more-->
+
+<p>Our CI system is powered by <a href="https://jenkins-ci.org">Jenkins</a>.  For Apple’s platforms it builds and runs tests for OS X and the iOS simulator.  For Linux it builds and runs tests for Ubuntu 14.04 and Ubuntu 15.10 (both for x86_64).  In addition to using it for testing active branches, the CI system also produces the snapshots that are available for download from Swift.org.</p>
+
+<p>The intent of the CI is to enable additional configurations to be added over time, especially in the cases where ports to other platforms or architectures reach a critical mass and support from the Swift development community.</p>
+
+<p>CI is not only a powerful tool for monitoring the health of the Swift project, but can also be used as a part of reviewing changes before they land.  To facilitate this, we have <strong>integrated testing within pull requests</strong>, allowing testing to occur before commits are made and without destabilizing the <code class="highlighter-rouge">master</code> branch. The results will be posted inline within the pull request.  When someone makes a change that breaks a build, they will automatically be notified via email.</p>
+
+<h3 id="testing-pull-requests">Testing Pull Requests</h3>
+
+<p>When a change is reviewed on a pull request, a member of the community with commit access can trigger testing of the pull request by the CI system.  Tests can be triggered to run on Mac OS X, Linux, or both platforms.</p>
+
+<p><img src="/continuous-integration/images/ci_pull_command.png" alt="pull request CI trigger"></p>
+
+<p>Testing status is then be posted inline with the pull request, showing that a test is in progress.  You can click the “details” link to go directly to the status page for the test in progress.
+<img src="/continuous-integration/images/ci_pending.png" alt="CI Progress"></p>
+
+<p>When tests complete, the result is updated in the pull request.
+<img src="/continuous-integration/images/ci_pass.png" alt="CI Pass"></p>
+
+<p>If there are issues found during testing, you will get a link to the details of the failure.
+<img src="/continuous-integration/images/ci_failure.png" alt="CI Pass"></p>
+
+<p>In the near future, we will also be supporting running performance tests.  We also welcome community involvement to help us expand testing to additional configurations.</p>
