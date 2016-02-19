@@ -1,0 +1,66 @@
+---
+layout: post
+title: Swift 效能測試已經開放使用(英文)
+date: 2016-02-08T10:00:00-08:00
+comments: true
+paginate: true
+categories: [Swift blog, Swift]
+---
+
+<header>
+  <div class="byline">
+    <img src="https://s.gravatar.com/avatar/aee6117015b8d1ce941e47e98d08ec8c?s=64" alt="Luke Larson">
+    <span class="author">
+      <a href="https://github.com/lplarson/" rel="nofollow" title="Luke Larson (@lplarson) on GitHub">Luke Larson</a>
+    </span>
+  </div>
+</header>
+
+  <p>Apple’s Swift Team is happy to announce that Swift’s <a href="https://github.com/apple/swift/tree/master/benchmark">benchmark
+suite</a> is now open
+source.</p>
+
+<p>The suite contains source code for benchmarks, libraries, and utilities
+designed to help track Swift performance and catch performance regressions
+before they are committed, including:</p>
+
+<ul>
+  <li>75 benchmarks covering a number of important Swift workloads</li>
+  <li>Libraries providing commonly needed benchmarking functions</li>
+  <li>A driver for running benchmarks and displaying performance metrics</li>
+  <li>A utility for comparing benchmark metrics across Swift versions</li>
+</ul>
+
+<p>We look forward to working with the Swift community to make Swift as fast as
+possible!</p>
+
+<!--more-->
+
+<h2 id="building-and-running-benchmarks">Building and Running Benchmarks</h2>
+
+<p>Contributors to the Swift project are encouraged to run Swift’s benchmark suite
+against their changes before requesting pull requests in order to catch
+potential performance regressions. Instructions for building and running Swift
+benchmarks are available in
+<a href="https://github.com/apple/swift/tree/master/benchmark">swift/benchmark/README.md</a>.</p>
+
+<p>In the future, we are planning to add support to Swift’s <a href="https://ci.swift.org">continuous
+integration system</a> for running benchmarks on pull
+requests.</p>
+
+<h2 id="contributing-benchmarks-and-improvements">Contributing Benchmarks and Improvements</h2>
+
+<p>Contributions to Swift’s benchmark suite are welcome! Pull requests for new
+benchmarks covering performance critical workloads, additions to benchmark
+helper libraries, and other improvements are encouraged. Please note that
+Swift’s benchmark suite shares the Swift project’s
+<a href="https://github.com/apple/swift/blob/master/LICENSE.txt">license</a>, so we are
+unable to accept Swift ports of benchmarks covered under other licenses.
+Additional information about the suite and instructions on adding benchmarks
+are available in
+<a href="https://github.com/apple/swift/tree/master/benchmark">swift/benchmark/README.md</a>.</p>
+
+
+  
+  
+  

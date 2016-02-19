@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - Swift Benchmark Suite now Available</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/blog/swift-benchmark-suite/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="Swift Benchmark Suite now Available" />
+  <meta name="twitter:description" content="Apple’s Swift Team is happy to announce that Swift’s benchmark
+suite is now open
+source.
+
+" />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Swift Benchmark Suite now Available" />
+  <meta property="og:url" content="https://swift.org/blog/swift-benchmark-suite/" />
+  <meta property="og:description" content="Apple’s Swift Team is happy to announce that Swift’s benchmark
+suite is now open
+source.
+
+" />
+  <meta property="article:published_time" content="2016-02-08T10:00:00-08:00" />
+  <meta property="article:modified_time" content="2016-02-18T23:09:11-08:00" />
+  
+</head>
+
+<body>
+  <nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+    
+    
+    
+    <li>
+    
+      <a href="/continuous-integration/">Continuous Integration</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+  <main role="main">
+    <article class="post">
+  <header>
+    <h1>Swift Benchmark Suite now Available</h1>
+
+    <time pubdate datetime="2016-02-08T10:00:00-08:00">February 8, 2016</time>
+
+    
+    
+      <div class="byline">
+        
+          <img src="https://s.gravatar.com/avatar/aee6117015b8d1ce941e47e98d08ec8c?s=64" alt="Luke Larson"/>
+        
+
+        <span class="author">
+          
+            <a href="https://github.com/lplarson/" rel="nofollow" title="Luke Larson (@lplarson) on GitHub">Luke Larson</a>
+          
+        </span>
+      </div>
+    
+  </header>
+
+  <p>Apple’s Swift Team is happy to announce that Swift’s <a href="https://github.com/apple/swift/tree/master/benchmark">benchmark
+suite</a> is now open
+source.</p>
+
+<p>The suite contains source code for benchmarks, libraries, and utilities
+designed to help track Swift performance and catch performance regressions
+before they are committed, including:</p>
+
+<ul>
+  <li>75 benchmarks covering a number of important Swift workloads</li>
+  <li>Libraries providing commonly needed benchmarking functions</li>
+  <li>A driver for running benchmarks and displaying performance metrics</li>
+  <li>A utility for comparing benchmark metrics across Swift versions</li>
+</ul>
+
+<p>We look forward to working with the Swift community to make Swift as fast as
+possible!</p>
+
+<h2 id="building-and-running-benchmarks">Building and Running Benchmarks</h2>
+
+<p>Contributors to the Swift project are encouraged to run Swift’s benchmark suite
+against their changes before requesting pull requests in order to catch
+potential performance regressions. Instructions for building and running Swift
+benchmarks are available in
+<a href="https://github.com/apple/swift/tree/master/benchmark">swift/benchmark/README.md</a>.</p>
+
+<p>In the future, we are planning to add support to Swift’s <a href="https://ci.swift.org">continuous
+integration system</a> for running benchmarks on pull
+requests.</p>
+
+<h2 id="contributing-benchmarks-and-improvements">Contributing Benchmarks and Improvements</h2>
+
+<p>Contributions to Swift’s benchmark suite are welcome! Pull requests for new
+benchmarks covering performance critical workloads, additions to benchmark
+helper libraries, and other improvements are encouraged. Please note that
+Swift’s benchmark suite shares the Swift project’s
+<a href="https://github.com/apple/swift/blob/master/LICENSE.txt">license</a>, so we are
+unable to accept Swift ports of benchmarks covered under other licenses.
+Additional information about the suite and instructions on adding benchmarks
+are available in
+<a href="https://github.com/apple/swift/tree/master/benchmark">swift/benchmark/README.md</a>.</p>
+
+
+  
+  <footer>
+    <nav>
+      
+      <a href="/blog/swift-ci/" rel="prev" title="Previous: Continuous Integration now Available">Continuous Integration now Available</a>
+      
+
+      
+    </nav>
+  </footer>
+  
+</article>
+
+  </main>
+
+  <footer role="contentinfo">
+    <aside>
+      <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+      <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+    </aside>
+
+    <p class="copyright">Copyright © 2016 Apple Inc. All rights reserved.</p>
+    <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+  </footer>
+
+  <script src="/assets/javascripts/application.js"></script>
+</body>
+
+</html>
