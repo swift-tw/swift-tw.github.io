@@ -1,0 +1,244 @@
+---
+layout: post
+title: 
+date: 2016-05-06T06:00:00-07:00
+comments: true
+paginate: true
+categories: [Swift blog, Swift, Xcode]
+---
+
+  <header>
+    <h1>Swift 3.0 Release Process</h1>
+
+    <time pubdate datetime="2016-05-06T06:00:00-07:00">May 6, 2016</time>
+
+    
+    
+      <div class="byline">
+        
+          <img src="https://s.gravatar.com/avatar/b6520643611a05fd040d0abcee3c883c?s=64" alt="Ted Kremenek">
+        
+
+        <span class="author">
+          
+            <a href="https://github.com/tkremenek/" rel="nofollow" title="Ted Kremenek (@tkremenek) on GitHub">Ted Kremenek</a>
+          
+        </span>
+      </div>
+    
+  </header>
+
+  <p>This post describes the goals, release process, and estimated schedule for Swift
+3.0.</p>
+
+<p>Swift 3.0 is a major release that is <em>not</em> source-compatible with Swift 2.2. It
+contains fundamental changes to the language and Swift Standard Library.  A
+comprehensive list of implemented changes for Swift 3.0 can be found on the
+<a href="https://github.com/apple/swift-evolution#implemented-proposals-for-swift-3">Swift evolution
+site</a>.</p>
+
+<p>Swift 3.0 is also the first release to include the <a href="https://swift.org/package-manager/">Swift Package Manager</a>.  While the Swift Package Manager is still early
+in its development, it supports the development and distribution of
+cross-platform Swift packages.  The Swift Package Manager will be available on
+both Darwin and Linux.</p>
+
+<p>For Linux, Swift 3 will also be the first release to contain the <a href="https://swift.org/core-libraries/">Swift Core
+Libraries</a>.</p>
+
+<p>Swift 3.0 is expected to be released sometime in late 2016. In addition to its
+Swift.org release, Swift 3.0 will ship in a future version of Xcode.</p>
+
+<h2 id="developer-previews">Developer Previews</h2>
+
+<ul>
+  <li>
+    <p>Swift 3.0 will have a series of developer previews (i.e., “seeds” or “betas”)
+that provide qualified and converged builds of Swift 3.  The goal is to
+provide users with more stable and qualified Swift binaries that they can
+<a href="https://swift.org/download">download</a> and try out (and file bugs against)
+instead of just grabbing the latest snapshot of <code class="highlighter-rouge">master</code>.</p>
+  </li>
+  <li>
+    <p>The cadence between Developer Previews will likely be irregular, but likely
+every 4-6 weeks.  They will be partially driven by the volume of change going
+into <code class="highlighter-rouge">master</code> and how much time is needed to stabilize a developer preview
+branch.</p>
+  </li>
+  <li>
+    <p>Swift 3.0 will be declared “GM” from the last developer preview branch.</p>
+  </li>
+  <li>
+    <p>Content going into developer previews will be managed by the appropriate
+release manager (see below).</p>
+  </li>
+</ul>
+
+<h2 id="getting-changes-into-swift-30">Getting Changes into Swift 3.0</h2>
+
+<h3 id="branches">Branches</h3>
+
+<ul>
+  <li>
+    <p><strong>master</strong>: Development of Swift 3.0 happens in <code class="highlighter-rouge">master</code>.  All changes
+going in <code class="highlighter-rouge">master</code> will be part of the final Swift 3.0 release until the
+last developer preview branch is created.  At that point <code class="highlighter-rouge">master</code> tracks
+development for future Swift releases.</p>
+  </li>
+  <li>
+    <p><strong>swift-3.0-preview-<em>&lt;X&gt;</em>-branch</strong>: Branches for developer previews will be
+created from <code class="highlighter-rouge">master</code>. All changes to those branches will need to be submitted
+via pull requests that initiate testing on continuous integration. The release
+manager for the given repository approves merging a pull request into the
+developer preview branch.</p>
+  </li>
+  <li>
+    <p><strong>swift-3.0-branch</strong>: The last developer preview branch created from <code class="highlighter-rouge">master</code>
+will be called <code class="highlighter-rouge">swift-3.0-branch</code>.  This will be the final “release branch”.</p>
+  </li>
+</ul>
+
+<h3 id="philosophy-on-taking-changes-into-swift-30">Philosophy on Taking Changes into Swift 3.0</h3>
+
+<ul>
+  <li>
+    <p>As Swift 3.0 converges only changes that align with the core goals of the
+release will be considered.</p>
+  </li>
+  <li>
+    <p>Source-breaking changes to the language will be
+considered on a case-by-case basis.</p>
+  </li>
+  <li>
+    <p>All language and API changes for Swift 3.0 will go through the <a href="https://github.com/apple/swift-evolution">Swift
+Evolution</a> process.</p>
+  </li>
+  <li>
+    <p>Criteria — as set by the release manager — for accepting changes
+will becoming increasingly restrictive over time as the release
+converges.  The same policy applies to developer preview branches, which
+are essentially mini-releases.</p>
+  </li>
+</ul>
+
+<h2 id="schedule">Schedule</h2>
+
+<ul>
+  <li>
+    <p>The first developer preview branch <code class="highlighter-rouge">swift-3.0-preview-1-branch</code> will
+be created from <code class="highlighter-rouge">master</code> on <strong>May 12</strong>.  It will be released 4-6 weeks
+later.</p>
+  </li>
+  <li>
+    <p>The date for creating the last developer preview branch
+— <code class="highlighter-rouge">swift-3.0-branch</code> — has
+not yet been established.  When that date is determined the plan will be
+communicated both on <a href="https://lists.swift.org/mailman/listinfo/swift-dev">swift-dev</a> and by updating this post.</p>
+  </li>
+</ul>
+
+<h2 id="impacted-repositories">Impacted Repositories</h2>
+
+<p>The following repositories will have
+<code class="highlighter-rouge">swift-3.0-preview-&lt;X&gt;-branch</code>/<code class="highlighter-rouge">swift-3.0-branch</code> branches to track
+sources as part of Swift 3.0 release:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift">swift</a></li>
+  <li><a href="https://github.com/apple/swift-lldb">swift-lldb</a></li>
+  <li><a href="https://github.com/apple/swift-cmark">swift-cmark</a></li>
+  <li><a href="https://github.com/apple/swift-llbuild">swift-llbuild</a></li>
+  <li><a href="https://github.com/apple/swift-package-manager">swift-package-manager</a></li>
+  <li><a href="https://github.com/apple/swift-corelibs-libdispatch">swift-corelibs-libdispatch</a></li>
+  <li><a href="https://github.com/apple/swift-corelibs-foundation">swift-corelibs-foundation</a></li>
+  <li><a href="https://github.com/apple/swift-corelibs-xctest">swift-corelibs-xctest</a></li>
+</ul>
+
+<p>The following repositories will only have a <code class="highlighter-rouge">swift-3.0-branch</code> instead of
+developer preview branches, as they have already effectively converged:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift-llvm">swift-llvm</a></li>
+  <li><a href="https://github.com/apple/swift-clang">swift-clang</a></li>
+</ul>
+
+<h2 id="release-managers">Release Managers</h2>
+
+<p>The overall management of the release will be overseen by the following
+individuals, who will announce when stricter control of change
+goes into effect for the Swift 3.0 release as the release converges:</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/tkremenek">Ted Kremenek</a> is the overall release manager for Swift 3.0.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/fredriss">Frédéric Riss</a>
+is the release manager for <a href="https://github.com/apple/swift-llvm">swift-llvm</a> and <a href="https://github.com/apple/swift-clang">swift-clang</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/k8stone">Kate Stone</a> is the
+release manager for <a href="https://github.com/apple/swift-lldb">swift-lldb</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/parkera">Tony Parker</a> is the release
+manager for <a href="https://github.com/apple/swift-corelibs-foundation">swift-corelibs-foundation</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/das">Daniel Steffen</a> is the release
+manager for <a href="https://github.com/apple/swift-corelibs-libdispatch">swift-corelibs-libdispatch</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/mike-ferris-apple">Mike Ferris</a> is the
+release manager for <a href="https://github.com/apple/swift-corelibs-xctest">swift-corelibs-xctest</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/rballard">Rick Ballard</a> is the release
+manager for <a href="https://github.com/apple/swift-package-manager">swift-package-manager</a>.</p>
+  </li>
+</ul>
+
+<p>Please feel free to email <a href="https://lists.swift.org/mailman/listinfo/swift-dev">swift-dev</a> or <a href="https://github.com/tkremenek">Ted Kremenek</a> directly concerning any
+questions about the release management process.</p>
+
+<h2 id="pull-requests-for-developer-previews">Pull Requests for Developer Previews</h2>
+
+<p>All pull requests nominating changes for inclusion in developer preview
+branches should include the following information:</p>
+
+<ul>
+  <li>
+    <p><strong>Explanation</strong>: A description of the issue being fixed or
+enhancement being made.  This can be brief, but it should be
+clear.</p>
+  </li>
+  <li>
+    <p><strong>Scope</strong>: An assessment of the impact/importance of the change.
+For example, is the change a source-breaking language change, etc.</p>
+  </li>
+  <li>
+    <p><strong>SR Issue</strong>: The SR if the change fixes/implements an
+issue/enhancement on <a href="https://bugs.swift.org">bugs.swift.org</a>.</p>
+  </li>
+  <li>
+    <p><strong>Risk</strong>: What is the (specific) risk to the release for taking this
+change?</p>
+  </li>
+  <li>
+    <p><strong>Testing</strong>: What specific testing has been done or needs to be done
+to further validate any impact of this change?</p>
+  </li>
+</ul>
+
+<p>One or more <a href="https://swift.org/community/#code-owners">code owners</a> for the impacted
+components should review the change. Technical review can be delegated
+by a code owner or otherwise requested as deemed appropriate or
+useful.</p>
+
+<p><strong>All change</strong> going into developer preview branches <strong>must go through
+pull requests</strong> that are accepted by the corresponding release manager.</p>
+
+
+
+  
+  
+  
