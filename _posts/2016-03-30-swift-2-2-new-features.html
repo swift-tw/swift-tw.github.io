@@ -1,0 +1,338 @@
+---
+layout: post
+title: Swift 2.2 新功能 (英文)
+date: 2016-03-30T01:00:00-07:00
+comments: true
+paginate: true
+categories: [Swift blog, Swift, Xcode]
+---
+
+<div class="byline">
+
+  <img src="https://s.gravatar.com/avatar/a16d66fdf58b8ac3738db189a9f5b222?s=64" alt="Paul Hudson">
+
+
+  <span class="author">
+
+    <a href="https://twitter.com/twostraws/" rel="nofollow" title="Paul Hudson (@twostraws) on Twitter">Paul Hudson</a>
+
+  </span>
+</div>
+
+  <p>Swift 2.2 brings new syntax, new features, and some deprecations too.  It is an interim release before Swift 3 comes later this year <a href="https://swift.org/blog/swift-api-transformation/">with even bigger changes</a>, and the changes in Swift 2.2 align with the broader goals of Swift 3 to focus on gradually stabilizing the core language and Standard Library by adding missing features, refining what is already there, and removing what is no longer needed in the language.  All changes in Swift 2.2 went through the community-driven <a href="https://swift.org/contributing/#participating-in-the-swift-evolution-process">Swift evolution process</a> — where over 30 proposals have been submitted, reviewed, and accepted since Swift was open-sourced a few months ago.</p>
+
+<!--more-->
+
+<p>The changes in Swift 2.2 will have a direct impact on your code, and this article will walk you through what has changed and why, along with code examples to help you migrate quickly to the new Swift 2.2 syntax.</p>
+
+<p>As a reminder, “deprecation” means that a function or language feature is no longer recommended for use and will be removed entirely at a later date. In practice that means Swift will issue a compiler warning today, and a compiler error in the future — likely Swift 3.</p>
+
+<h3 id="compile-time-swift-version-checks">Compile-time Swift version checks</h3>
+
+<p>Swift’s continuous march forward can occasionally be hard for app developers to keep up with, but it’s even harder for developers of libraries — if you have thousands of people using your library, you might need to support more than one version of Swift to ensure everyone can use your work no matter what version they are on.</p>
+
+<p>Swift 2.2 introduces a new compiler directive that makes cross-version compatibility a cinch: you can now specify blocks of code that should be read only if the compiler supports a specific Swift language version. For example:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="cp">#if swift(&gt;=3.0)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Running Swift 3.0 or later"</span><span class="p">)</span>
+<span class="cp">#else</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Running Swift 2.2 or earlier"</span><span class="p">)</span>
+<span class="cp">#endif</span>
+</code></pre>
+</div>
+
+<p>This is different from the <code class="highlighter-rouge">#available</code> syntax introduced in Swift 2 because that was a runtime check — this new feature is compile time, so code that fails the language version check is effectively invisible. You could write code like this if you wanted to:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="cp">#if swift(&gt;=3.0)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Running Swift 3.0 or later"</span><span class="p">)</span>
+<span class="cp">#else</span>
+<span class="kt">BRING</span> <span class="kt">BACK</span> <span class="kt">WASH</span> <span class="kt">HE</span> <span class="kt">WAS</span> <span class="kt">MY</span> <span class="kt">FAVORITE</span>
+<span class="cp">#endif</span>
+</code></pre>
+</div>
+
+<p>As long as the Swift compiler targets 3.0 or greater, that will compile just fine because the message in capital letters is ignored by the compiler.</p>
+
+<p>A word of warning: this feature is not useable at this time, because a Swift 2.1 compiler will choke on <code class="highlighter-rouge">#if swift(&gt;=2.2)</code> — it has no idea what that means. However, once Swift 3.0 becomes available, and for all future versions, compile-time Swift version checks will be a useful addition to your toolkit.</p>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0020-if-swift-version.md">Swift Evolution proposal</a> for this change.</p>
+
+<h3 id="compile-time-checked-selectors">Compile-time checked selectors</h3>
+
+<p>In Swift 2.1, code like the below would compile with no problems:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+    <span class="n">navigationItem</span><span class="o">.</span><span class="n">rightBarButtonItem</span> <span class="o">=</span>
+        <span class="kt">UIBarButtonItem</span><span class="p">(</span><span class="nv">barButtonSystemItem</span><span class="p">:</span> <span class="o">.</span><span class="kt">Add</span><span class="p">,</span> <span class="nv">target</span><span class="p">:</span> <span class="k">self</span><span class="p">,</span>
+                        <span class="nv">action</span><span class="p">:</span> <span class="s">"addNewFireflyRefernce"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">addNewFireflyReference</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">gratuitousReferences</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"We should start dealing in black-market beagles."</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The code itself is syntactically sound, but the app will crash because the navigation bar button calls a method <code class="highlighter-rouge">addNewFireflyRefernce()</code> — it’s missing one of the Es in “reference”. These kinds of simple typos could easily introduce bugs, so Swift 2.2 deprecates using strings for selectors and instead introduces new syntax: <code class="highlighter-rouge">#selector</code>.</p>
+
+<p>Using <code class="highlighter-rouge">#selector</code> will check your code at compile time to make sure the method you want to call actually exists. Even better, if the method <em>doesn’t</em> exist, you’ll get a compile error: Xcode will refuse to build your app, thus banishing to oblivion another possible source of bugs.</p>
+
+<p>Here is the previous code example rewritten using <code class="highlighter-rouge">#selector</code>:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+
+    <span class="n">navigationItem</span><span class="o">.</span><span class="n">rightBarButtonItem</span> <span class="o">=</span>
+        <span class="kt">UIBarButtonItem</span><span class="p">(</span><span class="nv">barButtonSystemItem</span><span class="p">:</span> <span class="o">.</span><span class="kt">Add</span><span class="p">,</span> <span class="nv">target</span><span class="p">:</span> <span class="k">self</span><span class="p">,</span>
+                        <span class="nv">action</span><span class="p">:</span> <span class="err">#</span><span class="nf">selector</span><span class="p">(</span><span class="n">addNewFireflyRefernce</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">addNewFireflyReference</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">gratuitousReferences</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"Curse your sudden but inevitable betrayal!"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>When that code is built, the compiler will send back the error “Use of unresolved identifier ‘addNewFireflyRefernce’” — shiny!</p>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0022-objc-selectors.md">Swift Evolution proposal</a> or read the <a href="https://lists.swift.org/pipermail/swift-evolution-announce/2016-January/000026.html">swift-evolution-announce post</a> detailing the rationale.</p>
+
+<h3 id="more-keywords-as-argument-labels">More keywords as argument labels</h3>
+
+<p>Swift has a lot of keywords: those little things like <code class="highlighter-rouge">class</code>, <code class="highlighter-rouge">func</code>, <code class="highlighter-rouge">let</code>, and <code class="highlighter-rouge">public</code> that have special meaning and cannot be used as identifiers. Swift has always allowed you to use keywords as argument labels, but only if you placed them in backticks like this:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">visitCity</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="err">`</span><span class="k">in</span><span class="err">`</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"I'm going to visit </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s"> in </span><span class="se">\(</span><span class="n">state</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">visitCity</span><span class="p">(</span><span class="s">"Nashville"</span><span class="p">,</span> <span class="err">`</span><span class="k">in</span><span class="err">`</span><span class="p">:</span> <span class="s">"Tennessee"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>As of Swift 2.2, any keyword can be used as an argument label, with the exception of <code class="highlighter-rouge">inout</code>, <code class="highlighter-rouge">var</code>, and <code class="highlighter-rouge">let</code>. If you have code that used keywords in backticks, you’ll get an Xcode Fix-it to remove them. So, code like this is now possible:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">visitCity</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="k">in</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"I'm going to visit </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s"> in </span><span class="se">\(</span><span class="n">state</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">visitCity</span><span class="p">(</span><span class="s">"Nashville"</span><span class="p">,</span> <span class="nv">in</span><span class="p">:</span> <span class="s">"Tennessee"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0001-keywords-as-argument-labels.md">Swift Evolution proposal</a> for this change.</p>
+
+<h3 id="tuple-comparison-is-built-in">Tuple comparison is built-in</h3>
+
+<p>Tuples are a fundamental data type in Swift, and bring a number of benefits — not least being able to return multiple values from functions. Swift 2.2 introduces the ability to compare two tuples for equality, which means it will check each element in one tuple against the matching element in another, and report true if all elements match.</p>
+
+<p>For example, the below code will print “No match”:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">let</span> <span class="nv">singer</span> <span class="o">=</span> <span class="p">(</span><span class="nv">first</span><span class="p">:</span> <span class="s">"Taylor"</span><span class="p">,</span> <span class="nv">last</span><span class="p">:</span> <span class="s">"Swift"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">alien</span> <span class="o">=</span> <span class="p">(</span><span class="nv">first</span><span class="p">:</span> <span class="s">"Justin"</span><span class="p">,</span> <span class="nv">last</span><span class="p">:</span> <span class="s">"Bieber"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">singer</span> <span class="o">==</span> <span class="n">alien</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"They match! That explains why you never see them together…"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"No match."</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Swift 2.2 tuple comparison works up to arity 6, which is a fancy way of saying that tuples can be compared as long as they contain no more than six elements.</p>
+
+<p>One warning: Swift 2.2 will ignore your element names when checking for equality, so <code class="highlighter-rouge">singer</code> and <code class="highlighter-rouge">bird</code> will be considered equal in the code below:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">let</span> <span class="nv">singer</span> <span class="o">=</span> <span class="p">(</span><span class="nv">first</span><span class="p">:</span> <span class="s">"Taylor"</span><span class="p">,</span> <span class="nv">last</span><span class="p">:</span> <span class="s">"Swift"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">bird</span> <span class="o">=</span> <span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Taylor"</span><span class="p">,</span> <span class="nv">breed</span><span class="p">:</span> <span class="s">"Swift"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">singer</span> <span class="o">==</span> <span class="n">bird</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"This explains why she sings so well."</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"No match."</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0015-tuple-comparison-operators.md">Swift Evolution proposal</a> for this change.</p>
+
+<h3 id="tuple-splat-syntax-is-deprecated">Tuple splat syntax is deprecated</h3>
+
+<p>Staying with tuples for a moment longer, Swift 2.2 deprecates a feature that was so rarely used I’m only mentioning it because of the marvelous name. In Swift 2.1 and earlier it was possible to use a carefully crafted tuple to fill the parameters of a function. So, if you had a function that took two parameters, you could call it with a two-element tuple as long as the tuple had the correct types and element names. For example:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">describePerson</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">age</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s"> is </span><span class="se">\(</span><span class="n">age</span><span class="se">)</span><span class="s"> years old"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">person</span> <span class="o">=</span> <span class="p">(</span><span class="s">"Malcolm Reynolds"</span><span class="p">,</span> <span class="nv">age</span><span class="p">:</span> <span class="mi">49</span><span class="p">)</span>
+<span class="nf">describePerson</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>This syntax — affectionately called “tuple splat syntax” — is the antithesis of idiomatic Swift’s self-documenting, readable style, and so it’s deprecated in Swift 2.2.</p>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0029-remove-implicit-tuple-splat.md">Swift Evolution proposal</a> or read the <a href="https://lists.swift.org/pipermail/swift-evolution-announce/2016-February/000033.html">swift-evolution-announce post</a> detailing the rationale.</p>
+
+<h3 id="c-style-for-loops-are-deprecated">C-style <code class="highlighter-rouge">for</code> loops are deprecated</h3>
+
+<p>Even though Swift has several idiomatic loop options, C-style for loops were still part of the language and occasionally used. For example:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">for</span> <span class="k">var</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>These have been deprecated in Swift 2.2 and will be removed entirely in Swift 3.0 — one more step towards never typing a semi-colon again.</p>
+
+<p>If you use Xcode, you may be offered a Fix-it that will convert your C-style for loops into modern Swift. In the previous case, the result uses a range like this:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="o">..&lt;</span> <span class="mi">10</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>However, Fix-it’s capabilities are limited, so you will need to do some work yourself. For example, the two loops below are ones that Fix-it will not help you with at this time:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">for</span> <span class="k">var</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="k">var</span> <span class="nv">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the first case, you should create a reverse range using <code class="highlighter-rouge">(1...10).reverse()</code>. This is <em>not</em> the same as writing <code class="highlighter-rouge">i in 10...1</code>, which will compile but crash at runtime. In the second case, you should use <code class="highlighter-rouge">stride(to:by:)</code> to count in twos. So, the correct way to rewrite both loops for Swift 2.2 is like this:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="nf">in</span> <span class="p">(</span><span class="mi">1</span><span class="o">...</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="nf">reverse</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">.</span><span class="nf">stride</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nv">by</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0007-remove-c-style-for-loops.md">Swift Evolution proposal</a> or read the <a href="https://lists.swift.org/pipermail/swift-evolution-announce/2015-December/000001.html">swift-evolution-announce post</a> detailing the rationale.</p>
+
+<h3 id="and----are-deprecated">
+<code class="highlighter-rouge">++</code> and <code class="highlighter-rouge">--</code> are deprecated</h3>
+
+<p>If you were using C-style for loops, this next change might surprise you even more: <code class="highlighter-rouge">++</code> and <code class="highlighter-rouge">--</code> are also deprecated, both as prefix and postfix operators. This means that code such as <code class="highlighter-rouge">for var i = 0; i &lt; 10; i++</code> contains not one but <em>two</em> deprecations, which is quite remarkable even in the fast-moving Swift world.</p>
+
+<p>This change means that all the code below is now deprecated, and will stop working entirely in Swift 3:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="n">i</span><span class="o">++</span>
+<span class="n">i</span><span class="o">--</span>
+<span class="o">++</span><span class="n">i</span>
+<span class="o">--</span><span class="n">i</span>
+<span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">++</span>
+</code></pre>
+</div>
+
+<p>You will instead need to use <code class="highlighter-rouge">i += 1</code> or <code class="highlighter-rouge">i -= 1</code>, and Xcode will offer you Fix-its for each of the examples above. In the interests of full disclosure: the Fix-it for <code class="highlighter-rouge">i = i++</code> will give you a compiler error, which is not really a surprise — what is <code class="highlighter-rouge">i = i++</code> supposed to do anyway?</p>
+
+<p>There is no single reason for this change. Instead, it’s a number of small reasons that add up, not least:</p>
+
+<ul>
+  <li>Writing <code class="highlighter-rouge">i++</code> was only slightly shorter than writing <code class="highlighter-rouge">i += 1</code>.</li>
+  <li>If a newcomer to Swift was not already familiar with <code class="highlighter-rouge">++</code> and <code class="highlighter-rouge">--</code> they just steepened the learning curve.</li>
+  <li>C-style loops — a common place where <code class="highlighter-rouge">++</code> and <code class="highlighter-rouge">--</code> are used — are also being deprecated.</li>
+  <li>Using the result of these operators depends on whether they are used prefix or postfix, which can cause confusion.</li>
+</ul>
+
+<p>There’s a quote in the Swift Evolution proposal for this change that sums up the rationale concisely: these fail the metric of “if we didn’t already have these, would we add them to Swift 3?” [<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0004-remove-pre-post-inc-decrement.md">1</a>]</p>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0004-remove-pre-post-inc-decrement.md">Swift Evolution proposal</a> for this change.</p>
+
+<h3 id="var-parameters-are-deprecated">
+<code class="highlighter-rouge">var</code> parameters are deprecated</h3>
+
+<p>Prior to Swift 2.2, function parameters could be declared as <code class="highlighter-rouge">var</code> if you wanted to modify them inside the function. For example:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">uppercaseString</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hello, </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">name</span> <span class="o">=</span> <span class="s">"Taylor"</span>
+<span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"After function, name is </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>While this was a helpful shortcut, it did add some extra confusion: does that final <code class="highlighter-rouge">print()</code> statement output “Taylor” or “TAYLOR”? This was made even more confusing by the presence of the <code class="highlighter-rouge">inout</code> keyword: using <code class="highlighter-rouge">inout</code> rather than <code class="highlighter-rouge">var</code> in that example, then adding a single ampersand, produces this code:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="k">inout</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">uppercaseString</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hello, </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="nv">name</span> <span class="o">=</span> <span class="s">"Taylor"</span>
+<span class="nf">greet</span><span class="p">(</span><span class="o">&amp;</span><span class="n">name</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"After function, name is </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>When run, the <code class="highlighter-rouge">var</code> example produces different output to the <code class="highlighter-rouge">inout</code> example, because changes to <code class="highlighter-rouge">var</code> parameters apply only inside the function whereas changes to <code class="highlighter-rouge">inout</code> parameters affect the original value directly.</p>
+
+<p>In Swift 2.2, this confusion is cleared up by deprecating the <code class="highlighter-rouge">var</code> keyword for function parameters, ahead of its removal in Swift 3.0. If you want to replicate the old behavior, simply create your own copy inside the function like this:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">greet</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">uppercaseName</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">uppercaseString</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Hello, </span><span class="se">\(</span><span class="n">uppercaseName</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0003-remove-var-parameters.md">Swift Evolution proposal</a> or read the <a href="https://lists.swift.org/pipermail/swift-evolution-announce/2016-January/000027.html">swift-evolution-announce post</a> detailing the rationale.</p>
+
+<h3 id="renamed-debug-identifiers">Renamed debug identifiers</h3>
+
+<p>The Swift compiler automatically provides some symbols that are useful when debugging. Previously these were in “screaming snake case”, so <code class="highlighter-rouge">__FILE__</code> would be replaced with the name of the current Swift file, <code class="highlighter-rouge">__LINE__</code> with the line number and so on. In Swift 2.2 those old identifiers are deprecated and replaced with <code class="highlighter-rouge">#file</code>, <code class="highlighter-rouge">#line</code>, <code class="highlighter-rouge">#column</code>, and <code class="highlighter-rouge">#function</code>, which introduces “a convention where # means invoke compiler substitution logic here.” [<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0028-modernizing-debug-identifiers.md">2</a>]</p>
+
+<p>Here’s an example demonstrating the old and new syntax:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code><span class="kd">func</span> <span class="nf">visitCity</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="k">in</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// old - deprecated!</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"This is on line </span><span class="se">\(</span><span class="k">__LINE__</span><span class="se">)</span><span class="s"> of </span><span class="se">\(</span><span class="k">__FUNCTION__</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="s">"I'm going to visit </span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s"> in </span><span class="se">\(</span><span class="n">state</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="c1">// new - shiny!</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"This is on line </span><span class="se">\(</span><span class="err">#</span><span class="n">line</span><span class="se">)</span><span class="s"> of </span><span class="se">\(</span><span class="err">#</span><span class="n">function</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>As with many other changes, Xcode has a Fix-it that will update your code correctly.</p>
+
+<p>For more information, see the <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0028-modernizing-debug-identifiers.md">Swift Evolution proposal</a> or read the <a href="https://lists.swift.org/pipermail/swift-evolution-announce/2016-February/000030.html">swift-evolution-announce post</a> detailing the rationale.</p>
+
+<h3 id="and-theres-more">And there’s more…</h3>
+
+<p>This post has covered the changes that are likely to affect most developers, but other smaller changes have been introduced alongside improved compiler messages and performance enhancements. <a href="https://swift.org/blog/swift-2-2-released/">Click here for the official release notes</a>, where you can find links to full discussions on the changes as well as install instructions for Linux.</p>
+

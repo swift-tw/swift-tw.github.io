@@ -1,0 +1,75 @@
+---
+layout: post
+title: Swift 2.2 已發佈! (英文)
+date: 2016-03-21T05:00:00-07:00
+comments: true
+paginate: true
+categories: [Swift blog, Swift]
+---
+
+<div class="byline">
+
+  <img src="https://s.gravatar.com/avatar/b6520643611a05fd040d0abcee3c883c?s=64" alt="Ted Kremenek">
+
+
+  <span class="author">
+
+    <a href="https://github.com/tkremenek/" rel="nofollow" title="Ted Kremenek (@tkremenek) on GitHub">Ted Kremenek</a>
+
+  </span>
+</div>
+
+  <p>We are very pleased to announce the release of Swift 2.2!  This is the first official release of Swift since it was open-sourced on December 3, 2015.  Notably, the release includes contributions from 212 non-Apple contributors — changes that span from simple bug fixes to enhancements and alterations to the core language and Swift Standard Library.</p>
+
+<!--more-->
+
+<h3 id="language-changes">Language Changes</h3>
+
+<p>Swift 2.2 is a minor language release that is mostly source-compatible with Swift 2.1.  It contains the following language changes that went through the Swift’s <a href="https://swift.org/contributing/#participating-in-the-swift-evolution-process">evolution process</a>:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0001-keywords-as-argument-labels.md">SE-0001: Allow (most) keywords as argument labels</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0015-tuple-comparison-operators.md">SE-0015: Tuple comparison operators</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0014-constrained-AnySequence.md">SE-0014: Constraining <code class="highlighter-rouge">AnySequence.init</code></a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0011-replace-typealias-associated.md">SE-0011: Replace <code class="highlighter-rouge">typealias</code> keyword with <code class="highlighter-rouge">associatedtype</code> for associated type declarations</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0021-generalized-naming.md">SE-0021: Naming Functions with Argument Labels</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0022-objc-selectors.md">SE-0022: Referencing the Objective-C selector of a method</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0020-if-swift-version.md">SE-0020: Swift Language Version Build Configuration</a></li>
+</ul>
+
+<p>Beyond these language changes Swift 2.2 also contains numerous bug fixes, enhancements to diagnostics, and produces even faster-running code.</p>
+
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is still early in development and is not included in this release.</p>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>An updated version of <a href="https://swift.org/documentation/#the-swift-programming-language">The Swift Programming Language</a> for Swift 2.2 is now available on Swift.org.  It is also available for free on Apple’s iBooks store.</p>
+
+<h3 id="platforms">Platforms</h3>
+
+<h4 id="linux-ubuntu-1404-and-ubuntu-1510">Linux (Ubuntu 14.04 and Ubuntu 15.10)</h4>
+
+<p>Swift 2.2 includes support for Swift on Linux.  The Linux port is still relatively new and in this release does not include the <a href="https://swift.org/core-libraries/">Swift Core Libraries</a> (which will appear in Swift 3).  The port does, however, include LLDB and the REPL.</p>
+
+<p>Official binaries for Ubuntu 14.04 and Ubuntu 15.10 are <a href="https://swift.org/download/">available for download</a>.</p>
+
+<h4 id="apple-xcode">Apple (Xcode)</h4>
+
+<p>For development on Apple’s platforms, Swift 2.2 ships as part of <a href="https://developer.apple.com/xcode/download/">Xcode 7.3</a>.</p>
+
+<h3 id="sources">Sources</h3>
+
+<p>Development on Swift 2.2 was tracked in the <code class="highlighter-rouge">swift-2.2-branch</code> on the following repositories on GitHub:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift">swift</a></li>
+  <li><a href="https://github.com/apple/swift-llvm">swift-llvm</a></li>
+  <li><a href="https://github.com/apple/swift-clang">swift-clang</a></li>
+  <li><a href="https://github.com/apple/swift-lldb">swift-lldb</a></li>
+  <li><a href="https://github.com/apple/swift-cmark">swift-cmark</a></li>
+</ul>
+
+<p>The tag <code class="highlighter-rouge">swift-2.2-RELEASE</code> designates the specific revisions in those repositories that make up the final version of Swift 2.2.</p>
+
+<p>The <code class="highlighter-rouge">swift-2.2-branch</code> will remain open — but under the same <a href="https://swift.org/blog/swift-2-2-release-process/">release management process</a> — to accumulate changes for a potential future bug-fix “dot” release.</p>
+
