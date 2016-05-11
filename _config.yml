@@ -17,8 +17,9 @@ author:
   name:           'John Lin'
   url:            https://twitter.com/johnlinvc
 
-paginate:         5
-paginate_path:    "/blog/page:num/"
+#remove paginate for jekyll 3
+#paginate:         5
+#paginate_path:    "/blog/page:num/"
 excerpt_separator: <!--more-->
 
 # Custom vars

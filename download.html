@@ -2,83 +2,955 @@
 layout: page
 title: 下載 Swift
 ---
-<h2 id="latest-development-snapshots">最新開發版 snapshot</h2>
 
-<p>開發版 snapshot 是指從master branch自動編譯的binary。這些 snapshot 不是官方發行版本。它們通過自動化單元測試，但它們沒有通過正式版本的全面測試。</p>
+<h2 id="releases">發行版</h2>
+
+<h3 id="swift-221">Swift 2.2.1</h3>
 
 <table id="latest-builds" class="downloads">
   <thead>
     <tr>
-      <th class="platform">平台</th>
       <th class="download">下載</th>
       <th class="date">日期</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-
-      <td class="platform">Apple</td>
-
       <td class="download">
         <span class="release">
-          <a href="{{ site.data.latest_build_urls[0] }}" title="下載" download="">Xcode Swift 2.2 Snapshot</a>
-
-        </span>
-
-        <span class="debug">
-          <a href="{{ site.data.latest_build_urls[1] }}" download="">Debugging Symbols</a>
-
-        </span>
-
+          <a title="下載" href="https://developer.apple.com/xcode/download/" download="">Xcode 7.3.1</a> *</span>
       </td>
       <td class="date">
-        {% assign tt = site.data.latest_build_times[0] %}
-        {% include update_time_tag.html param=tt %}
+        <time title="日期">2016年5月3日</time>
+      </td>
+    </tr>
+    <tr>
+      <td class="download">
+        <span class="release">
+          <a title="下載" href="/builds/swift-2.2.1-release/ubuntu1510/swift-2.2.1-RELEASE/swift-2.2.1-RELEASE-ubuntu15.10.tar.gz" download="">Ubuntu 15.10</a> <a title="PGP簽章" href="/builds/swift-2.2.1-release/ubuntu1510/swift-2.2.1-RELEASE/swift-2.2.1-RELEASE-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+        </span>
+      </td>
+      <td class="date">
+        <time title="2016年5月3日上午01點39分（PDT）" datetime="2016-05-03T01:39:59-07:00">2016年5月3日</time>
       </td>
     </tr>
 
     <tr>
-
-      <td class="platform">Linux</td>
-
       <td class="download">
         <span class="release">
-          <a href="{{ site.data.latest_build_urls[2] }}" title="下載" download="">Ubuntu 15.10 Swift 2.2 Snapshot</a>
+          <a title="下載" href="/builds/swift-2.2.1-release/ubuntu1404/swift-2.2.1-RELEASE/swift-2.2.1-RELEASE-ubuntu14.04.tar.gz" download="">Ubuntu的14.04</a> <a title="PGP簽章" href="/builds/swift-2.2.1-release/ubuntu1404/swift-2.2.1-RELEASE/swift-2.2.1-RELEASE-ubuntu14.04.tar.gz.sig">簽章</a>
 
-          <a href="{{ site.data.latest_build_urls[3] }}" title="PGP簽章">Signature</a>
 
         </span>
-
       </td>
       <td class="date">
-        {% assign tt = site.data.latest_build_times[1] %}
-        {% include update_time_tag.html param=tt %}
+        <time title="2016年5月3日上午1時40（PDT）" datetime="2016-05-03T01:40:09-07:00">2016年5月3日</time>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+<p>*<a href="https://developer.apple.com/xcode/download/">Xcode 7.3.1</a>  包含 Swift 2.2.1。</p>
+
+<details class="download">
+  <summary>舊版本 </summary> Swift 2.2<table id="latest-builds" class="downloads">
+    <thead>
+      <tr>
+        <th class="download">下載</th>
+        <th class="date">日期</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="https://developer.apple.com/xcode/download/" download="">Xcode 7.3</a> *</span>
+        </td>
+        <td class="date">
+          <time title="日期">2016年3月21日</time>
+        </td>
+      </tr>
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-release/ubuntu1510/swift-2.2-RELEASE/swift-2.2-RELEASE-ubuntu15.10.tar.gz" download="">Ubuntu 15.10</a> <a title="PGP簽章" href="/builds/swift-2.2-release/ubuntu1510/swift-2.2-RELEASE/swift-2.2-RELEASE-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+        <td class="date">
+          <time title="2016年3月21日上午01點39分（PDT）" datetime="2016-03-21T01:39:59-07:00">2016年3月21日</time>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-release/ubuntu1404/swift-2.2-RELEASE/swift-2.2-RELEASE-ubuntu14.04.tar.gz" download="">Ubuntu的14.04</a> <a title="PGP簽章" href="/builds/swift-2.2-release/ubuntu1404/swift-2.2-RELEASE/swift-2.2-RELEASE-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+        <td class="date">
+          <time title="2016年3月21日上午01時40分（PDT）" datetime="2016-03-21T01:40:09-07:00">2016年3月21日</time>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>*Xcode 7.3 包含 Swift 2.2 。
+
+</details>
+
+<h2 id="snapshots">Snapshot</h2>
+
+<h3 id="trunk-development-master">主幹開發版（master）</h3>
+
+<p>開發版 snapshot 是指從master branch自動編譯的binary。這些 snapshot 不是官方發行版本。它們通過自動化單元測試，但它們沒有通過正式版本的全面測試。</p>
+
+<table id="latest-builds" class="downloads">
+  <thead>
+    <tr>
+      <th class="download">下載</th>
+      <th class="date">日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="download">
+        <span class="release">
+          <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-osx.pkg" download="">Xcode</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-osx-symbols.pkg">Debugging Symbols</a>
+
+
+        </span>
+      </td>
+      <td class="date">
+        <time title="2016年5月9日上午06點25分（PDT）" datetime="2016-05-09T06:25:13-07:00">2016年5月9日</time>
       </td>
     </tr>
 
     <tr>
-
-      <td class="platform">Linux</td>
-
       <td class="download">
         <span class="release">
-          <a href="{{ site.data.latest_build_urls[4] }}" title="下載" download="">Ubuntu 14.04 Swift 2.2 Snapshot</a>
+          <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-ubuntu15.10.tar.gz" download="">Ubuntu 15.10</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-ubuntu15.10.tar.gz.sig">簽章</a>
 
-          <a href="{{ site.data.latest_build_urls[5] }}" title="PGP簽章">Signature</a>
 
         </span>
-
       </td>
       <td class="date">
-        {% assign tt = site.data.latest_build_times[2] %}
-        {% include update_time_tag.html param=tt %}
+        <time title="2016年5月9日7:31（PDT）" datetime="2016-05-09T07:31:09-07:00">2016年5月9日</time>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="download">
+        <span class="release">
+          <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-ubuntu14.04.tar.gz" download="">Ubuntu的14.04</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-09-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+        </span>
+      </td>
+      <td class="date">
+        <time title="2016年5月9日7:34（PDT）" datetime="2016-05-09T07:34:14-07:00">2016年5月9日</time>
       </td>
     </tr>
 
   </tbody>
 </table>
 
+<details class="download">
+  <summary>舊</summary> Snapshot<table id="osx-builds" class="downloads">
+    <thead>
+      <tr>
+        <th class="download">下載</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a-osx.pkg" download="">2016年5月3日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a-osx.pkg" download="">2016年4月25日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a-osx.pkg" download="">2016年4月12日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a-osx.pkg" download="">2016年3月24日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a-osx.pkg" download="">2016年3月16日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a-osx.pkg" download="">2016年3月1日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a-osx.pkg" download="">2016年2月25日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx.pkg" download="">2016年2月8日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a-osx.pkg" download="">2016年2月3日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a-osx.pkg" download="">2016年1月25日</a> <a title="Debugging symbols" href="/builds/development/xcode/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>Ubuntu 15.10<table id="linux-builds" class="downloads">
+    <thead>
+      <tr>
+        <th class="download">下載</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a-ubuntu15.10.tar.gz" download="">2016年5月3日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a-ubuntu15.10.tar.gz" download="">2016年4月25日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a-ubuntu15.10.tar.gz" download="">2016年4月12日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a-ubuntu15.10.tar.gz" download="">2016年3月24日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a-ubuntu15.10.tar.gz" download="">2016年3月16日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a-ubuntu15.10.tar.gz" download="">2016年3月1日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a-ubuntu15.10.tar.gz" download="">2016年2月25日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz" download="">2016年2月8日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a-ubuntu15.10.tar.gz" download="">2016年2月3日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a-ubuntu15.10.tar.gz" download="">2016年1月25日</a> <a title="PGP簽章" href="/builds/development/ubuntu1510/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>Ubuntu 14.04<table id="linux-builds" class="downloads">
+    <thead>
+      <tr>
+        <th class="download">下載</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a-ubuntu14.04.tar.gz" download="">2016年5月3日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a-ubuntu14.04.tar.gz" download="">2016年4月25日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-25-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a-ubuntu14.04.tar.gz" download="">2016年4月12日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a/swift-DEVELOPMENT-SNAPSHOT-2016-04-12-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a-ubuntu14.04.tar.gz" download="">2016年3月24日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-24-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a-ubuntu14.04.tar.gz" download="">2016年3月16日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-16-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a-ubuntu14.04.tar.gz" download="">2016年3月1日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a/swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a-ubuntu14.04.tar.gz" download="">2016年2月25日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-25-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz" download="">2016年2月8日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a-ubuntu14.04.tar.gz" download="">2016年2月3日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a/swift-DEVELOPMENT-SNAPSHOT-2016-02-03-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a-ubuntu14.04.tar.gz" download="">2016年1月25日</a> <a title="PGP簽章" href="/builds/development/ubuntu1404/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a/swift-DEVELOPMENT-SNAPSHOT-2016-01-25-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+
+
+
+</details>
+
+<h3 id="swift-22x-release-branch">Swift 2.2.x 開發版</h3>
+
+<p>Swift 2.2.x Snapshot 是指從<code class="highlighter-rouge">swift-2.2-branch</code> branch 自動編譯的 binary。這些 snapshot 不是官方發行版本。它們通過自動化單元測試，但它們沒有通過正式版本的全面測試。</p>
+
+<table id="latest-builds" class="downloads">
+  <thead>
+    <tr>
+      <th class="download">下載</th>
+      <th class="date">日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="download">
+        <span class="release">
+          <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2.1-SNAPSHOT-2016-04-23-a/swift-2.2.1-SNAPSHOT-2016-04-23-a-osx.pkg" download="">Xcode</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2.1-SNAPSHOT-2016-04-23-a/swift-2.2.1-SNAPSHOT-2016-04-23-a-osx-symbols.pkg">Debugging Symbols</a>
+
+
+        </span>
+      </td>
+      <td class="date">
+        <time title="2016年4月23日上午03時06分（PDT）" datetime="2016-04-23T03:06:21-07:00">2016年4月23日</time>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="download">
+        <span class="release">
+          <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2.1-SNAPSHOT-2016-04-23-a/swift-2.2.1-SNAPSHOT-2016-04-23-a-ubuntu15.10.tar.gz" download="">Ubuntu 15.10</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2.1-SNAPSHOT-2016-04-23-a/swift-2.2.1-SNAPSHOT-2016-04-23-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+        </span>
+      </td>
+      <td class="date">
+        <time title="2016年4月23日3:36（PDT）" datetime="2016-04-23T03:36:51-07:00">2016年4月23日</time>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="download">
+        <span class="release">
+          <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2.1-SNAPSHOT-2016-04-23-a/swift-2.2.1-SNAPSHOT-2016-04-23-a-ubuntu14.04.tar.gz" download="">Ubuntu的14.04</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2.1-SNAPSHOT-2016-04-23-a/swift-2.2.1-SNAPSHOT-2016-04-23-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+        </span>
+      </td>
+      <td class="date">
+        <time title="2016年4月23日上午03時35分（PDT）" datetime="2016-04-23T03:35:12-07:00">2016年4月23日</time>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+<details class="download">
+  <summary>舊 Snapshot </summary> 
+
+  Xcode<table id="osx-builds" class="downloads">
+    <thead>
+      <tr>
+        <th class="download">Xcode</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2.1-SNAPSHOT-2016-04-12-a/swift-2.2.1-SNAPSHOT-2016-04-12-a-osx.pkg" download="">2016年4月12日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2.1-SNAPSHOT-2016-04-12-a/swift-2.2.1-SNAPSHOT-2016-04-12-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2.1-SNAPSHOT-2016-03-28-a/swift-2.2.1-SNAPSHOT-2016-03-28-a-osx.pkg" download="">2016年3月28日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2.1-SNAPSHOT-2016-03-28-a/swift-2.2.1-SNAPSHOT-2016-03-28-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-03-01-a/swift-2.2-SNAPSHOT-2016-03-01-a-osx.pkg" download="">2016年3月1日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-03-01-a/swift-2.2-SNAPSHOT-2016-03-01-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-02-24-a/swift-2.2-SNAPSHOT-2016-02-24-a-osx.pkg" download="">2016年2月24日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-02-24-a/swift-2.2-SNAPSHOT-2016-02-24-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-02-08-a/swift-2.2-SNAPSHOT-2016-02-08-a-osx.pkg" download="">2016年2月8日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-02-08-a/swift-2.2-SNAPSHOT-2016-02-08-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-02-03-a/swift-2.2-SNAPSHOT-2016-02-03-a-osx.pkg" download="">2016年2月3日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-02-03-a/swift-2.2-SNAPSHOT-2016-02-03-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-01-25-a/swift-2.2-SNAPSHOT-2016-01-25-a-osx.pkg" download="">2016年1月25日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-01-25-a/swift-2.2-SNAPSHOT-2016-01-25-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-01-11-a/swift-2.2-SNAPSHOT-2016-01-11-a-osx.pkg" download="">2016年1月11日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-01-11-a/swift-2.2-SNAPSHOT-2016-01-11-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-osx.pkg" download="">2016年1月6日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-osx.pkg" download="">2015年12月31日</a> <a title="Debugging symbols" href="/builds/swift-2.2-branch/xcode/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-osx-symbols.pkg">Debugging symbols</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>Ubuntu 15.10<table id="linux-builds" class="downloads">
+    <thead>
+      <tr>
+        <th class="download">下載</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2.1-SNAPSHOT-2016-04-12-a/swift-2.2.1-SNAPSHOT-2016-04-12-a-ubuntu15.10.tar.gz" download="">2016年4月12日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2.1-SNAPSHOT-2016-04-12-a/swift-2.2.1-SNAPSHOT-2016-04-12-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2.1-SNAPSHOT-2016-03-28-a/swift-2.2.1-SNAPSHOT-2016-03-28-a-ubuntu15.10.tar.gz" download="">2016年3月28日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2.1-SNAPSHOT-2016-03-28-a/swift-2.2.1-SNAPSHOT-2016-03-28-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-03-01-a/swift-2.2-SNAPSHOT-2016-03-01-a-ubuntu15.10.tar.gz" download="">2016年3月1日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-03-01-a/swift-2.2-SNAPSHOT-2016-03-01-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-02-24-a/swift-2.2-SNAPSHOT-2016-02-24-a-ubuntu15.10.tar.gz" download="">2016年2月24日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-02-24-a/swift-2.2-SNAPSHOT-2016-02-24-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-02-08-a/swift-2.2-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz" download="">2016年2月8日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-02-08-a/swift-2.2-SNAPSHOT-2016-02-08-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-02-03-a/swift-2.2-SNAPSHOT-2016-02-03-a-ubuntu15.10.tar.gz" download="">2016年2月3日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-02-03-a/swift-2.2-SNAPSHOT-2016-02-03-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-01-25-a/swift-2.2-SNAPSHOT-2016-01-25-a-ubuntu15.10.tar.gz" download="">2016年1月25日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-01-25-a/swift-2.2-SNAPSHOT-2016-01-25-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-01-11-a/swift-2.2-SNAPSHOT-2016-01-11-a-ubuntu15.10.tar.gz" download="">2016年1月11日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-01-11-a/swift-2.2-SNAPSHOT-2016-01-11-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-ubuntu15.10.tar.gz" download="">2016年1月6日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-ubuntu15.10.tar.gz" download="">2015年12月31日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1510/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-ubuntu15.10.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>Ubuntu 14.04<table id="linux-builds" class="downloads">
+    <thead>
+      <tr>
+        <th class="download">下載</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2.1-SNAPSHOT-2016-04-12-a/swift-2.2.1-SNAPSHOT-2016-04-12-a-ubuntu14.04.tar.gz" download="">2016年4月12日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2.1-SNAPSHOT-2016-04-12-a/swift-2.2.1-SNAPSHOT-2016-04-12-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2.1-SNAPSHOT-2016-03-28-a/swift-2.2.1-SNAPSHOT-2016-03-28-a-ubuntu14.04.tar.gz" download="">2016年3月28日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2.1-SNAPSHOT-2016-03-28-a/swift-2.2.1-SNAPSHOT-2016-03-28-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-03-01-a/swift-2.2-SNAPSHOT-2016-03-01-a-ubuntu14.04.tar.gz" download="">2016年3月1日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-03-01-a/swift-2.2-SNAPSHOT-2016-03-01-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-02-24-a/swift-2.2-SNAPSHOT-2016-02-24-a-ubuntu14.04.tar.gz" download="">2016年2月24日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-02-24-a/swift-2.2-SNAPSHOT-2016-02-24-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-02-08-a/swift-2.2-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz" download="">2016年2月8日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-02-08-a/swift-2.2-SNAPSHOT-2016-02-08-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-02-03-a/swift-2.2-SNAPSHOT-2016-02-03-a-ubuntu14.04.tar.gz" download="">2016年2月3日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-02-03-a/swift-2.2-SNAPSHOT-2016-02-03-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-01-25-a/swift-2.2-SNAPSHOT-2016-01-25-a-ubuntu14.04.tar.gz" download="">2016年1月25日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-01-25-a/swift-2.2-SNAPSHOT-2016-01-25-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-01-11-a/swift-2.2-SNAPSHOT-2016-01-11-a-ubuntu14.04.tar.gz" download="">2016年1月11日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-01-11-a/swift-2.2-SNAPSHOT-2016-01-11-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-ubuntu14.04.tar.gz" download="">2016年1月6日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2016-01-06-a/swift-2.2-SNAPSHOT-2016-01-06-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="download">
+          <span class="release">
+            <a title="下載" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-ubuntu14.04.tar.gz" download="">2015年12月31日</a> <a title="PGP簽章" href="/builds/swift-2.2-branch/ubuntu1404/swift-2.2-SNAPSHOT-2015-12-31-a/swift-2.2-SNAPSHOT-2015-12-31-a-ubuntu14.04.tar.gz.sig">簽章</a>
+
+
+          </span>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+</details>
+
 <p>Swift 使用 Swift 許可證 <a href="/LICENSE.txt">swift.org/LICENSE.txt</a> </p>
+
+<h2 id="using-downloads">使用</h2>
 
 <h2 id="apple-platforms">Appl平台</h2>
 
@@ -100,7 +972,7 @@ title: 下載 Swift
     <a href="https://developer.apple.com/xcode/">Xcode 7.2</a>或更高版本</li>
 </ul>
 
-<h4 id="supported-target-platforms">支援的平台</h4>
+<h4 id="supported-target-platforms">支援的系統</h4>
 
 <ul>
   <li>OS X 10.9.0或更高版本</li>
@@ -184,22 +1056,6 @@ title: 下載 Swift
   <p>如果沒有顯示鎖頭或簽章不是從 Swift open source 產生的，請不要繼續安裝。請離開安裝程式，並將詳細內容傳至<a href="mailto:swift-infrastructure@swift.org">swift-infrastructure@swift.org</a>，我們會進一步調查。</p>
 </div>
 
-<h3 id="older-releases">過去版本</h3>
-
-<table id="osx-builds" class="downloads">
-  <thead>
-    <tr>
-      <th>下載</th>
-      <th>日期</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for build in site.data.osx_builds %}
-    {% include osx_build_tr.html param=build %}
-    {% endfor %}
-  </tbody>
-</table>
-
 <h2 id="linux">Linux</h2>
 
 <p>Linux 版的 Package 是一個 tar 檔，包括 Swift 編譯器，LLDB，以及相關開發工具。你可以安裝在任何地方，只要你把安裝位置加入<code class="highlighter-rouge">PATH</code> 中就能正常運作。</p>
@@ -219,37 +1075,6 @@ title: 下載 Swift
 </ul>
 
 <hr>
-
-<h3 id="older-releases-1">過去版本</h3>
-
-<table id="linux-builds" class="downloads">
-  <thead>
-    <tr>
-      <th>下載</th>
-      <th>日期</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    {% for build in site.data.ubuntu_15_builds %}
-    {% include ubuntu_build_tr.html param=build %}
-    {% endfor %}
-  </tbody>
-</table>
-
-<table id="linux-builds" class="downloads">
-  <thead>
-    <tr>
-      <th>下載</th>
-      <th>日期</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for build in site.data.ubuntu_14_builds %}
-    {% include ubuntu_build_tr.html param=build %}
-    {% endfor %}
-  </tbody>
-</table>
 
 <h3 id="installation-1">安裝</h3>
 
