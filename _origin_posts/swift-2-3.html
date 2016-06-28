@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - Swift 2.3</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/blog/swift-2-3/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="Swift 2.3" />
+  <meta name="twitter:description" content="We are pleased to announce Swift 2.3!
+
+" />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Swift 2.3" />
+  <meta property="og:url" content="https://swift.org/blog/swift-2-3/" />
+  <meta property="og:description" content="We are pleased to announce Swift 2.3!
+
+" />
+  <meta property="article:published_time" content="2016-06-12T19:00:00-07:00" />
+  <meta property="article:modified_time" content="2016-06-28T06:54:10-07:00" />
+  
+</head>
+
+<body>
+
+<nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+    
+    
+    
+    <li>
+    
+      <a href="/migration-guide/">Migrating to Swift 3</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+    
+    
+    
+    <li>
+    
+      <a href="/continuous-integration/">Continuous Integration</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+<main role="main">
+<article class="post">
+  <header>
+    <h1>Swift 2.3</h1>
+
+    <time pubdate datetime="2016-06-12T19:00:00-07:00">June 12, 2016</time>
+
+    
+    
+      <div class="byline">
+        
+          <img src="https://s.gravatar.com/avatar/b6520643611a05fd040d0abcee3c883c?s=64" alt="Ted Kremenek"/>
+        
+
+        <span class="author">
+          
+            <a href="https://github.com/tkremenek/" rel="nofollow" title="Ted Kremenek (@tkremenek) on GitHub">Ted Kremenek</a>
+          
+        </span>
+      </div>
+    
+  </header>
+
+  <p>We are pleased to announce <strong>Swift 2.3</strong>!</p>
+
+<p>Swift 2.3 is a minor update from Swift 2.2.1.  The primary difference between
+Swift 2.2.1 and Swift 2.3 is that it is intended to be paired with Apple’s
+macOS 10.12, iOS 10, watchOS 3, and tvOS 10 SDKs.  It also updates the underlying
+LLVM and Clang versions to match with those in the Swift 3 compiler.</p>
+
+<h3 id="sources">Sources</h3>
+
+<p>Sources for Swift 2.3 are available in the <code class="highlighter-rouge">swift-2.3-branch</code> branch on GitHub.</p>
+
+<h3 id="downloads">Downloads</h3>
+
+<h4 id="apple-xcode">Apple (Xcode)</h4>
+
+<p>Swift 2.3 is available for free as part of <a href="https://developer.apple.com/xcode/download">Xcode 8</a>.</p>
+
+<h4 id="linux-ubuntu-1404-and-ubuntu-1510">Linux (Ubuntu 14.04 and Ubuntu 15.10)</h4>
+
+<p>Official binaries for Linux will be available shortly after the upgrade to the
+continuous integration system (which produces the binaries).  Note that for
+Linux, Swift 2.2.1 and Swift 2.3 are nearly identical.  This post will be updated
+once binaries are available.</p>
+
+
+  
+  <footer>
+    <nav>
+      
+      <a href="/blog/swift-3-0-release-process/" rel="prev" title="Previous: Swift 3.0 Release Process">Swift 3.0 Release Process</a>
+      
+
+      
+      <a href="/blog/swift-3-0-preview-1-released/" rel="next" title="Next: Swift 3.0 Preview 1 Released!">Swift 3.0 Preview 1 Released!</a>
+      
+    </nav>
+  </footer>
+  
+</article>
+</main>
+
+<footer role="contentinfo">
+  <aside>
+    <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+    <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+  </aside>
+
+  <p>Except where otherwise noted, all content on this blog is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
+  
+  
+  <p class="copyright">Copyright © 2016 Apple Inc. All rights reserved.</p>
+  <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+</footer>
+
+
+<script src="/assets/javascripts/application.js"></script>
+
+</body>
+</html>

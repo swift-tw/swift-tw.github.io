@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swift.org - Swift 3.0 Preview 1 Released!</title>
+  <meta name="author" content="Apple Inc." />
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <link rel="license" href="/LICENSE.txt" />
+  <link rel="stylesheet" media="all" href="/assets/stylesheets/application.css" />
+  <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  <link rel="mask-icon" href="/assets/images/icon-swift.svg" color="#F05339" />
+  
+
+  
+  <link rel="canonical" href="https://swift.org/blog/swift-3-0-preview-1-released/" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@SwiftLang" />
+  
+  <meta name="twitter:title" content="Swift 3.0 Preview 1 Released!" />
+  <meta name="twitter:description" content="We are very pleased to announce Developer Preview 1 of Swift 3.0!
+
+" />
+  
+
+  <meta property="og:site_name" content="Swift.org" />
+  <meta property="og:image" content="https://swift.org/touch-icon-ipad-180x180.png" />
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Swift 3.0 Preview 1 Released!" />
+  <meta property="og:url" content="https://swift.org/blog/swift-3-0-preview-1-released/" />
+  <meta property="og:description" content="We are very pleased to announce Developer Preview 1 of Swift 3.0!
+
+" />
+  <meta property="article:published_time" content="2016-06-13T05:00:00-07:00" />
+  <meta property="article:modified_time" content="2016-06-28T07:09:12-07:00" />
+  
+</head>
+
+<body>
+
+<nav role="navigation">
+  <header role="banner">
+    <h1 id="logo">
+      <a href="/" title="Swift.org" role="img" aria-label="Swift.org">
+        Swift.org
+      </a>
+    </h1>
+  </header>
+
+  <div id="menu-toggle" class="menu-toggle open"></div>
+
+  <ul>
+    
+    
+    <li>
+    
+      <a href="/about/">About Swift</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/blog/">Blog</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/download/">Download</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/getting-started/">Getting Started</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/documentation/">Documentation</a>
+      
+    </li>
+    
+    
+    
+    <li>
+    
+      <a href="/migration-guide/">Migrating to Swift 3</a>
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/source-code/">Source Code</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/community/">Community</a>
+      
+    </li>
+
+    
+    
+    <li>
+    
+      <a href="/contributing/">Contributing</a>
+      
+    </li>
+    
+    
+    
+    <li>
+    
+      <a href="/continuous-integration/">Continuous Integration</a>
+      
+    </li>
+  </ul>
+
+  <h2>Projects</h2>
+  <ul>
+      
+      
+      <li>
+      
+        <a href="/compiler-stdlib/">Compiler and Standard Library</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/package-manager/">Package Manager</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/core-libraries/">Core Libraries</a>
+        
+      </li>
+
+      
+      
+      <li>
+      
+        <a href="/lldb/">REPL and Debugger</a>
+        
+      </li>
+  </ul>
+</nav>
+
+
+<main role="main">
+<article class="post">
+  <header>
+    <h1>Swift 3.0 Preview 1 Released!</h1>
+
+    <time pubdate datetime="2016-06-13T05:00:00-07:00">June 13, 2016</time>
+
+    
+    
+      <div class="byline">
+        
+          <img src="https://s.gravatar.com/avatar/b6520643611a05fd040d0abcee3c883c?s=64" alt="Ted Kremenek"/>
+        
+
+        <span class="author">
+          
+            <a href="https://github.com/tkremenek/" rel="nofollow" title="Ted Kremenek (@tkremenek) on GitHub">Ted Kremenek</a>
+          
+        </span>
+      </div>
+    
+  </header>
+
+  <p>We are very pleased to announce <strong>Developer Preview 1</strong> of Swift 3.0!</p>
+
+<p>As described in the <a href="https://swift.org/blog/swift-3-0-release-process/">Swift 3.0 Release Process</a>, developer previews (i.e., “seeds” or
+“betas”) provide qualified builds of Swift 3 that are more stable than just
+grabbing the latest snapshot of <code class="highlighter-rouge">master</code> (i.e., tip-of-trunk development).
+Developer previews capture Swift 3 as a work-in-progress and should not
+be considered the final version of Swift 3 unless otherwise stated.</p>
+
+<h3 id="implemented-swift-evolution-proposals">Implemented Swift Evolution Proposals</h3>
+
+<p>The following <a href="https://github.com/apple/swift-evolution">Swift Evolution</a> proposals are newly implemented
+in Swift 3.0 Preview 1:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0002-remove-currying.md">SE-0002: Removing currying <code class="highlighter-rouge">func</code> declaration syntax</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0003-remove-var-parameters.md">SE-0003: Removing <code class="highlighter-rouge">var</code> from Function Parameters</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0004-remove-pre-post-inc-decrement.md">SE-0004: Remove the <code class="highlighter-rouge">++</code> and <code class="highlighter-rouge">--</code> operators</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md">SE-0005: Better Translation of Objective-C APIs Into Swift</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0006-apply-api-guidelines-to-the-standard-library.md">SE-0006: Apply API Guidelines to the Standard Library</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0007-remove-c-style-for-loops.md">SE-0007: Remove C-style for-loops with conditions and incrementers</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0008-lazy-flatmap-for-optionals.md">SE-0008: Add a Lazy flatMap for Sequences of Optionals</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0016-initializers-for-converting-unsafe-pointers-to-ints.md">SE-0016: Adding initializers to Int and UInt to convert from UnsafePointer and UnsafeMutablePointer</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0017-convert-unmanaged-to-use-unsafepointer.md">SE-0017: Change <code class="highlighter-rouge">Unmanaged</code> to use <code class="highlighter-rouge">UnsafePointer</code></a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0019-package-manager-testing.md">SE-0019: Swift Testing</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0023-api-guidelines.md">SE-0023: API Design Guidelines</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0028-modernizing-debug-identifiers.md">SE-0028: Modernizing Swift’s Debugging Identifiers (__FILE__, etc)</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0029-remove-implicit-tuple-splat.md">SE-0029: Remove implicit tuple splat behavior from function applications</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0031-adjusting-inout-declarations.md">SE-0031: Adjusting inout Declarations for Type Decoration</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0032-sequencetype-find.md">SE-0032: Add <code class="highlighter-rouge">first(where:)</code> method to <code class="highlighter-rouge">SequenceType</code></a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0033-import-objc-constants.md">SE-0033: Import Objective-C Constants as Swift Types</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0034-disambiguating-line.md">SE-0034: Disambiguating Line Control Statements from Debugging Identifiers</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0037-clarify-comments-and-operators.md">SE-0037: Clarify interaction between comments &amp; operators</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0039-playgroundliterals.md">SE-0039: Modernizing Playground Literals</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0040-attributecolons.md">SE-0040: Replacing Equal Signs with Colons For Attribute Arguments</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0043-declare-variables-in-case-labels-with-multiple-patterns.md">SE-0043: Declare variables in ‘case’ labels with multiple patterns</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0044-import-as-member.md">SE-0044: Import as Member</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0046-first-label.md">SE-0046: Establish consistent label behavior across all parameters including first labels</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0047-nonvoid-warn.md">SE-0047: Defaulting non-Void functions so they warn on unused results</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0048-generic-typealias.md">SE-0048: Generic Type Aliases</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0049-noescape-autoclosure-type-attrs.md">SE-0049: Move @noescape and @autoclosure to be type attributes</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0053-remove-let-from-function-parameters.md">SE-0053: Remove explicit use of <code class="highlighter-rouge">let</code> from Function Parameters</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0054-abolish-iuo.md">SE-0054: Abolish <code class="highlighter-rouge">ImplicitlyUnwrappedOptional</code> type</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0055-optional-unsafe-pointers.md">SE-0055: Make unsafe pointer nullability explicit using Optional</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0057-importing-objc-generics.md">SE-0057: Importing Objective-C Lightweight Generics</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0059-updated-set-apis.md">SE-0059: Update API Naming Guidelines and Rewrite Set APIs Accordingly</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0061-autoreleasepool-signature.md">SE-0061: Add Generic Result and Error Handling to autoreleasepool()</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0062-objc-keypaths.md">SE-0062: Referencing Objective-C key-paths</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0064-property-selectors.md">SE-0064: Referencing the Objective-C selector of property getters and setters</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0065-collections-move-indices.md">SE-0065: A New Model For Collections and Indices</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0066-standardize-function-type-syntax.md">SE-0066: Standardize function type argument syntax to require parentheses</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0069-swift-mutability-for-foundation.md">SE-0069: Mutability and Foundation Value Types</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0070-optional-requirements.md">SE-0070: Make Optional Requirements Objective-C-only</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0071-member-keywords.md">SE-0071: Allow (most) keywords in member references</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0085-package-manager-command-name.md">SE-0085: Package Manager Command Names</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0094-sequence-function.md">SE-0094: Add sequence(first:next:) and sequence(state:next:) to the stdlib</a></li>
+</ul>
+
+<h3 id="downloads">Downloads</h3>
+
+<h4 id="apple-xcode">Apple (Xcode)</h4>
+
+<p>Swift 3.0 Preview 1 is available for free as part of <a href="https://developer.apple.com/xcode/download">Xcode 8 beta 1</a>.</p>
+
+<h4 id="linux-ubuntu-1404-and-ubuntu-1510">Linux (Ubuntu 14.04 and Ubuntu 15.10)</h4>
+
+<p>Official binaries for Ubuntu 14.04 and Ubuntu 15.10 are <a href="https://swift.org/download/">available for download</a> on Swift.org.</p>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>An updated version of <a href="https://swift.org/documentation/#the-swift-programming-language">The Swift Programming Language</a> for Swift 3.0 is now available on Swift.org.  It is also available for free on Apple’s <a href="https://itunes.apple.com/us/book/the-swift-programming-language/id1002622538?mt=11">iBooks store</a>.</p>
+
+<h3 id="foundation-and-linux-core-libraries">Foundation and Linux (Core Libraries)</h3>
+
+<p>Not all of the <code class="highlighter-rouge">NS</code> prefix removal changes have propagated to the Core Libraries implementation of Foundation APIs.
+This should be resolved in a future beta.</p>
+
+<h3 id="migrating-to-swift-3">Migrating to Swift 3</h3>
+
+<p>Swift 3 is a source-breaking release over Swift 2.2.1.  It contains many syntactic refinements and improvements,
+but also a huge number of changes for how Objective-C APIs import into Swift due to <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md">SE-0005</a>. 
+Please consult the <a href="https://swift.org/migration-guide/">migration guide</a> for guidance and tips
+for migrating to Swift 3.</p>
+
+
+  
+  <footer>
+    <nav>
+      
+      <a href="/blog/swift-2-3/" rel="prev" title="Previous: Swift 2.3">Swift 2.3</a>
+      
+
+      
+    </nav>
+  </footer>
+  
+</article>
+</main>
+
+<footer role="contentinfo">
+  <aside>
+    <a href="/atom.xml" title="Subscribe to Site Updates"><i class="feed"></i></a>
+    <a href="https://twitter.com/swiftlang" rel="nofollow" title="Follow @SwiftLang on Twitter"><i class="twitter"></i></a>
+  </aside>
+
+  <p>Except where otherwise noted, all content on this blog is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International license</a>.</p>
+  
+  
+  <p class="copyright">Copyright © 2016 Apple Inc. All rights reserved.</p>
+  <p class="trademark">Swift and the Swift logo are trademarks of Apple Inc.</p>
+</footer>
+
+
+<script src="/assets/javascripts/application.js"></script>
+
+</body>
+</html>
