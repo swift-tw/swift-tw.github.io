@@ -1,0 +1,177 @@
+---
+layout: post
+title: 
+date: 2016-09-13T05:00:00-07:00
+comments: true
+paginate: true
+categories: [Swift blog, Swift, Xcode]
+---
+
+  <header>
+    <h1>Swift 3.0 Released!</h1>
+
+    <time pubdate datetime="2016-09-13T05:00:00-07:00">September 13, 2016</time>
+
+    
+    
+      <div class="byline">
+        
+          <img src="https://s.gravatar.com/avatar/b6520643611a05fd040d0abcee3c883c?s=64" alt="Ted Kremenek">
+        
+
+        <span class="author">
+          
+            <a href="https://github.com/tkremenek/" rel="nofollow" title="Ted Kremenek (@tkremenek) on GitHub">Ted Kremenek</a>
+          
+        </span>
+      </div>
+    
+  </header>
+
+  <p>Swift 3.0, the first major release of Swift since it was open-sourced, is now officially released!  Swift 3 is a huge release containing major improvements and  refinements to the core language and Standard Library, major additions to the Linux port of Swift, and the first official release of the <a href="https://swift.org/package-manager">Swift Package Manager</a>.</p>
+
+<h2 id="language-changes">Language Changes</h2>
+
+<p>Swift 3.0 is a major language release.  It is not source-compatible with Swift 2.2 and 2.3.  It contains the following language changes that went through the Swift’s <a href="https://swift.org/contributing/#participating-in-the-swift-evolution-process">evolution process</a>:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0002-remove-currying.md">SE-0002: Removing currying <code class="highlighter-rouge">func</code> declaration syntax</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0003-remove-var-parameters.md">SE-0003: Removing <code class="highlighter-rouge">var</code> from Function Parameters</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0004-remove-pre-post-inc-decrement.md">SE-0004: Remove the <code class="highlighter-rouge">++</code> and <code class="highlighter-rouge">--</code> operators</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md">SE-0005: Better Translation of Objective-C APIs Into Swift</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0006-apply-api-guidelines-to-the-standard-library.md">SE-0006: Apply API Guidelines to the Standard Library</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0007-remove-c-style-for-loops.md">SE-0007: Remove C-style for-loops with conditions and incrementers</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0008-lazy-flatmap-for-optionals.md">SE-0008: Add a Lazy flatMap for Sequences of Optionals</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0016-initializers-for-converting-unsafe-pointers-to-ints.md">SE-0016: Adding initializers to Int and UInt to convert from UnsafePointer and UnsafeMutablePointer</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0017-convert-unmanaged-to-use-unsafepointer.md">SE-0017: Change <code class="highlighter-rouge">Unmanaged</code> to use <code class="highlighter-rouge">UnsafePointer</code></a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0019-package-manager-testing.md">SE-0019: Swift Testing</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0023-api-guidelines.md">SE-0023: API Design Guidelines</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0025-scoped-access-level.md">SE-0025: Scoped Access Level</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0029-remove-implicit-tuple-splat.md">SE-0029: Remove implicit tuple splat behavior from function applications</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0031-adjusting-inout-declarations.md">SE-0031: Adjusting inout Declarations for Type Decoration</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0032-sequencetype-find.md">SE-0032: Add <code class="highlighter-rouge">first(where:)</code> method to <code class="highlighter-rouge">SequenceType</code></a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0033-import-objc-constants.md">SE-0033: Import Objective-C Constants as Swift Types</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0034-disambiguating-line.md">SE-0034: Disambiguating Line Control Statements from Debugging Identifiers</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0035-limit-inout-capture.md">SE-0035: Limiting <code class="highlighter-rouge">inout</code> capture to <code class="highlighter-rouge">@noescape</code> contexts</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0036-enum-dot.md">SE-0036: Requiring Leading Dot Prefixes for Enum Instance Member Implementations</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0037-clarify-comments-and-operators.md">SE-0037: Clarify interaction between comments &amp; operators</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0038-swiftpm-c-language-targets.md">SE-0038: Package Manager C Language Target Support</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0039-playgroundliterals.md">SE-0039: Modernizing Playground Literals</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0040-attributecolons.md">SE-0040: Replacing Equal Signs with Colons For Attribute Arguments</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0043-declare-variables-in-case-labels-with-multiple-patterns.md">SE-0043: Declare variables in ‘case’ labels with multiple patterns</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0044-import-as-member.md">SE-0044: Import as Member</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0046-first-label.md">SE-0046: Establish consistent label behavior across all parameters including first labels</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0047-nonvoid-warn.md">SE-0047: Defaulting non-Void functions so they warn on unused results</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0048-generic-typealias.md">SE-0048: Generic Type Aliases</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0049-noescape-autoclosure-type-attrs.md">SE-0049: Move @noescape and @autoclosure to be type attributes</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0052-iterator-post-nil-guarantee.md">SE-0052: Change IteratorType post-nil guarantee</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0053-remove-let-from-function-parameters.md">SE-0053: Remove explicit use of <code class="highlighter-rouge">let</code> from Function Parameters</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0054-abolish-iuo.md">SE-0054: Abolish <code class="highlighter-rouge">ImplicitlyUnwrappedOptional</code> type</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0055-optional-unsafe-pointers.md">SE-0055: Make unsafe pointer nullability explicit using Optional</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0057-importing-objc-generics.md">SE-0057: Importing Objective-C Lightweight Generics</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0059-updated-set-apis.md">SE-0059: Update API Naming Guidelines and Rewrite Set APIs Accordingly</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0060-defaulted-parameter-order.md">SE-0060: Enforcing order of defaulted parameters</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0061-autoreleasepool-signature.md">SE-0061: Add Generic Result and Error Handling to autoreleasepool()</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0062-objc-keypaths.md">SE-0062: Referencing Objective-C key-paths</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0063-swiftpm-system-module-search-paths.md">SE-0063: SwiftPM System Module Search Paths</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0064-property-selectors.md">SE-0064: Referencing the Objective-C selector of property getters and setters</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0065-collections-move-indices.md">SE-0065: A New Model For Collections and Indices</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0066-standardize-function-type-syntax.md">SE-0066: Standardize function type argument syntax to require parentheses</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0067-floating-point-protocols.md">SE-0067: Enhanced Floating Point Protocols</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0069-swift-mutability-for-foundation.md">SE-0069: Mutability and Foundation Value Types</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0070-optional-requirements.md">SE-0070: Make Optional Requirements Objective-C-only</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0071-member-keywords.md">SE-0071: Allow (most) keywords in member references</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0072-eliminate-implicit-bridging-conversions.md">SE-0072: Fully eliminate implicit bridging conversions from Swift</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0076-copying-to-unsafe-mutable-pointer-with-unsafe-pointer-source.md">SE-0076: Add overrides taking an UnsafePointer source to non-destructive copying methods on UnsafeMutablePointer</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0077-operator-precedence.md">SE-0077: Improved operator declarations</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0081-move-where-expression.md">SE-0081: Move <code class="highlighter-rouge">where</code> clause to end of declaration</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0085-package-manager-command-name.md">SE-0085: Package Manager Command Names</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0086-drop-foundation-ns.md">SE-0086: Drop NS Prefix in Swift Foundation</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0088-libdispatch-for-swift3.md">SE-0088: Modernize libdispatch for Swift 3 naming conventions</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0089-rename-string-reflection-init.md">SE-0089: Renaming <code class="highlighter-rouge">String.init&lt;T&gt;(_: T)</code></a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0091-improving-operators-in-protocols.md">SE-0091: Improving operator requirements in protocols</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0092-typealiases-in-protocols.md">SE-0092: Typealiases in protocols and protocol extensions</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0093-slice-base.md">SE-0093: Adding a public <code class="highlighter-rouge">base</code> property to slices</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0094-sequence-function.md">SE-0094: Add sequence(first:next:) and sequence(state:next:) to the stdlib</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0095-any-as-existential.md">SE-0095: Replace <code class="highlighter-rouge">protocol&lt;P1,P2&gt;</code> syntax with <code class="highlighter-rouge">P1 &amp; P2</code> syntax</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0096-dynamictype.md">SE-0096: Converting dynamicType from a property to an operator</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0099-conditionclauses.md">SE-0099: Restructuring Condition Clauses</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0101-standardizing-sizeof-naming.md">SE-0101: Reconfiguring <code class="highlighter-rouge">sizeof</code> and related functions into a unified <code class="highlighter-rouge">MemoryLayout</code> struct</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0102-noreturn-bottom-type.md">SE-0102: Remove <code class="highlighter-rouge">@noreturn</code> attribute and introduce an empty <code class="highlighter-rouge">Never</code> type</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0103-make-noescape-default.md">SE-0103: Make non-escaping closures the default</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0106-rename-osx-to-macos.md">SE-0106: Add a <code class="highlighter-rouge">macOS</code> Alias for the <code class="highlighter-rouge">OSX</code> Platform Configuration Test</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0107-unsaferawpointer.md">SE-0107: UnsafeRawPointer API</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0109-remove-boolean.md">SE-0109: Remove the <code class="highlighter-rouge">Boolean</code> protocol</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0111-remove-arg-label-type-significance.md">SE-0111: Remove type system significance of function argument labels</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0112-nserror-bridging.md">SE-0112: Improved NSError Bridging</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0113-rounding-functions-on-floatingpoint.md">SE-0113: Add integral rounding functions to FloatingPoint</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0114-buffer-naming.md">SE-0114: Updating Buffer "Value" Names to "Header" Names</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0115-literal-syntax-protocols.md">SE-0115: Rename Literal Syntax Protocols</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0116-id-as-any.md">SE-0116: Import Objective-C <code class="highlighter-rouge">id</code> as Swift <code class="highlighter-rouge">Any</code> type</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0117-non-public-subclassable-by-default.md">SE-0117: Allow distinguishing between public access and public overridability</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0118-closure-parameter-names-and-labels.md">SE-0118: Closure Parameter Names and Labels</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0120-revise-partition-method.md">SE-0120: Revise <code class="highlighter-rouge">partition</code> Method Signature</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0121-remove-optional-comparison-operators.md">SE-0121: Remove <code class="highlighter-rouge">Optional</code> Comparison Operators</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0124-bitpattern-label-for-int-initializer-objectidentfier.md">SE-0124: <code class="highlighter-rouge">Int.init(ObjectIdentifier)</code> and <code class="highlighter-rouge">UInt.init(ObjectIdentifier)</code> should have a <code class="highlighter-rouge">bitPattern:</code> label</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0125-remove-nonobjectivecbase.md">SE-0125: Remove <code class="highlighter-rouge">NonObjectiveCBase</code> and <code class="highlighter-rouge">isUniquelyReferenced</code></a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0127-cleaning-up-stdlib-ptr-buffer.md">SE-0127: Cleaning up stdlib Pointer and Buffer Routines</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0128-unicodescalar-failable-initializer.md">SE-0128: Change failable UnicodeScalar initializers to failable</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0129-package-manager-test-naming-conventions.md">SE-0129: Package Manager Test Naming Conventions</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0130-string-initializers-cleanup.md">SE-0130: Replace repeating <code class="highlighter-rouge">Character</code> and <code class="highlighter-rouge">UnicodeScalar</code> forms of String.init</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0131-anyhashable.md">SE-0131: Add <code class="highlighter-rouge">AnyHashable</code> to the standard library</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0133-rename-flatten-to-joined.md">SE-0133: Rename <code class="highlighter-rouge">flatten()</code> to <code class="highlighter-rouge">joined()</code></a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0134-rename-string-properties.md">SE-0134: Rename two UTF8-related properties on String</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0135-package-manager-support-for-differentiating-packages-by-swift-version.md">SE-0135: Package Manager Support for Differentiating Packages by Swift version</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0136-memory-layout-of-values.md">SE-0136: Memory Layout of Values</a></li>
+  <li><a href="https://github.com/apple/swift-evolution/blob/master/proposals/0137-avoiding-lock-in.md">SE-0137: Avoiding Lock-In to Legacy Protocol Designs</a></li>
+</ul>
+
+<h3 id="migrating-to-swift-3">Migrating to Swift 3</h3>
+
+<p>Swift 3 is a source-breaking release, largely due to the changes in <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md">SE-0005</a> and <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0006-apply-api-guidelines-to-the-standard-library.md">SE-0006</a>.  These changes not only impact the names of the Standard Library APIs, but also completely change how Objective-C APIs (particularly from Cocoa) import into Swift.  Many of the changes are largely mechanical, but they can be numerous in a typical Swift project.</p>
+
+<p>To help with moving to Swift 3, <a href="https://itunes.apple.com/app/xcode/id497799835">Xcode 8.0</a> contains a code migrator that can automatically handle many of the need source changes.  There is also a
+<a href="https://swift.org/migration-guide/">migration guide</a> available to guide you through many of the changes — especially through the ones that are less mechanical and require more direct scrutiny.</p>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>An updated version of <a href="https://swift.org/documentation/#the-swift-programming-language">The Swift Programming Language</a> for Swift 3.0 is now available on Swift.org.  It is also available for free on Apple’s iBooks store.</p>
+
+<h3 id="platforms">Platforms</h3>
+
+<h4 id="linux-ubuntu-1404-and-ubuntu-1510">Linux (Ubuntu 14.04 and Ubuntu 15.10)</h4>
+
+<p>The Linux port now includes the <a href="https://swift.org/core-libraries/">Swift Core Libraries</a> and the <a href="https://swift.org/package-manager">Swift Package Manager</a>.</p>
+
+<p>Official binaries for Ubuntu 14.04 and Ubuntu 15.10 are <a href="https://swift.org/download/">available for download</a>.</p>
+
+<h4 id="apple-xcode">Apple (Xcode)</h4>
+
+<p>For development on Apple’s platforms, Swift 3.0 ships as part of <a href="https://itunes.apple.com/app/xcode/id497799835">Xcode 8.0</a>.</p>
+
+<h3 id="sources">Sources</h3>
+
+<p>Development on Swift 3.0 was tracked in the <code class="highlighter-rouge">swift-3.0-branch</code> on the following repositories on GitHub:</p>
+
+<ul>
+  <li><a href="https://github.com/apple/swift">swift</a></li>
+  <li><a href="https://github.com/apple/swift-llvm">swift-llvm</a></li>
+  <li><a href="https://github.com/apple/swift-clang">swift-clang</a></li>
+  <li><a href="https://github.com/apple/swift-lldb">swift-lldb</a></li>
+  <li><a href="https://github.com/apple/swift-cmark">swift-cmark</a></li>
+  <li><a href="https://github.com/apple/swift-corelibs-foundation">swift-corelibs-foundation</a></li>
+  <li><a href="https://github.com/apple/swift-corelibs-libdispatch">swift-corelibs-libdispatch</a></li>
+  <li><a href="https://github.com/apple/swift-corelibs-xctest">swift-corelibs-xctest</a></li>
+  <li><a href="https://github.com/apple/swift-llbuild">swift-llbuild</a></li>
+  <li><a href="https://github.com/apple/swift-package-manager">swift-package-manager</a></li>
+</ul>
+
+<p>The tag <code class="highlighter-rouge">swift-3.0-RELEASE</code> designates the specific revisions in those repositories that make up the final version of Swift 3.0.</p>
+
+<p>The <code class="highlighter-rouge">swift-3.0-branch</code> will remain open, but under the same <a href="https://swift.org/blog/swift-3-0-release-process/">release management process</a>, to accumulate changes for a potential future bug-fix “dot” release.</p>
+
+
+
+  
+  
+  
