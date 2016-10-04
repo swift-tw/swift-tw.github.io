@@ -1,98 +1,88 @@
 ---
 layout: page
-title: 升級至 Swift 3 ( 英文 )
+title: 升級至 Swift 3
 ---
 
-  <p>Xcode 8.0 comes with a Swift Migrator tool that helps you migrate your project to Swift 3, or update it to work with Swift 2.3 and the new SDKs.</p>
+<p>Xcode 8.0 內建 Swift 升級工具，可以幫助您將專案更新到 Swift 3，或者更新到 Swift 2.3 來使用新的 SDKs。</p>
 
-<h2 id="pre-migration-preparation">Pre-Migration Preparation</h2>
+<h2 id="pre-migration-preparation">升級前的準備</h2>
 
-<p>To get the most effective migration, make sure that the project that you intend to migrate builds successfully, and all its tests pass, when using Xcode 7.3[.1].<br>
-Also make sure that the project is managed under source control. This will allow you to easily review the changes that were applied via the migration assistant and to discard them and re-try the migration if needed.</p>
+<p>為了讓更新更有效率，請確保您打算更新的專案使用 Xcode 7.3.1 時能成功建置，並且通過所有測試。<br>另外，還要確認專案有使用代碼管理系統(source control system)。讓你能輕鬆地審查升級工具做的修改，有必要的話也能復原再重試一次。</p>
 
-<p>If you have multiple schemes that build different independent products (or the same product for different platforms) it is important to create one scheme that builds everything in your project and for all the platforms you need, including your unit test targets. The migration assistant does a migrator “build” to gather the changes, using the scheme you have selected, so the targets that will get processed are the ones that are included in the scheme.<br>
-To review and modify what is included in the scheme, invoke the <em>“Edit Scheme…”</em> sheet and select the <em>“Build”</em> tab from the column on the left, and make sure all your targets and their unit tests are included.</p>
+<p>如果您使用多個 schemes 來建置多個獨立產品（或針對不同平台的同一產品），你需要建立一個 scheme 來建置專案中所有東西，包含所有的平台還有測試目標。升級工具會先使用你選擇的 scheme 來做一次升級建置來確定需要修改的地方。所以只有scheme 內的目標會被處理。<br>要檢查和修改 scheme 的內容，點選<em>Edit Scheme…</em>，然後從左邊的選單選擇<em>Build</em> 分頁來確認所有的目標和測試目標都已包含在內。</p>
 
-<p>If your project depends on other open-source projects that are provided by Carthage or CocoaPods, consult the <a href="#using-carthagecocoapods-projects">Using Carthage/CocoaPods Projects</a> section.</p>
+<p>如果你的專案使用了 Carthage 或 CocoaPods，請參考<a href="#using-carthagecocoapods-projects">使用 Carthage/CocoaPods</a> 段落</p>
 
-<h2 id="swift-migration-assistant">Swift Migration Assistant</h2>
-<p>When you open your project with Xcode 8.0 for the first time, you will be prompted via the migration assistant to do a migration pass. The assistant can also be invoked manually from the menu <em>Edit -&gt; Convert -&gt; To Current Swift Syntax…</em></p>
+<h2 id="swift-migration-assistant">Swift 升級工具</h2>
+<p>當你第一次使用 Xcode 8.0 打開專案時，會啟動升級工具來進行升級。你也可以從選單中的 <em>Edit -&gt; Convert -&gt; To Current Swift Syntax…</em> 手動開啟工具。</p>
 
-<p>You can choose from two kinds of migration to perform:</p>
+<p>有兩種升級的選項：</p>
 
 <ul>
   <li>
-<strong>Use Swift 2.3</strong> Modifies your project to enable the <em>Use Legacy Swift</em> build setting and provides source changes to be able to build against the new SDKs.</li>
+    <strong>Use Swift 2.3</strong> 修改你的專案設定，開啟 <em>Use Legacy Swift</em> 的參數。並修改你的程式碼讓他和新 SDK 相容。</li>
   <li>
-<strong>Use Swift 3</strong> This is recommended. You will get source changes to be able to build your project using Swift 3 and take advantage of all the new features in Xcode 8.0.</li>
+    <strong>Use Swift 3</strong> 推薦的選項。 升級你的程式碼到 Swift 3 ，並可以以使用 Xcode 8.0 的所有新功能。</li>
 </ul>
 
-<p>Optionally, you can move to Swift 2.3 now and invoke the migration assistant again later to update to Swift 3.</p>
+<p>你也可以先升級到 Swift 2.3， 之後再用升級工具升級到 Swift 3。</p>
 
-<p>After you invoke the migration assistant and you select <em>“Use Swift 2.3”</em> or <em>“Use Swift 3”</em>, you will be presented with a list of targets to migrate. Targets that do not contain any Swift code will not be selected. There is a known issue affecting targets that do not contain Swift files but have the <em>“Embed Swift Standard Libraries”</em> setting enabled (e.g. Watch Apps that act more like stubs), which should be checked but are not. To be safe, select all the targets that you see in the list.</p>
+<p>執行工具並從 <em>“Use Swift 2.3”</em> 和 <em>“Use Swift 3”</em> 之中選擇一個之後，會列出所有會升級的目標。不含 Swift 程式碼的目標不會被列出來。</p>
 
-<p>Clicking <em>‘Next’</em> will bring up the <em>‘Generate Preview’</em> sheet and the assistant will initiate a migration ‘build’ to get source changes. When this is done, you will be presented with all the changes that will be applied once you click on ‘Save’.
-Note that in the diff view, the original source (before conversion) is on the right and the changes are on the left. Clicking <em>‘Save’</em> will apply the source changes to the original files. If you chose to move to Swift 2.3, the targets will have the <em>“Use Legacy Swift”</em> build setting set.</p>
+<p>點 <em>‘Next’</em> 會帶出 <em>‘Generate Preview’</em> 頁面，工具也會進行一次建置來收集需要修改的地方。完成後會顯示所有會進行的修改。在顯示差異模式中，左邊是轉換前的檔案，右邊是轉換後的檔案。點 <em>'Save'</em> 後就會修改檔案。如果你選的是升級到 Swift 2.3 ，會在設定檔中加入 <em>“Use Legacy Swift”</em> 的設定。</p>
 
-<p>There may have been issues with processing the targets, that will negatively impact the migration process. Switch to the <em>“Report Navigator”</em> and select the <em>‘Convert’</em> entry that was added; this is the conversion build log. Check the log for errors that may have showed up. If you see errors about failing to import a Swift module from one of your targets (e.g. <em>“No such module ‘NAME’“</em>, where <em>‘NAME’</em> is the module name for one of your targets), then you are likely hitting
-a known issue where the migration build is not resolving implicit dependencies correctly (so the <em>‘NAME’</em> target is not processed ahead of the target that depends on it).
-To workaround this, edit the scheme and in the <em>‘Build’</em> section add that target explicitly (click on the ‘plus’ button in lower left and find the target in the selection list) and drag it, in the list, ahead of the target that depends on it. You must also uncheck <em>‘Parallelize Build’</em>.</p>
+<p>如果升級時遇到問題。切換到<em>“Report Navigator”</em>，點選出現的<em>“Convert”</em>項目，裡面會有轉換的 Log，可以用它來找出問題所在。</p>
 
-<p>If you see errors about not being able to code-sign the target, try disabling code-signing from the build settings of the target.<br>
-If you see other errors, please file a bug report at https://bugreport.apple.com and include the details.</p>
+<p>如果你看到和 code-sign 有關的錯誤，把 code-signing 關掉後再試一次。<br>如果您看到其他錯誤，請在https://bugreport.apple.com 提交一個 bug 報告，包括錯誤的細節。</p>
 
-<p>If you need to apply any workarounds, discard the changes that you accepted from the migration assistant earlier, apply the workarounds, and invoke the assistant manually to re-try the conversion from the start.</p>
+<p>如果你想要修改原來的程式來避開錯誤，回復程式到使用升級工具前的狀態，修改程式之後，再手動執行一次升級工具。</p>
 
-<h2 id="swift-3-migration-changes-overview">Swift 3 Migration Changes Overview</h2>
+<h2 id="swift-3-migration-changes-overview">Swift 3 修改簡介</h2>
 
-<p>There have been many significant changes for Swift 3, which the migrator will help you with. You can see an overview of the Swift 3 evolution proposals here: <a href="https://github.com/apple/swift-evolution">https://github.com/apple/swift-evolution</a></p>
+<p>修改工具會協助你修改 Swift 3 的許多重大改變。你可以在 <a href="https://github.com/apple/swift-evolution">https://github.com/apple/swift-evolution</a> 看到 Swift 3 修改的提案大鋼。</p>
 
-<p>Here is a brief overview of the more impactful source-breaking changes:</p>
+<p>以下是會讓程式碼不相容的重大修改：</p>
 
-<h3 id="api-design-guidelines">API Design Guidelines</h3>
+<h3 id="api-design-guidelines">API設計指南</h3>
 
-<p>The Objective-C APIs are imported into Swift 3 according to the new <a href="https://swift.org/documentation/api-design-guidelines">Swift API design guidelines</a>. This affects both how the SDKs are imported and the Objective-C user frameworks. The Swift Standard Library also has many changes for adhering to the guidelines. For more details you can refer to proposal <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md">SE-0005 - Better Translation of Objective-C APIs Into Swift</a>.<br>
-The migrator is lowercasing enums declared by the user, to match them with the new guidelines.</p>
+<p>Objective-C API 會遵照新的 <a href="https://swift.org/documentation/api-design-guidelines">雨燕API設計指南</a>  來匯入。這會同時影響SDK 和使用者的 Objective-C 框架。Swift 標準函式庫也做了許多對應的修改。<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md">SE-0005 - Better Translation of Objective-C APIs Into Swift</a> 有更多的細節。<br>升級工具會把 enum 改成小寫開頭來遵照指南。 </p>
 
 <h3 id="sdk">SDK</h3>
 
-<p>Certain frameworks like CoreGraphics and Dispatch, and other types from Foundation, are no longer getting imported as a set of global functions and variables but as member functions and properties on the respective Swift types.
-For details see proposals <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0044-import-as-member.md">SE-0044 - Import as member</a>, <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0088-libdispatch-for-swift3.md">SE-0088 - Modernize libdispatch for Swift 3 naming conventions</a>.</p>
+<p>部分的框架，像是 CoreGraphics, Dispatch 和 Foundation 中的全域變數和函式將會變為成員函式和屬性。詳情請參閱 <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0044-import-as-member.md">SE-0044 - Import as member</a>, <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0088-libdispatch-for-swift3.md">SE-0088 - Modernize libdispatch for Swift 3 naming conventions</a>.</p>
 
-<p>The ‘NS’ prefix from key Foundation types is getting removed in Swift 3, see <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0086-drop-foundation-ns.md">SE-0086 - Drop NS Prefix in Swift Foundation</a>.</p>
+<p>Swift 3 會刪除 Foundation 類別的 NS 前輟 ，請參閱<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0086-drop-foundation-ns.md">SE-0086 -掛斷NS前綴斯威夫特基金會</a> 。</p>
 
-<h3 id="swift-standard-library">Swift Standard Library</h3>
+<h3 id="swift-standard-library">Swift 標準函式庫</h3>
 
-<p>The Collection indexing model has changed dramatically in Swift 3, for more details see <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0065-collections-move-indices.md">SE-0065 - A New Model for Collections and Indices</a>.
-The most visible change is that indexes no longer have <code class="highlighter-rouge">successor()</code>, <code class="highlighter-rouge">predecessor()</code>, <code class="highlighter-rouge">advancedBy(_:)</code>, <code class="highlighter-rouge">advancedBy(_:limit:)</code>, or <code class="highlighter-rouge">distanceTo(_:)</code> methods. Instead, those operations are moved to the collection, which is now responsible for incrementing and decrementing its indices.</p>
+<p>Collection Indexing 在 Swift 3 有很大的改變，詳見 <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0065-collections-move-indices.md">SE-0065 - A New Model for Collections and Indices</a>.最明顯的改變是，Index 不再有<code class="highlighter-rouge">successor()</code> <code class="highlighter-rouge">predecessor()</code> <code class="highlighter-rouge">advancedBy(_:)</code> ， <code class="highlighter-rouge">advancedBy(_:limit:)</code> ，或<code class="highlighter-rouge">distanceTo(_:)</code>方法。這些方法會移到 Collection  上，Collection 現在會負責 Index 的移動。</p>
 
 <div class="highlighter-rouge">
-<pre class="highlight"><code>myIndex.successor()  =&gt;  myCollection.index(after: myIndex)
+  <pre class="highlight"><code>myIndex.successor()  =&gt;  myCollection.index(after: myIndex)
 myIndex.predecessor()  =&gt;  myCollection.index(before: myIndex)
 myIndex.advance(by: …) =&gt; myCollection.index(myIndex, offsetBy: …)
-</code></pre>
+  </code></pre>
 </div>
 
-<p>If the migrator does not know the collection responsible for the indices, it will insert an editor placeholder that you must fill with your collection.</p>
+<p>如果升級工具不知道負責Collection，它會插入一個 Placeholder ，你必須手動改成你的Collection 。</p>
 
-<p>In support of the collections changes, Range types also had some changes.  Previously <code class="highlighter-rouge">x..&lt;y</code> and <code class="highlighter-rouge">x...y</code> produced the same type, <code class="highlighter-rouge">Range&lt;T&gt;</code>.  Now these expressions can produce one of the four types: <code class="highlighter-rouge">Range</code>, <code class="highlighter-rouge">CountableRange</code>, <code class="highlighter-rouge">ClosedRange</code>, <code class="highlighter-rouge">CountableClosedRange</code>. We split <code class="highlighter-rouge">Range</code> into <code class="highlighter-rouge">Range</code> and <code class="highlighter-rouge">ClosedRange</code> types to allow closed ranges that include the maximum value of the type (for example, <code class="highlighter-rouge">0...Int8.max</code> works now).
-The plain range types and their ~Countable counterparts differ in the capabilities:</p>
+<p>Range 型別也做了一些修改。以前<code class="highlighter-rouge">x..&lt;y</code>和<code class="highlighter-rouge">x...y</code>會產生同一種型別， <code class="highlighter-rouge">Range&lt;T&gt;</code>。現在，他會產生四種型別其中一種： <code class="highlighter-rouge">Range</code> ， <code class="highlighter-rouge">CountableRange</code> ， <code class="highlighter-rouge">ClosedRange</code> ， <code class="highlighter-rouge">CountableClosedRange</code> 。我們把<code class="highlighter-rouge">Range</code>切割成<code class="highlighter-rouge">Range</code>和<code class="highlighter-rouge">ClosedRange</code>型別，以允許封閉範圍包括該類型的最大值（例如 <code class="highlighter-rouge">0...Int8.max</code> ）。普通的 Range 和 Countable 差在他們的功能。</p>
 
 <ul>
   <li>
-<code class="highlighter-rouge">Range&lt;Bound&gt;</code> and <code class="highlighter-rouge">ClosedRange&lt;Bound&gt;</code> now only require <code class="highlighter-rouge">Comparable</code> for the bound.  This allows you to create a <code class="highlighter-rouge">Range&lt;String&gt;</code>.</li>
+    <code class="highlighter-rouge">Range&lt;Bound&gt;</code>和<code class="highlighter-rouge">ClosedRange&lt;Bound&gt;</code>現在只需要在邊緣處符合<code class="highlighter-rouge">Comparable</code>。這讓您可以一個產生一個<code class="highlighter-rouge">Range&lt;String&gt;</code> 。</li>
   <li>
-<code class="highlighter-rouge">Range</code> and <code class="highlighter-rouge">ClosedRange</code> can’t be iterated over (they are not collections anymore), since a value that is merely <code class="highlighter-rouge">Comparable</code> cannot be incremented.</li>
+    <code class="highlighter-rouge">Range</code>和<code class="highlighter-rouge">ClosedRange</code>不能被迭代(iterate)（它們不是集合了），因為<code class="highlighter-rouge">Comparable</code>不支援尋找下一個元素。</li>
   <li>
-<code class="highlighter-rouge">CountableRange</code> and <code class="highlighter-rouge">CountableClosedRange</code> require <code class="highlighter-rouge">Strideabe</code> from their bound and they conform to <code class="highlighter-rouge">Collection</code> so that you can iterate over them.</li>
+    <code class="highlighter-rouge">CountableRange</code>和<code class="highlighter-rouge">CountableClosedRange</code>的邊緣需要支援<code class="highlighter-rouge">Strideabe</code>，他們支援<code class="highlighter-rouge">Collection</code> ，所以可以對它們進行迭代。</li>
 </ul>
 
-<p>The <code class="highlighter-rouge">..&lt;</code> and <code class="highlighter-rouge">...</code> operators try to do the right thing and return the most capable range, so that code like <code class="highlighter-rouge">for i in 1..&lt;10</code> infers a <code class="highlighter-rouge">CountableRange</code> and continues to work. If you have a variable that is typed as one range type, and you need to pass it to an API that accepts a different type, use the initializers on range types to convert:</p>
+<p>該<code class="highlighter-rouge">..&lt;</code>和<code class="highlighter-rouge">...</code>會試著會傳最通用的的 Range，讓<code class="highlighter-rouge">for i in 1..&lt;10</code>產生 <code class="highlighter-rouge">CountableRange</code> 來確保你的舊程式繼續運作。如果你有一個 Range 物件想要轉換成另一種型別的 Range 物件好傳進其他函數，你可以用 Range 型別的建構子來作轉換。</p>
 
 <div class="highlighter-rouge">
-<pre class="highlight"><code>var r = 0..&lt;10 // CountableRange&lt;Int&gt;
+  <pre class="highlight"><code>var r = 0..&lt;10 // CountableRange&lt;Int&gt;
 Range(r) // converts to Range&lt;Int&gt;
-</code></pre>
+  </code></pre>
 </div>
 
 <h3 id="language">Language</h3>
@@ -167,11 +157,27 @@ extension NSFoo where T: NSString {
     </ul>
   </li>
   <li>
-<strong>Changes with handling of ImplicitlyUnwrappedOptional</strong><br>
+    <p><strong>Objective-C id is imported as as Swift Any type</strong><br>
+<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0116-id-as-any.md">SE-0116 - Import Objective-C id as Swift Any type</a><br>
+Objective-C interfaces that use <code class="highlighter-rouge">id</code> and untyped collections will be imported into Swift as taking the <code class="highlighter-rouge">Any</code> type instead of <code class="highlighter-rouge">AnyObject</code>.</p>
+  </li>
+  <li>
+    <p><strong>Changes with handling of ImplicitlyUnwrappedOptional</strong><br>
 <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0054-abolish-iuo.md">SE-0054 - Abolish ImplicitlyUnwrappedOptional type</a><br>
 Variable bindings which previously had inferred type <code class="highlighter-rouge">T!</code> from their binding on the right-hand side will now have type <code class="highlighter-rouge">T?</code>. The compiler will emit an error at sites where those bound variables are used in a context that demands a non-optional type and suggest that the value be forced with the <code class="highlighter-rouge">!</code> operator.<br>
 Explicitly written nested IUO types (like <code class="highlighter-rouge">[Int!]</code>) will have to be rewritten to use the corresponding optional type (<code class="highlighter-rouge">[Int?]</code>) or non-optional type (<code class="highlighter-rouge">[Int]</code>) depending on what’s more appropriate for the context. However, most declarations with non-nested IUO type will continue to work as they did before.<br>
-Unsugared use of the <code class="highlighter-rouge">ImplicitlyUnwrappedOptional</code> type will have to be replaced with the postfix <code class="highlighter-rouge">!</code> notation.</li>
+Unsugared use of the <code class="highlighter-rouge">ImplicitlyUnwrappedOptional</code> type will have to be replaced with the postfix <code class="highlighter-rouge">!</code> notation.</p>
+  </li>
+  <li>
+    <p><strong>Closures are non-escaping by default</strong><br>
+<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0103-make-noescape-default.md">SE-0103 - Make non-escaping closures the default</a><br>
+The default for closures was switched and they require an <code class="highlighter-rouge">@escaping</code> annotation if a closure argument can escape the function body.</p>
+  </li>
+  <li>
+<strong>UnsafeRawPointer type was introduced to enforce type safety with respect to unsafe pointer conversion.</strong><br>
+<a href="https://github.com/apple/swift-evolution/blob/master/proposals/0107-unsaferawpointer.md">SE-0107 - UnsafeRawPointer API</a><br>
+An <code class="highlighter-rouge">Unsafe[Mutable]RawPointer</code> type has been introduced. It replaces <code class="highlighter-rouge">Unsafe[Mutable]Pointer&lt;Void&gt;</code>. Conversion from <code class="highlighter-rouge">UnsafePointer&lt;T&gt;</code> to <code class="highlighter-rouge">UnsafePointer&lt;U&gt;</code> has been disallowed. <code class="highlighter-rouge">Unsafe[Mutable]RawPointer</code> provides an API for untyped memory access and an API for binding memory to a type. Binding memory allows for safe conversion between pointer types.<br>
+For detailed instructions on how to migrate your code to the new API refer to the <a href="se-0107-migrate.html">UnsafeRawPointer migration guide</a>.</li>
 </ul>
 
 <h2 id="after-migration">After Migration</h2>
@@ -245,15 +251,9 @@ You can follow this workflow for migrating your project:</p>
       <li>The fix is to switch to <code class="highlighter-rouge">CountableRange</code>.</li>
     </ul>
   </li>
-  <li>The <code class="highlighter-rouge">stride(to:by:)</code> method on <code class="highlighter-rouge">Strideable</code> has been replaced with a free function, <code class="highlighter-rouge">stride(from:to:by:)</code>.</li>
-  <li>Users may need to manually rename <code class="highlighter-rouge">Sequence.generate()</code> to <code class="highlighter-rouge">Sequence.makeIterator()</code>.</li>
-  <li>Users may need to manually rename <code class="highlighter-rouge">anyGenerator</code> to <code class="highlighter-rouge">AnyIterator</code>.</li>
-  <li>Users may need to manually rename <code class="highlighter-rouge">Range.start</code> and <code class="highlighter-rouge">Range.end</code> to <code class="highlighter-rouge">Range.lowerBound</code> and <code class="highlighter-rouge">Range.upperBound</code>, respectively.</li>
   <li>Users may need to manually rename <code class="highlighter-rouge">Collection.Index.Distance</code> to <code class="highlighter-rouge">Collection.IndexDistance</code> (no dot)</li>
   <li>Users may need to manually rename the tuple element <code class="highlighter-rouge">index</code> to <code class="highlighter-rouge">offset</code> when accessing the result of <code class="highlighter-rouge">Collection.enumerated()</code>
 </li>
-  <li>
-<code class="highlighter-rouge">Printable</code> and <code class="highlighter-rouge">DebugPrintable</code> are now renamed to <code class="highlighter-rouge">CustomStringConvertible</code> and <code class="highlighter-rouge">CustomDebugStringConvertible</code>, respectively.</li>
   <li>If you see an error that <code class="highlighter-rouge">Range&lt;Index&gt;</code> does not conform to protocol <code class="highlighter-rouge">Sequence</code> after migrating a range of indices, use the collection’s <code class="highlighter-rouge">indices</code> property.
     <ul>
       <li>E.g. <code class="highlighter-rouge">for _ in str.startIndex..&lt;someIndex {}</code> –&gt; <code class="highlighter-rouge">for _ in str.indices[str.startIndex..&lt;someIndex] {}</code>
@@ -262,16 +262,10 @@ You can follow this workflow for migrating your project:</p>
   </li>
   <li>The initializer <code class="highlighter-rouge">Zip2Sequence(_:_:)</code> has been removed; use the free function <code class="highlighter-rouge">zip(_:_:)</code> instead.</li>
   <li>Using <code class="highlighter-rouge">min</code>/<code class="highlighter-rouge">max</code> inside extensions to <code class="highlighter-rouge">Collection</code> can cause collisions with <code class="highlighter-rouge">Collection</code>’s native methods; add <code class="highlighter-rouge">Swift</code>. before <code class="highlighter-rouge">min</code>/<code class="highlighter-rouge">max</code> to resolve the issue.</li>
-  <li>After migrator automatically renames types, the new type names may collide with the user-defined typealias names; to fix the build errors you may remove the unnecessary typealias definitions.</li>
   <li>
 <code class="highlighter-rouge">Selector()</code> should be migrated to <code class="highlighter-rouge">nil</code>.</li>
   <li>
-<code class="highlighter-rouge">Unmanaged.toOpaque()</code> should be migrated to <code class="highlighter-rouge">OpaquePointer(bitPattern:)</code>
-</li>
-  <li>
 <code class="highlighter-rouge">Range&lt;&gt;.reversed</code> got removed; to simulate its functionality, users can call <code class="highlighter-rouge">&lt;Collection&gt;[&lt;Range&gt;].indices.reversed()</code>.</li>
-  <li>
-<code class="highlighter-rouge">&lt;Index&gt; ..&lt; &lt;Sequence&gt;.endIndex</code> should be manually migrated to <code class="highlighter-rouge">&lt;Sequence&gt;.indices.suffix(from: &lt;Index&gt;)</code>.</li>
   <li>The migrator does not rewrite generic constraints for types that don’t exist in Swift 3.&amp;24868384
     <ul>
       <li>For example, <code class="highlighter-rouge">func foo&lt;C: CollectionType where C.Index: BidirectionalIndexType&gt;() {}</code> should migrate to <code class="highlighter-rouge">func foo&lt;C: BidirectionalCollection&gt;() {}</code> but instead it migrates to <code class="highlighter-rouge">func foo&lt;C: Collection where C.Index: BidirectionalIndex&gt;() {}</code>
@@ -334,13 +328,6 @@ NotificationCenter.default().post(name: MyController.MyGreatNotification, object
 </li>
     </ul>
   </li>
-  <li>The migrator may not migrate <code class="highlighter-rouge">NSEventSubtype</code> enum cases correctly.</li>
-  <li>The migrator may improperly migrate setter methods to properties, leading to migrations such as <code class="highlighter-rouge">setInstanceVariable = instanceVariable</code>.
-    <ul>
-      <li>Workaround: Change the setters to the property name, for example: <code class="highlighter-rouge">self.instanceVariable = instanceVariable</code>
-</li>
-    </ul>
-  </li>
   <li>The migrator will not add cases to switch statements that have gained cases in newer SDKs.
     <ul>
       <li>Workaround: Add the cases manually to switch statements, adding the appropriate availability checks.</li>
@@ -353,32 +340,8 @@ NotificationCenter.default().post(name: MyController.MyGreatNotification, object
 </li>
     </ul>
   </li>
-  <li>
-<em>error: enum case</em> <code class="highlighter-rouge">tv</code> <em>not found in type</em> <code class="highlighter-rouge">UIUserInterfaceIdiom</code>
-    <ul>
-      <li>Change to <code class="highlighter-rouge">TV</code>
-</li>
-    </ul>
-  </li>
-  <li>The migrator may incorrectly lower-case certain enum values such as <code class="highlighter-rouge">objc_ASSOCIATION_RETAIN</code>.
-    <ul>
-      <li>Workaround: Change them back to uppercase <code class="highlighter-rouge">OBJC_ASSOCIATION_RETAIN</code>.</li>
-    </ul>
-  </li>
   <li>The migrator will migrate global constants to namespaces enum cases, but may not add the appropriate <code class="highlighter-rouge">.rawValue</code> call when passed into functions that accept the raw value instead of the new enum type.</li>
-  <li>The migrator does not migrate <code class="highlighter-rouge">NSNumber.unsignedLongValue</code>.
-    <ul>
-      <li>Workaround: Manually change it to <code class="highlighter-rouge">.uintValue</code>
-</li>
-    </ul>
-  </li>
-  <li>The migrator may not migrate <code class="highlighter-rouge">XCUIElementQuery.elementBound(by:)</code> to <code class="highlighter-rouge">XCUIElementQuery.element(boundBy:)</code>.</li>
   <li>Some types are now generic (e.g. <code class="highlighter-rouge">NSCache</code> -&gt; <code class="highlighter-rouge">Cache&lt;Key,Value&gt;</code>, <code class="highlighter-rouge">NSMapTable</code> -&gt; <code class="highlighter-rouge">MapTable&lt;Key,Value&gt;</code>).  After migrating to Swift 3 you may need to add appropriate generic parameters for them.</li>
-  <li>The migrator may incorrectly rename the <code class="highlighter-rouge">NSApplicationDelegate</code>’s <code class="highlighter-rouge">applicationShouldTerminateAfterLastWindowClosed(_:)</code> method to <code class="highlighter-rouge">applicationShouldTerminate(afterLastWindowClosed:)</code>, which should cause a warning that <em>“Instance method ‘…’ nearly matches optional requirement ‘…’ of protocol <code class="highlighter-rouge">NSApplicationDelegate</code>“</em>.
-    <ul>
-      <li>Workaround: Change the name back to <code class="highlighter-rouge">applicationShouldTerminateAfterLastWindowClosed</code>.</li>
-    </ul>
-  </li>
   <li>If you implement an optional Objective-C protocol requirement in a subclass of a class that declares conformance, you’ll see a warning, <em>“Instance method ‘…’ nearly matches optional requirement ‘…’ of protocol ‘…’”</em>
     <ul>
       <li>Workaround: Add an <code class="highlighter-rouge">@objc(objectiveC:name:)</code> attribute before the implementation of the optional requirement with the original Objective-C selector inside.</li>
@@ -390,20 +353,10 @@ NotificationCenter.default().post(name: MyController.MyGreatNotification, object
       <li>Change these to their value type equivalents, being careful to account for the change from reference to value semantics.  For a quick workaround, you can cast them at the point they are used (e.g. <code class="highlighter-rouge">as Data</code>), but this may cause additional copies.</li>
     </ul>
   </li>
-  <li>If you’ve declared a generic class that now conflicts with a Foundation class, the migrator may mistakenly remove the generic arguments when the class is used from a different target. ()
-    <ul>
-      <li>If your class will conflict with Foundation, rename it prior to migration to avoid the conflict, or revert the changes that removed the generic arguments.</li>
-    </ul>
-  </li>
   <li>After migration to Swift 3, you may see an error like <em>“Extension of a generic Objective-C class cannot access the class’s generic parameters at runtime”</em>.
     <ul>
       <li>When trying to use methods from a generic Objective-C class that have generic parameters in their signature, from inside an extension.  You can avoid this by calling the API through a variable that erases the specific type of <code class="highlighter-rouge">self</code> e.g.: <code class="highlighter-rouge">let typeErasedSelf = self as! MyObjCType&lt;AnyObject&gt;</code>
 </li>
-    </ul>
-  </li>
-  <li>While migrating to Swift 3, if you called <code class="highlighter-rouge">self.init(…)</code>, the migrator may incorrectly change <code class="highlighter-rouge">self.init</code> to <code class="highlighter-rouge">self.dynamicType.init</code>, which may cause you to see the error <em>“return from initializer without initializing all stored properties”</em>.
-    <ul>
-      <li>The fix is to remove <code class="highlighter-rouge">.dynamicType</code>.</li>
     </ul>
   </li>
   <li>When migrating functions like <code class="highlighter-rouge">Pasteboard.￼readObjects(forClasses:options:</code>), the migrator may aggressively rename the first argument, e.g. <code class="highlighter-rouge">NSURL.self</code> to <code class="highlighter-rouge">URL.self</code>, this causes compiler errors; to solve the issue, users can discard the migrator’s changes.</li>
@@ -415,33 +368,8 @@ NotificationCenter.default().post(name: MyController.MyGreatNotification, object
   </li>
   <li>Certain methods have been marked unavailable for watchOS, but are still required for iOS.  If you get errors that you cannot override these unavailable methods, please enclose them in and <code class="highlighter-rouge">#if os(iOS)</code> block.</li>
   <li>Users may need to manually migrate calls to <code class="highlighter-rouge">String(contentsOfURL:usedEncoding:)</code> to <code class="highlighter-rouge">String(contentsOf:usedEncoding:)</code> which now accepts an <code class="highlighter-rouge">inout String.Encoding</code> instead of an <code class="highlighter-rouge">UnsafeMutablePointer</code> for the <code class="highlighter-rouge">usedEncoding</code> argument.</li>
-  <li>Manual renaming is necessary for changing <code class="highlighter-rouge">NSBundle.url(orResource:withExtension:)</code> to <code class="highlighter-rouge">Bundle.urlForResource(_ :withExtension:subdirectory:inBundleWith:)</code>.</li>
   <li>After migrator’s automatic changes, some values’ types may change from <code class="highlighter-rouge">NSURL</code> to <code class="highlighter-rouge">URL</code>, leading to compiler errors of unavailable members. To solve this issue, users may need to manually add cast, in the <code class="highlighter-rouge">URL</code> example, something like <code class="highlighter-rouge">x as NSURL</code>.</li>
   <li>Users may want to manually simplify option sets by using inferred types, e.g. changing from <code class="highlighter-rouge">DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault)</code> to <code class="highlighter-rouge">DispatchQueue.global(attributes: .qosDefault)</code>.</li>
-  <li>
-    <p>Trailing closures may become ambiguous because the base name gets shorter. The fix is to add the argument label on the closure parameter:<br>
-Example:</p>
-
-    <div class="highlighter-rouge">
-<pre class="highlight"><code>  let parameterTree: AUParameterTree
-  parameterObserverToken = parameterTree.tokenByAddingParameterObserver {...}
-</code></pre>
-    </div>
-
-    <p>this will become</p>
-
-    <div class="highlighter-rouge">
-<pre class="highlight"><code>  parameterObserverToken = parameterTree.token {...}`
-</code></pre>
-    </div>
-
-    <p>which is ambiguous because there other token(<label>:) methods. The fix is to add the argument label:</label></p>
-
-    <div class="highlighter-rouge">
-<pre class="highlight"><code>  parameterObserverToken = parameterTree.token(byAddingParameterObserver: {...})
-</code></pre>
-    </div>
-  </li>
   <li>
 <strong>Dispatch</strong>
     <ul>
@@ -455,37 +383,21 @@ Example:</p>
 </code></pre>
         </div>
       </li>
-      <li>The migrator may incorrectly convert multiple <code class="highlighter-rouge">dispatch_once</code> calls that use the same token into separate static variables.</li>
-      <li>Calls to <code class="highlighter-rouge">dispatch_after</code> may be migrated with an incorrect argument label: If you see the error <em>“Argument labels ‘(when:, block:)’ do not match any available overloads”</em> the fix is to  change the argument label <code class="highlighter-rouge">block</code> to <code class="highlighter-rouge">execute</code>.</li>
       <li>There are now specific protocols for each of the <code class="highlighter-rouge">DispatchSource</code> types.  You should change <code class="highlighter-rouge">dispatch_source_t</code> to one of these specific protocols, such as <code class="highlighter-rouge">DispatchSourceTimer</code>, <code class="highlighter-rouge">DispatchSourceProcess</code>, etc. as appropriate.</li>
       <li>The Dispatch queue APIs now use the <code class="highlighter-rouge">DispatchAttributes</code> <code class="highlighter-rouge">OptionSet</code>.  If you previously used <code class="highlighter-rouge">dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_DEFAULT, 0))</code>, you should now use use the option set, as in <code class="highlighter-rouge">DispatchQueue(label: name, attributes: [.serial, .qosDefault])</code>
 </li>
-      <li>The migrator may improperly migrate <code class="highlighter-rouge">dispatch_get_global_queue(_:_:)</code> to <code class="highlighter-rouge">DispatchQueue.global(_:_:)</code> instead of <code class="highlighter-rouge">DispatchQueue.global(attributes:)</code>
-        <ul>
-          <li>Workaround: Remove the second argument, and ensure the first argument is one of the <code class="highlighter-rouge">DispatchQueue.GlobalAttributes</code> enum cases.</li>
-        </ul>
-      </li>
       <li>
 <code class="highlighter-rouge">dispatch_get_specific</code> no longer takes an <code class="highlighter-rouge">UnsafeMutablePointer&lt;Void&gt;</code>, and it does not add the required argument label.
         <ul>
           <li>Workaround: Replace your <code class="highlighter-rouge">UnsafeMutablePointer&lt;Void&gt;</code> keys with <code class="highlighter-rouge">DispatchSpecificKey&lt;T&gt;</code> , and add the missing <code class="highlighter-rouge">key:</code> label.</li>
         </ul>
       </li>
-      <li>
-<code class="highlighter-rouge">dispatch_block_t</code> is not automatically migrated to <code class="highlighter-rouge">(Void) -&gt; Void</code>.</li>
-      <li>
-<code class="highlighter-rouge">dispatch_qos_class_t</code> is no longer necessary; users can use Swift’s option set syntax on <code class="highlighter-rouge">DispatchQueueAttributes</code> members to specify desired configurations.</li>
     </ul>
   </li>
 </ul>
 
 <h3 id="swift-3-language">Swift 3 Language</h3>
 <ul>
-  <li>The migrator will not migrate usages of <code class="highlighter-rouge">rand()</code>, which is now unavailable, to <code class="highlighter-rouge">arc4random()</code>.
-    <ul>
-      <li>Workaround: Migrate uses of <code class="highlighter-rouge">rand()</code> to <code class="highlighter-rouge">arc4random()</code> and <code class="highlighter-rouge">arc4random_uniform()</code>, keeping in mind that <code class="highlighter-rouge">arc4random()</code> returns a <code class="highlighter-rouge">UInt32</code> instead of <code class="highlighter-rouge">Int32</code>.</li>
-    </ul>
-  </li>
   <li>The migrator may not fully migrate closures that take <code class="highlighter-rouge">ImplicitlyUnwrappedOptional</code>s.
     <ul>
       <li>Workaround: Promote them to use regular optionals.</li>
@@ -512,33 +424,12 @@ Example:</p>
     </ul>
   </li>
   <li>Enums whose raw types are String may require manual renaming to follow the new Swift naming guideline.</li>
-  <li>The migrator is not handling C-style for loops that count down, e.g <code class="highlighter-rouge">for var i = right; i &gt; left; i-- {}</code>
-    <ul>
-      <li>Manually migrate the loop to a for-in loop or while loop.</li>
-    </ul>
-  </li>
-  <li>The migrator may falsely add parenthesis in users’ closure types, e.g., changing from <code class="highlighter-rouge">inout State -&gt; Element?</code> to <code class="highlighter-rouge">inout (State) -&gt; Element?</code>; the correct change should be <code class="highlighter-rouge">(inout State) -&gt; Element?</code>.</li>
   <li>The migrator may add unnecessary Swift module qualifications to SequenceType conformances, e.g. <code class="highlighter-rouge">struct MySequence: SequenceType</code> =&gt; <code class="highlighter-rouge">struct MySequence: Swift.Sequence</code>.
     <ul>
       <li>Workaround: Remove the leading <code class="highlighter-rouge">Swift.</code>
 </li>
     </ul>
   </li>
-  <li>The migrator may miss migrating uses of enum cases after lowercasing them.
-    <ul>
-      <li>Workaround: Manually lowercase uses of enum cases that the migrator may have missed.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="swift-23">Swift 2.3</h3>
-<ul>
-  <li>The migrator might erroneously migrate <code class="highlighter-rouge">Range&lt;T&gt;</code> to <code class="highlighter-rouge">CountableRange&lt;T&gt;</code> during a Swift 2.3 migration.
-    <ul>
-      <li>Workaround: Change them back to <code class="highlighter-rouge">Range&lt;T&gt;</code>.  Swift 2.3 does not have <code class="highlighter-rouge">CountableRange&lt;T&gt;</code>, only Swift 3 does.</li>
-    </ul>
-  </li>
-  <li>The migrator may add a comment <code class="highlighter-rouge">/*Migrator FIXME: Use a variable of type DispatchSpecificKey*/</code> to uses of <code class="highlighter-rouge">dispatch_queue_set_specific()</code>.  This is only relevant to Swift 3, and can be ignored if you are only migrating to Swift 2.3.</li>
 </ul>
 
 <h3 id="miscellaneous">Miscellaneous</h3>
