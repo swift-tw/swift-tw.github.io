@@ -1,33 +1,21 @@
 ---
 layout: post
-title: 
+title: Swift 3 模組最佳化 (英文)
 date: 2016-10-21T03:00:00-07:00
 comments: true
 paginate: true
 categories: [Swift blog, Swift, Xcode]
 ---
 
-  <header>
-    <h1>Whole-Module Optimization in Swift 3</h1>
+<span class="author">
+  <a href="https://github.com/eeckstein/" rel="nofollow" title="Erik Eckstein (@eeckstein) on GitHub">Erik Eckstein</a>
+</span>
 
-    <time pubdate datetime="2016-10-21T03:00:00-07:00">October 21, 2016</time>
-
-    
-    
-      <div class="byline">
-        
-
-        <span class="author">
-          
-            <a href="https://github.com/eeckstein/" rel="nofollow" title="Erik Eckstein (@eeckstein) on GitHub">Erik Eckstein</a>
-          
-        </span>
-      </div>
-    
-  </header>
 
   <p>Whole-module optimization is an optimization mode of the Swift compiler.
 The performance win of whole-module optimization heavily depends on the project, but it can be up to two or even five times.</p>
+
+<!--more-->
 
 <p>Whole-module optimization can be enabled with the <code class="highlighter-rouge">-whole-module-optimization</code> (or <code class="highlighter-rouge">-wmo</code>) compiler flag, and in Xcode 8 it is turned on by default for new projects.
 Also the Swift Package Manager compiles with whole-module optimizations in release builds.</p>
